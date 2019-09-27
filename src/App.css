@@ -1,0 +1,276 @@
+@import '~antd/dist/antd.css';
+
+* {
+  font-size: 95%;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  /* padding: 20px; */
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/**
+  以下、CSS 修正箇所。
+  ※【確定】となっている部分は基本的にこのままで行く設定。
+  その他は変更して良いです。
+  但し方針は以下の通り：
+  - 大方針
+    - できるだけ CSS は定義しない。
+      - 既存のものを使う。特にレイアウト系は、<Row> や <Col> を使えば実現できることが多々ある。
+    - コントロール特有のスタイルは、コントロール内で定義する。
+      - やり方は Wireframe あたりのサンプルを見ればわかると思います。
+
+  ただ、どうしてもできない場合が出てきます。それらの多くは Antd のコントロールがスタイルやクラスを
+  埋め込んでレンダリングする場合です。これは CSS を修正するしかありません。
+*/
+/* --ここ--【確定】--から-- */
+body {
+  /*
+  font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial,
+    helvetica, sans-serif;
+  */
+  font-family: 'MTJP-gothic', arial, helvetica, sans-serif;
+  width: 100% !important; /* calc(100% - 17px); となってしまうので強制 */
+}
+
+.App {
+  text-align: initial;
+}
+.App-header {
+  /* padding: 10px; */
+  text-align: center;
+  background-color: #001529;
+}
+.App-title {
+  color: #1890ff;
+  margin-bottom: 0;
+}
+.App-subtitle {
+  color: lightgray;
+}
+
+/* 共通 */
+.full-width {
+  width: 100%;
+}
+.full-height {
+  height: 100%;
+}
+
+/* Header */
+.ant-layout-header {
+  height: unset;
+  /* line-height: 64px; */
+  /* padding: unset; */
+}
+
+/* Sider */
+/* lg: 992 -> window width 1008:1009 */
+/* md: 768 -> window width 784:785 */
+@media (max-width: 992px) {
+  .ant-layout-sider {
+    /* position: fixed; */
+    z-index: 1032;
+    height: 100%;
+  }
+}
+.ant-layout-sider-zero-width-trigger {
+  top: 10px;
+}
+
+/* 関連の新規作成画面で複数の drawer が開いた時に裏にある drawer がずれる件対応 */
+/* ※ antd の drawer の動きとして正常だが、システム的にカッコ悪いので調整する */
+/* Drawer の className に lens-drawer を指定すること */
+div.lens-drawer.ant-drawer.ant-drawer-right.ant-drawer-open {
+  transform: unset !important;
+}
+
+/* tag がキモチ小さいので調整 */
+.ant-tag {
+  height: 24px;
+  padding-top: 1px;
+}
+
+/* カレンダーのフォントが中華な件への対処 */
+.ant-calendar-picker-container {
+  font-family: unset;
+}
+
+/* 入稿一覧の collapse の位置を右にする */
+.lens-draft-list-item.ant-list-item {
+  padding: 0;
+}
+.lens-draft-list-item .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+  left: unset;
+  right: 16px;
+}
+.lens-draft-list-item .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  padding: 4px;
+}
+.lens-draft-list-item .ant-collapse > .ant-collapse-item > .ant-collapse-content > .ant-collapse-content-box {
+  padding: 0px;
+}
+
+/* 入稿一覧のリストのマージンがでかいのでつぶした */
+.lens-draft-list-item > .ant-list-item-content.ant-list-item-content-single {
+  margin: 0;
+}
+
+/* form の間隔がでかいのでつめた */
+.ant-form-item {
+  margin-bottom: 0;
+}
+.ant-form-item-label {
+  padding-bottom: 0;
+}
+
+/* drawer の responsive */
+@media (min-width: 992px) {
+  .ant-drawer-content-wrapper {
+    max-width: 720px;
+    width: 50% !important;
+  }
+}
+@media (max-width: 992px) {
+  .ant-drawer-content-wrapper {
+    width: 360px !important;
+  }
+}
+.ant-drawer-header {
+  background: #f5f5f5;
+}
+
+/* Collapse パネルの padding を詰める */
+.lens-tight-panel .ant-list-header {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.lens-tight-panel .ant-collapse-content-box {
+  padding: 8px;
+}
+
+/* 詳細/確認画面テーブル調整 */
+.detail-table .ant-table-content {
+  overflow-x: auto;
+}
+
+.detail-table .ant-table-content .ant-table-body {
+  margin: 0;
+}
+
+.detail-table .ant-table-content th,
+.detail-table .ant-table-content td {
+  min-width: 4rem;
+}
+
+.detail-table .ant-table-content th.value-column,
+.detail-table .ant-table-content td.value-column {
+  min-width: 14rem;
+}
+
+/* InputDate コントロールの DatePicker を隠す */
+span.lens-input-date-picker.ant-calendar-picker,
+span.lens-input-month-picker.ant-calendar-picker,
+span.lens-input-time-picker.ant-time-picker {
+  width: 0;
+  height: 0;
+}
+span.lens-input-date-picker.ant-calendar-picker > div,
+span.lens-input-month-picker.ant-calendar-picker > div,
+span.lens-input-time-picker.ant-time-picker > * {
+  visibility: hidden;
+}
+.ant-calendar-input-wrap,
+.ant-time-picker-panel-input-wrap {
+  display: none;
+}
+
+/*
+   ファイルアップロードのドロップターゲットの枠線が非表示時に邪魔。
+   トリッキーな方法(className を動的に変えて、その className と css 内での定義を組み合わせる)
+   でいけなくもないが、スマートでないのでやらない。
+*/
+.ant-upload.ant-upload-drag {
+  border: unset;
+  background: unset;
+}
+/*
+  ドラッグエリアを横いっぱいに広げる
+  指定しないと table-cell になる
+*/
+.ant-upload.ant-upload-drag .ant-upload-drag-container {
+  display: inline;
+}
+/* サムネイルサイズが小さいので大きくする。margin も微調整。 */
+.ant-upload-list-picture-card .ant-upload-list-item {
+  /*
+  float: left;
+  width: 104px;
+  height: 104px;
+  margin: 0 8px 8px 0;
+  */
+  width: 120px;
+  height: 120px;
+  margin: 4px;
+}
+
+/* メディア一覧：アクションボタンの上のボーダーおよび余計な margin を消す */
+.lens-media-list-item .ant-card-actions {
+  border-top: unset;
+  background: #fff;
+}
+.lens-media-list-item .ant-card-actions > li {
+  margin: 0;
+}
+
+.ant-carousel .slick-slide {
+  /* text-align: center; */
+  height: 72px;
+  /* line-height: 72px; */
+  width: 72px;
+  /* overflow: hidden; */
+}
+
+/* --ここ--【確定】--まで-- */
+
+/* --ここ--【未確定】--から-- */
+/* fixed table で ヘッダに scroll bar が出るため消す */
+.ant-table-fixed-header .ant-table-scroll .ant-table-header {
+  overflow-y: hidden;
+}
+/* --ここ--【未確定】--まで-- */
+.ant-descriptions-bordered .ant-descriptions-item-label {
+  background-color: rgb(192, 243, 227);
+}
+
+td.ant-descriptions-item-label {
+  width: 50%;
+}

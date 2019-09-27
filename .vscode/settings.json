@@ -1,0 +1,16 @@
+{
+  "tslint.autoFixOnSave": true,
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.printWidth": 120,
+  "prettier.trailingComma": "es5",
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "editor.tabSize": 2,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+  "editor.codeActionsOnSave": { "source.fixAll.tslint": true },
+  "python.formatting.autopep8Args": ["--aggressive", "--aggressive"],
+  "editor.wordWrapColumn": 120
+}

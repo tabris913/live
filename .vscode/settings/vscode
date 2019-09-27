@@ -1,0 +1,29 @@
+{
+  "editor.wordWrap": "wordWrapColumn",
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.renderWhitespace": "all",
+  "editor.renderControlCharacters": true,
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": false,
+  "editor.fontFamily": "Consolas, 'Courier New', monospace, 'Yu Gothic'",
+  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+  "workbench.sideBar.location": "right",
+  "workbench.colorTheme": "Monokai",
+  "editor.fontSize": 16,
+  "editor.wordWrapColumn": 79,
+  "editor.formatOnSave": true,
+  "javascript.format.enable": false,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+  "tslint.packageManager": "yarn",
+  "editor.minimap.enabled": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "python.formatting.autopep8Args": [
+    "--aggressive",
+    "--aggressive"
+  ],
+  "autoDocstring.docstringFormat": "numpy",
+  "python.dataScience.sendSelectionToInteractiveWindow": false,
+  "python.dataScience.askForKernelRestart": false
+}
