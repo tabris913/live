@@ -29,7 +29,7 @@ const createListeners = <T extends IContent, A extends IContentAdditionalState>(
 export default function* rootSaga(): IterableIterator<any> {
   yield all([
     ...ContentNames.reduce(
-      (names, name) => [...names, ...createListeners(name, contentSagas[name])],
+      (names, name) => [...names, ...createListeners(name, contentSagas[name]!)],
       [] as IListener[]
     ),
   ]);

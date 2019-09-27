@@ -3,6 +3,15 @@ import * as Q from 'querystring';
 enum PageName {
   TOP = '/top',
 
+  ARTIST = '/artist',
+  WORKS = '/works',
+  SONG = '/song',
+  SONG_SUMMARY = '/song/summary',
+
+  LIVE_LIST = '/lives',
+  LIVE = '/live',
+  LIVE_SUMMARY = '/live/summary',
+
   UNDEFINED = '',
 }
 

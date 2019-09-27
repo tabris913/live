@@ -1,5 +1,6 @@
 import { RouteComponentProps } from 'react-router-dom';
 import { ContentName } from '../constants/ContentName';
+import PageName from '../constants/PageName';
 import { IContent, IContentAdditionalState } from './content';
 import { IContentsState } from './ContentState';
 import { IContentRequest } from './request/ContentRequest';
@@ -41,3 +42,11 @@ export interface MainContentProps<T extends IContent> extends MainProps {
 export interface TitleProps<T extends IContent> extends MainContentProps<T> {}
 
 export interface BodyProps<T extends IContent> extends MainContentProps<T> {}
+
+export interface ITopButton {
+  label: string;
+  linkto: PageName;
+  message: React.ReactNode | undefined;
+  popOver?: React.ReactNode;
+  query?: QueryType;
+}

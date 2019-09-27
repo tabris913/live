@@ -26,7 +26,9 @@ const Application = () => (
           <Route path={toPublicUrl(PageName.TOP)} component={Page.TopPage} exact={true} />
 
           {/* ListPage */}
-          {[].map(e => e as MakeRoute).map(e => makeRoute(e))}
+          {[[PageName.ARTIST, Page.ArtistPage, true], [PageName.WORKS, Page.WorksPage, true]]
+            .map(e => e as MakeRoute)
+            .map(e => makeRoute(e))}
 
           <Redirect to={toPublicUrl(PageName.TOP)} />
         </Switch>

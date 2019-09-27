@@ -1,0 +1,30 @@
+{
+  "lives": [
+    {
+      "uid": "sid",
+      "lives": [
+        {
+          "uid": "2003_takadanobaba_toukon_retsuden",
+          "name": "高田馬場闘魂列伝",
+          "date": "2003-12-01",
+          "place": "高田馬場AREA",
+          "setlist": ["sid013", "sid006", "sid003", "sid014", "sid001"]
+        },
+        {
+          "uid": "2003_datenshi_rock_vol5",
+          "name": "堕天使ロック vol. 5",
+          "date": "2003-11-18",
+          "place": "横浜アリーナサウンドロック",
+          "setlist": ["sid002", "sid003", "sid013", "sid011", "sid001"]
+        },
+        {
+          "uid": "2003_tokyo_under_map",
+          "name": "東京UNDER MAP",
+          "date": "2003-09-27",
+          "place": "池袋CYBER",
+          "setlist": ["sid011", "sid003", "sid006", "sid001"]
+        }
+      ]
+    }
+  ]
+}
