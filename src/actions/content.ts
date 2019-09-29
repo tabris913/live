@@ -3,7 +3,7 @@ import IArtist, { IArtists } from '../models/contents/artist';
 import ILive, { ILives } from '../models/contents/live';
 import ISong, { ISongs } from '../models/contents/song';
 import { IWorks } from '../models/contents/work';
-import IArtistRequest, { IArtistsRequest } from '../models/request/ArtistRequest';
+import IArtistRequest from '../models/request/ArtistRequest';
 import ILiveRequest from '../models/request/LiveRequest';
 import ILivesRequest from '../models/request/LivesRequest';
 import ISongRequest, { ISongsRequest } from '../models/request/SongRequest';
@@ -12,7 +12,7 @@ import { ActionTypes } from './types';
 
 export interface ContentActions {
   getArtist: AsyncActionCreators<IArtistRequest, IArtist, any>;
-  getArtists: AsyncActionCreators<IArtistsRequest, IArtists, any>;
+  getArtists: AsyncActionCreators<void, IArtists, any>;
   getWorks: AsyncActionCreators<IWorksRequest, IWorks, any>;
   getSong: AsyncActionCreators<ISongRequest, ISong, any>;
   getSongs: AsyncActionCreators<ISongsRequest, ISongs, any>;
@@ -23,7 +23,7 @@ export interface ContentActions {
 export const contentActionsBuilder = (actionTypeMap: { [P in keyof ContentActions]: string }): ContentActions => {
   const body: ContentActions = {
     getArtist: actionCreatorFactory().async<IArtistRequest, IArtist, any>(actionTypeMap.getArtist),
-    getArtists: actionCreatorFactory().async<IArtistsRequest, IArtists, any>(actionTypeMap.getArtists),
+    getArtists: actionCreatorFactory().async<void, IArtists, any>(actionTypeMap.getArtists),
     getWorks: actionCreatorFactory().async<IWorksRequest, IWorks, any>(actionTypeMap.getWorks),
     getSong: actionCreatorFactory().async<ISongRequest, ISong, any>(actionTypeMap.getSong),
     getSongs: actionCreatorFactory().async<ISongsRequest, ISongs, any>(actionTypeMap.getSongs),

@@ -1,10 +1,10 @@
-import { call, put } from 'redux-saga/effects';
+import { call } from 'redux-saga/effects';
 import { Action } from 'typescript-fsa';
 import { ContentActions } from '../../actions/content';
 import { ContentApis } from '../../apis/content';
 import { IContent, IContentAdditionalState } from '../../models/content';
 import { Uid } from '../../models/Main';
-import IArtistRequest, { IArtistsRequest } from '../../models/request/ArtistRequest';
+import IArtistRequest from '../../models/request/ArtistRequest';
 import ILiveRequest from '../../models/request/LiveRequest';
 import ILivesRequest from '../../models/request/LivesRequest';
 import ISongRequest, { ISongsRequest } from '../../models/request/SongRequest';
@@ -12,7 +12,7 @@ import IWorksRequest from '../../models/request/WorksRequest';
 
 export interface ContentSaga<T extends IContent<Uid>, A extends IContentAdditionalState> {
   getArtist: (action: Action<IArtistRequest>) => IterableIterator<any>;
-  getArtists: (action: Action<IArtistsRequest>) => IterableIterator<any>;
+  getArtists: (action: Action<void>) => IterableIterator<any>;
   getWorks: (action: Action<IWorksRequest>) => IterableIterator<any>;
   getSong: (action: Action<ISongRequest>) => IterableIterator<any>;
   getSongs: (action: Action<ISongsRequest>) => IterableIterator<any>;
@@ -30,15 +30,14 @@ const saga = <T extends IContent<Uid>, A extends IContentAdditionalState>(
       const req = action.payload;
       const res = yield call(apis.getArtist, req);
       console.log(res);
-      yield put(actions.getArtist.done({ params: req, result: {} }));
+      // yield put(actions.getArtist.done({ params: req, result: res }));
     },
   getArtists: () =>
-    function*(action: Action<IArtistsRequest>): IterableIterator<any> {
+    function*(action: Action<void>): IterableIterator<any> {
       console.log('get artists');
-      const req = action.payload;
-      const res = yield call(apis.getArtists, req);
+      const res = yield call(apis.getArtists);
       console.log(res);
-      yield put(actions.getArtists.done({ params: req, result: {} }));
+      // yield put(actions.getArtists.done({ result: {} }));
     },
   getWorks: () =>
     function*(action: Action<IWorksRequest>): IterableIterator<any> {

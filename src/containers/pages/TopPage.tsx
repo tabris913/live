@@ -8,7 +8,6 @@ import Wireframe from '../wireframe/Wireframe';
 import { Actions } from '../../actions/content';
 import Top from '../../components/main/Top';
 import { IMatchParams, QueryType, Uid } from '../../models/Main';
-import { IArtistsRequest } from '../../models/request/ArtistRequest';
 import { IStoreState } from '../../reducers';
 
 interface IOwnProps extends RouteComponentProps<IMatchParams> {}
@@ -19,7 +18,7 @@ interface IStateProps {
 
 interface IDispatchProps {
   actions: {
-    getArtists: (req: IArtistsRequest) => void;
+    getArtists: () => void;
   };
 }
 
@@ -35,13 +34,13 @@ const mapState2Props = (state: IStoreState, ownProps: IOwnProps): IStateProps =>
 const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDispatchProps => {
   return {
     actions: {
-      getArtists: (req: IArtistsRequest) => dispatch(Actions.getArtists.started),
+      getArtists: () => dispatch(Actions.getArtists.started),
     },
   };
 };
 
 const TopPage = (props: Props) => {
-  props.actions.getArtists({});
+  props.actions.getArtists();
   return (
     <Wireframe title="TOP">
       <Top {...props} />

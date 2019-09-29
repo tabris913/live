@@ -28,6 +28,7 @@ export const get = async <T, U>(url: string, data: T) => {
   // return fr;
   return fetchWithErrorHandling(url, { method: 'GET' }).then(res => {
     if (!res.ok) throw new Error(res.statusText);
+    console.log('get');
     return res.json();
   });
 };
