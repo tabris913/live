@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as Redux from 'redux';
 import Artist from '../../components/contents/artist';
-import { IMatchParams, QueryType } from '../../models/Main';
+import IArtist from '../../models/contents/artist';
+import { ArtistUid, IMatchParams, QueryType } from '../../models/Main';
 import { IStoreState } from '../../reducers';
-import { getArtist } from '../../utils/ArtistUtils';
+import { getArtists } from '../../utils/ArtistUtils';
 import Wireframe from '../wireframe/Wireframe';
 
 interface IOwnProps extends RouteComponentProps<IMatchParams> {}
 
 interface IStateProps {
-  query: QueryType;
+  query: QueryType<ArtistUid>;
 }
 
 interface IDispatchProps {}
@@ -30,7 +31,14 @@ const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDisp
 };
 
 const ArtistPage = (props: Props) => {
-  const artist = getArtist(props.match.params.id);
+  const [artist, setArtist] = React.useState<IArtist | undefined>();
+
+  React.useState(() =>
+    getArtists().then(fr => {
+      fr.onload = () => setArtist(JSON.parse(fr.result as string)[props.match.params.id]);
+    })
+  );
+
   return artist ? (
     <Wireframe title={artist.name}>
       <Artist {...props} />

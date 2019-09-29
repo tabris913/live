@@ -1,12 +1,12 @@
 import { Button, Col, Row } from 'antd';
 import * as React from 'react';
-import { MainProps } from '../../models/Main';
+import { ArtistUid, MainProps } from '../../models/Main';
 import { toWorks } from '../../utils/WorksUtils';
 
 const colStyle: React.CSSProperties = { margin: 10 };
 const buttonStyle: React.CSSProperties = { width: 200, fontSize: 20 };
 
-const Artist = (props: MainProps) => (
+const Artist = (props: MainProps<ArtistUid>) => (
   <Row>
     <Col style={colStyle}>
       <Button type="primary" style={buttonStyle}>

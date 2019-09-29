@@ -1,20 +1,11 @@
 import { History } from 'history';
-import * as Artists from '../constants/json/artists.json';
 import PageName, { toPublicUrl } from '../constants/PageName';
-import IArtist from '../models/contents/artist';
+import { ArtistUid } from '../models/Main';
+import { parseText2Json } from './MiscUtils';
 
-export const getArtists = (): IArtist[] => Artists.artists;
+export const getArtists = async () =>
+  parseText2Json(await (await fetch(`${process.env.PUBLIC_URL}/json/artists.json`, { method: 'GET' })).blob());
 
-/**
- * uid でアーティストを検索する
- * @param uid 識別子
- */
-export const getArtist = (uid: string): IArtist | undefined => {
-  for (const artist of Artists.artists) {
-    if (artist.uid === uid) return artist;
-  }
-  // uid が一致するものがなければ undefined
-  return;
-};
+export const getArtist = async (uid: ArtistUid) => (await getArtists())[uid as string];
 
-export const toArtist = (uid: string, history: History) => history.push(toPublicUrl(PageName.ARTIST, [uid]));
+export const toArtist = (uid: ArtistUid, history: History) => history.push(toPublicUrl(PageName.ARTIST, [uid]));

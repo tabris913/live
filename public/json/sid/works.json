@@ -1,0 +1,39 @@
+{
+  "sid_sg01": {
+    "uid": "sid_sg01",
+    "name": "吉開学17歳 (無職)",
+    "songs": ["sid001", "sid002", "sid003"]
+  },
+  "sid_sg02": {
+    "uid": "sid_sg02",
+    "name": "会場盤 / 通販盤",
+    "songs": ["sid003", "sid004"]
+  },
+  "sid_sg02_b": {
+    "uid": "sid_sg02_b",
+    "name": "流通盤",
+    "songs": ["sid003", "sid004", "sid005"]
+  },
+  "sid_al01": {
+    "uid": "sid_al01",
+    "name": "憐哀 -レンアイ-",
+    "songs": [
+      "sid007",
+      "sid008",
+      "sid004",
+      "sid009",
+      "sid003",
+      "sid010",
+      "sid011",
+      "sid012",
+      "sid013",
+      "sid014",
+      "sid015"
+    ]
+  },
+  "others": {
+    "uid": "sid_others",
+    "name": "その他",
+    "songs": ["sid006"]
+  }
+}

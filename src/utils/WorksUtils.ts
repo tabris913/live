@@ -1,13 +1,12 @@
 import { History } from 'history';
-import * as Works from '../constants/json/works.json';
 import PageName, { toPublicUrl } from '../constants/PageName';
-import IWork from '../models/contents/work';
+import { ArtistUid, WorkUid } from '../models/Main';
+import { parseText2Json } from './MiscUtils';
 
-export const getWorks = (artistUid: string): IWork[] | undefined => {
-  for (const artist of Works.works) {
-    if (artist.uid === artistUid) return artist.works;
-  }
-  return;
-};
+export const getWorks = async (artistUid: ArtistUid) =>
+  parseText2Json(await (await fetch(`${process.env.PUBLIC_URL}/json/${artistUid}/works.json`)).blob());
 
-export const toWorks = (uid: string, history: History) => history.push(toPublicUrl(PageName.WORKS, [uid]));
+export const getWork = async (artistUid: ArtistUid, workUid: WorkUid) => (await getWorks(artistUid))[workUid as string];
+
+export const toWorks = (artistUid: ArtistUid, history: History) =>
+  history.push(toPublicUrl(PageName.WORKS, [artistUid]));

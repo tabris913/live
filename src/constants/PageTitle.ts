@@ -5,5 +5,6 @@ export const PageTitle: { [K in ContentName]: string } = {
   work: 'Work',
   song: 'Song',
   lives: 'Live List',
+  tour: 'Tour',
   live: 'Live',
 };

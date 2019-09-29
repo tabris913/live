@@ -7,8 +7,9 @@ import { IContentRequest } from './request/ContentRequest';
 import { IContentSaveRequest } from './request/ContentSaveRequest';
 import { IListRequest } from './request/ListRequest';
 
-export interface QueryType {
-  id?: string;
+// query
+export interface QueryType<U extends Uid> {
+  id?: U;
   page?: number;
 }
 
@@ -17,12 +18,23 @@ export interface IMatchParams {
   type: string;
 }
 
-export interface MainProps extends RouteComponentProps<IMatchParams> {
-  query: QueryType;
+// uid
+export interface Uid extends String {}
+export interface ArtistUid extends Uid {}
+export interface WorkUid extends Uid {}
+export interface SongUid extends Uid {}
+export interface TourUid extends Uid {}
+export interface LiveUid extends Uid {}
+
+// component
+
+export interface MainProps<U extends Uid> extends RouteComponentProps<IMatchParams> {
+  query: QueryType<U>;
   contents?: IContentsState;
 }
 
-export interface ListComponentProps<T extends IContent, A extends IContentAdditionalState> extends MainProps {
+export interface ListComponentProps<U extends Uid, T extends IContent<U>, A extends IContentAdditionalState>
+  extends MainProps<U> {
   saveContent: (content: IContentSaveRequest<T>) => void;
   getList: (req: IListRequest) => void;
   changeListPage: (req: number) => void;
@@ -34,19 +46,19 @@ export interface ListComponentProps<T extends IContent, A extends IContentAdditi
   selector?: ({ localState, setLocalState }: { localState: any; setLocalState: (o: any) => void }) => JSX.Element;
 }
 
-export interface MainContentProps<T extends IContent> extends MainProps {
+export interface MainContentProps<U extends Uid, T extends IContent<U>> extends MainProps<U> {
   getContent: (req: IContentRequest) => void;
   getHistory?: (req: IContentRequest) => void;
 }
 
-export interface TitleProps<T extends IContent> extends MainContentProps<T> {}
+export interface TitleProps<U extends Uid, T extends IContent<U>> extends MainContentProps<U, T> {}
 
-export interface BodyProps<T extends IContent> extends MainContentProps<T> {}
+export interface BodyProps<U extends Uid, T extends IContent<U>> extends MainContentProps<U, T> {}
 
-export interface ITopButton {
+export interface ITopButton<U extends Uid> {
   label: string;
   linkto: PageName;
   message: React.ReactNode | undefined;
   popOver?: React.ReactNode;
-  query?: QueryType;
+  query?: QueryType<U>;
 }

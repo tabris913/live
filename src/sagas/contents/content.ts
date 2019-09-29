@@ -1,46 +1,68 @@
+import { call, put } from 'redux-saga/effects';
 import { Action } from 'typescript-fsa';
 import { ContentActions } from '../../actions/content';
-import { ContentName } from '../../constants/ContentName';
+import { ContentApis } from '../../apis/content';
 import { IContent, IContentAdditionalState } from '../../models/content';
-import { IContentRequest } from '../../models/request/ContentRequest';
-import { IContentSaveRequest } from '../../models/request/ContentSaveRequest';
-import { IListRequest } from '../../models/request/ListRequest';
+import { Uid } from '../../models/Main';
+import IArtistRequest, { IArtistsRequest } from '../../models/request/ArtistRequest';
+import ILiveRequest from '../../models/request/LiveRequest';
+import ILivesRequest from '../../models/request/LivesRequest';
+import ISongRequest, { ISongsRequest } from '../../models/request/SongRequest';
+import IWorksRequest from '../../models/request/WorksRequest';
 
-export interface ContentSaga<T extends IContent, A extends IContentAdditionalState> {
-  getContent: (action: Action<IContentRequest>) => IterableIterator<any>;
-  saveContent: (action: Action<IContentSaveRequest<T>>) => IterableIterator<any>;
-  getList: (action: Action<IListRequest>) => IterableIterator<any>;
-  changeListPage: (action: Action<number>) => IterableIterator<any>;
-  getHistory?: (action: Action<IContentRequest>) => IterableIterator<any>;
+export interface ContentSaga<T extends IContent<Uid>, A extends IContentAdditionalState> {
+  getArtist: (action: Action<IArtistRequest>) => IterableIterator<any>;
+  getArtists: (action: Action<IArtistsRequest>) => IterableIterator<any>;
+  getWorks: (action: Action<IWorksRequest>) => IterableIterator<any>;
+  getSong: (action: Action<ISongRequest>) => IterableIterator<any>;
+  getSongs: (action: Action<ISongsRequest>) => IterableIterator<any>;
+  getLives: (action: Action<ILivesRequest>) => IterableIterator<any>;
+  getLive: (action: Action<ILiveRequest>) => IterableIterator<any>;
 }
 
-const saga = <T extends IContent, A extends IContentAdditionalState>(
-  contentName: ContentName,
-  actions: ContentActions<T, A>
+const saga = <T extends IContent<Uid>, A extends IContentAdditionalState>(
+  actions: ContentActions,
+  apis: ContentApis
 ) => ({
-  getContent: () =>
-    function*(action: Action<IContentRequest>): IterableIterator<any> {
-      console.log(`get ${contentName} content`);
+  getArtist: () =>
+    function*(action: Action<IArtistRequest>): IterableIterator<any> {
+      console.log(`get artist`);
+      const req = action.payload;
+      const res = yield call(apis.getArtist, req);
+      console.log(res);
+      yield put(actions.getArtist.done({ params: req, result: {} }));
+    },
+  getArtists: () =>
+    function*(action: Action<IArtistsRequest>): IterableIterator<any> {
+      console.log('get artists');
+      const req = action.payload;
+      const res = yield call(apis.getArtists, req);
+      console.log(res);
+      yield put(actions.getArtists.done({ params: req, result: {} }));
+    },
+  getWorks: () =>
+    function*(action: Action<IWorksRequest>): IterableIterator<any> {
+      console.log('get works');
       yield null;
     },
-  saveContent: () =>
-    function*(action: Action<IContentSaveRequest<T>>): IterableIterator<any> {
-      console.log(`save ${contentName} content`);
+  getSong: () =>
+    function*(action: Action<ISongRequest>): IterableIterator<any> {
+      console.log('get song');
       yield null;
     },
-  getList: () =>
-    function*(action: Action<IListRequest>): IterableIterator<any> {
-      console.log(`get ${contentName} list`);
+  getSongs: () =>
+    function*(action: Action<ISongsRequest>): IterableIterator<any> {
+      console.log('get songs');
       yield null;
     },
-  changeListPage: () =>
-    function*(action: Action<number>): IterableIterator<any> {
-      console.log(`change page of ${contentName} list`);
+  getLives: () =>
+    function*(action: Action<ILivesRequest>): IterableIterator<any> {
+      console.log('get lives');
       yield null;
     },
-  getHistory: () =>
-    function*(action: Action<IContentRequest>): IterableIterator<any> {
-      console.log(`get history`);
+  getLive: () =>
+    function*(action: Action<ILiveRequest>): IterableIterator<any> {
+      console.log('get live');
       yield null;
     },
 });

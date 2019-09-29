@@ -1,3 +1,8 @@
 import { IContent } from '../content';
+import { SongUid } from '../Main';
 
-export default interface ISong extends IContent {}
+export interface ISongs {
+  [uid: string]: ISong;
+}
+
+export default interface ISong extends IContent<SongUid> {}

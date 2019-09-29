@@ -1,5 +1,7 @@
-export interface IContent {
-  uid: string;
+import { Uid } from './Main';
+
+export interface IContent<T extends Uid> {
+  uid: T;
   name: string;
 }
 

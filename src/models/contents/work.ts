@@ -1,6 +1,10 @@
 import { IContent } from '../content';
-import ISong from './song';
+import { SongUid, WorkUid } from '../Main';
 
-export default interface IWork extends IContent {
-  songs: ISong[];
+export interface IWorks {
+  [uid: string]: IWork;
+}
+
+export default interface IWork extends IContent<WorkUid> {
+  songs: SongUid[];
 }
