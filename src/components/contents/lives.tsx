@@ -1,35 +1,31 @@
-import { Button, Collapse, List } from 'antd';
+import { Button, Collapse, List, Spin } from 'antd';
 import * as React from 'react';
-import { ILives } from '../../models/contents/live';
 import { LiveUid, MainProps } from '../../models/Main';
-import { getLives } from '../../utils/LivesUtils';
-
-interface IState {
-  lives: ILives;
-  keys: string[];
-}
+import { toLive, toTour } from '../../utils/LiveUtils';
 
 const LiveList = (props: MainProps<LiveUid>) => {
-  const [localState, setLocalState] = React.useState<IState>({ lives: {}, keys: [] });
+  const [keys, setKeys] = React.useState<string[]>([]);
 
   React.useState(() => {
-    getLives(props.match.params.id).then(fr => {
-      fr.onload = () => {
-        const lives = JSON.parse(fr.result as string);
-        setLocalState({ lives: lives, keys: Object.keys(lives).sort((a, b) => (Number(a) < Number(b) ? 1 : -1)) });
-      };
-    });
+    if (props.content && props.content.lives) {
+      setKeys(Object.keys(props.content.lives).sort((a, b) => (Number(a) < Number(b) ? 1 : -1)));
+    }
   });
 
-  return !!localState.lives ? (
+  return keys.length > 0 ? (
     <Collapse>
-      {localState.keys.map(year => (
+      {keys.map(year => (
         <Collapse.Panel header={year} key={year}>
           <List
-            dataSource={localState.lives[year]}
+            dataSource={Object.values(props.content!.lives![year])}
             renderItem={item => (
               <List.Item>
-                <Button type="link">{item.name}</Button>
+                <Button
+                  type="link"
+                  onClick={() => (item.is_tour ? toTour : toLive)(props.match.params.id, item.uid, props.history)}
+                >
+                  {item.name}
+                </Button>
               </List.Item>
             )}
           />
@@ -37,7 +33,7 @@ const LiveList = (props: MainProps<LiveUid>) => {
       ))}
     </Collapse>
   ) : (
-    <></>
+    <Spin />
   );
 };
 

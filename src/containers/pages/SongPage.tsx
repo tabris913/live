@@ -4,23 +4,23 @@ import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as Redux from 'redux';
 import { liveActions } from '../../actions/content';
-import Artist from '../../components/contents/artist';
+import LiveList from '../../components/contents/lives';
 import { IContentState } from '../../models/ContentState';
-import { ArtistUid, IMatchParams, QueryType } from '../../models/Main';
-import IArtistRequest from '../../models/request/ArtistRequest';
+import { IMatchParams, QueryType, SongUid } from '../../models/Main';
+import ISongRequest from '../../models/request/SongRequest';
 import { IStoreState } from '../../reducers';
 import Wireframe from '../wireframe/Wireframe';
 
 interface IOwnProps extends RouteComponentProps<IMatchParams> {}
 
 interface IStateProps {
-  query: QueryType<ArtistUid>;
+  query: QueryType<SongUid>;
   content: IContentState;
 }
 
 interface IDispatchProps {
   actions: {
-    prepareArtistPage: (req: IArtistRequest) => void;
+    prepareSongPage: (req: ISongRequest) => void;
   };
 }
 
@@ -37,22 +37,25 @@ const mapState2Props = (state: IStoreState, ownProps: IOwnProps): IStateProps =>
 const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDispatchProps => {
   return {
     actions: {
-      prepareArtistPage: (req: IArtistRequest) => dispatch(liveActions.prepareArtistPage.started(req)),
+      prepareSongPage: (req: ISongRequest) => dispatch(liveActions.prepareSongPage.started(req)),
     },
   };
 };
 
-const ArtistPage = (props: Props) => {
-  React.useState(() => props.actions.prepareArtistPage({ artistUid: props.match.params.id }));
+const SongPage = (props: Props) => {
+  React.useState(() =>
+    props.actions.prepareSongPage({
+      artistUid: props.match.params.id,
+      songUid: props.query.id!,
+    })
+  );
 
-  return props.content.artist && props.content.artist.uid === props.match.params.id ? (
-    <Wireframe title={props.content.artist.name}>
-      <Artist {...props} />
+  return props.content.song ? (
+    <Wireframe title={props.content.song.name}>
+      <LiveList {...props} />
     </Wireframe>
   ) : (
-    <>
-      <Spin />
-    </>
+    <Spin />
   );
 };
 
@@ -60,5 +63,5 @@ export default withRouter(
   connect(
     mapState2Props,
     mapDispatch2Props
-  )(ArtistPage)
+  )(SongPage)
 );

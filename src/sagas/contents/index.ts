@@ -1,10 +1,31 @@
+import { liveActions } from '../../actions/content';
+import { liveApis } from '../../apis/content';
 import { ContentName } from '../../constants/ContentName';
-import { ContentSaga } from './content';
+import saga, { ContentSaga } from './content';
 
 // export { cardSaga, characterSaga, eventSaga, scoutSaga, unitSaga };
 
+const sagas = saga(liveActions, liveApis);
+export const liveSaga: ContentSaga = {
+  getArtist: sagas.getArtist(),
+  getArtists: sagas.getArtists(),
+  getWorks: sagas.getWorks(),
+  getSong: sagas.getSong(),
+  getSongs: sagas.getSongs(),
+  getLives: sagas.getLives(),
+  getLive: sagas.getLive(),
+
+  prepareTopPage: sagas.prepareTopPage(),
+  prepareArtistPage: sagas.prepareArtistsPage(),
+  prepareWorksPage: sagas.prepareWorksPage(),
+  prepareLiveListPage: sagas.prepareLiveListPage(),
+  prepareTourPage: sagas.prepareTourPage(),
+  prepareSongPage: sagas.prepareSongPage(),
+  prepareLivePage: sagas.prepareLivePage(),
+};
+
 // temp: ?
-export const contentSagas: { [K in ContentName]?: ContentSaga<any, any> } = {
+export const contentSagas: { [K in ContentName]?: ContentSaga } = {
   // card: cardSaga,
   // artist: {} as any,
 };

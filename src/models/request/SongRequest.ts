@@ -1,4 +1,4 @@
-import { ArtistUid, SongUid } from '../Main';
+import { ArtistUid, SongUid, WorkUid } from '../Main';
 
 export default interface ISongRequest {
   artistUid: ArtistUid;
@@ -7,4 +7,5 @@ export default interface ISongRequest {
 
 export interface ISongsRequest {
   artistUid: ArtistUid;
+  workUid?: WorkUid;
 }

@@ -1,48 +1,35 @@
-import { Button, Col, Popover, Row } from 'antd';
+import { Button, Col, Popover, Row, Spin } from 'antd';
 import * as React from 'react';
 
 import PageName, { toPublicUrl } from '../../constants/PageName';
-import { IArtists } from '../../models/contents/artist';
 import { ITopButton, MainProps, Uid } from '../../models/Main';
-import { getArtists } from '../../utils/ArtistUtils';
 
 // music
 // cd
 // book
 
-interface IState {
-  artists: IArtists;
-  buttons: Array<ITopButton<Uid>>;
-}
-
 const Top = (props: MainProps<Uid>) => {
-  const [localState, setLocalState] = React.useState<IState>({ artists: {}, buttons: [] });
-
-  React.useState(() =>
-    getArtists().then(fr => {
-      fr.onload = () => {
-        const artists: IArtists = JSON.parse(fr.result as string);
-        setLocalState({
-          ...localState,
-          artists: artists,
-          buttons: Object.values(artists).reduce(
-            (preArtist, curArtist) =>
-              preArtist.concat({
-                label: curArtist.name,
-                linkto: PageName.ARTIST,
-                message: undefined,
-                query: { id: curArtist.uid },
-              }),
-            [] as Array<ITopButton<Uid>>
-          ),
-        });
-      };
-    })
+  const topButtons: Array<ITopButton<Uid>> = React.useMemo(
+    () =>
+      (props.content &&
+        props.content.artists &&
+        Object.values(props.content.artists).reduce(
+          (preArtist, curArtist) =>
+            preArtist.concat({
+              label: curArtist.name,
+              linkto: PageName.ARTIST,
+              message: undefined,
+              query: { id: curArtist.uid },
+            }),
+          [] as Array<ITopButton<Uid>>
+        )) ||
+      [],
+    [props.content]
   );
 
-  return (
+  return props.content && props.content.artists ? (
     <Row style={{ overflowY: 'auto' }}>
-      {localState.buttons.map(({ label, linkto, message, popOver, query }, idx) => (
+      {topButtons.map(({ label, linkto, message, popOver, query }, idx) => (
         <>
           <Col style={{ padding: 5 }} key={idx}>
             <Popover content={popOver} trigger="click" placement="right">
@@ -69,6 +56,8 @@ const Top = (props: MainProps<Uid>) => {
         </>
       ))}
     </Row>
+  ) : (
+    <Spin />
   );
 };
 

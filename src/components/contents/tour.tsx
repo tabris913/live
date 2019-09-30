@@ -1,46 +1,22 @@
-import { Button, List } from 'antd';
+import { Button, List, Spin } from 'antd';
 import * as React from 'react';
-import ILive, { ILiveInfo } from '../../models/contents/live';
-import { LiveUid, MainProps } from '../../models/Main';
-import { getLive } from '../../utils/LiveUtils';
+import { MainProps, TourUid } from '../../models/Main';
+import { toLive } from '../../utils/LiveUtils';
 
-interface Props extends MainProps<LiveUid> {
-  info: ILiveInfo;
-}
-
-interface IState {
-  lives: {
-    [uids: string]: ILive;
-  };
-}
-
-const Tour = (props: Props) => {
-  const [localState, setLocalState] = React.useState<IState>({ lives: {} });
-
-  React.useState(() => {
-    for (let i = 1; i <= props.info.number; i = i + 1) {
-      const liveUid = `${props.info.uid}_${i > 9 ? i : `0${i}`}`;
-      getLive(props.match.params.id, liveUid).then(fr => {
-        fr.onload = () => {
-          if (!Object.keys(localState.lives).includes(liveUid)) {
-            setLocalState({ ...localState, [liveUid]: JSON.parse(fr.result as string) });
-          }
-        };
-      });
-    }
-  });
-
-  return (
+const Tour = (props: MainProps<TourUid>) => {
+  return props.content && props.content.liveList ? (
     <List
-      dataSource={Object.values(localState.lives)}
+      dataSource={props.content.liveList}
       renderItem={item => (
         <List.Item>
-          <Button type="link">
+          <Button type="link" onClick={() => toLive(props.match.params.id, item.uid, props.history)}>
             [{item.date}] {item.name} ({item.place})
           </Button>
         </List.Item>
       )}
     />
+  ) : (
+    <Spin />
   );
 };
 

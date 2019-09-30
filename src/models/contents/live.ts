@@ -1,11 +1,11 @@
 import { IContent } from '../content';
-import { LiveUid, SongUid } from '../Main';
+import { LiveUid, SongUid, TourUid } from '../Main';
 
 export interface ILives {
   [year: string]: ILiveInfo[];
 }
 
-export interface ILiveInfo extends IContent<LiveUid> {
+export interface ILiveInfo extends IContent<LiveUid | TourUid> {
   is_tour: boolean;
   number: number;
 }

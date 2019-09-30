@@ -1,1 +1,1 @@
-export {};
+export { liveReducer } from './content';

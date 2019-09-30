@@ -1,31 +1,31 @@
 {
-  "2003": [
-    {
+  "2003": {
+    "2003_tokyo_under_map": {
       "uid": "2003_tokyo_under_map",
       "name": "東京UNDER MAP",
       "is_tour": false,
       "number": 1
     },
-    {
+    "2003_datenshi_rock_vol5": {
       "uid": "2003_datenshi_rock_vol5",
       "name": "堕天使ロック vol. 5",
       "is_tour": false,
       "number": 1
     },
-    {
-      "uid": "2003_takadanobaba_toukon_retsuden",
+    "2003_takadanobaba_toukonretsuden": {
+      "uid": "2003_takadanobaba_toukonretsuden",
       "name": "高田馬場闘魂列伝",
       "is_tour": false,
       "number": 1
     }
-  ],
-  "2004": [],
-  "2005": [
-    {
+  },
+  "2004": {},
+  "2005": {
+    "2005_renai_tour": {
       "uid": "2005_renai_tour",
       "name": "憐哀-レンアイ-ツアー",
       "is_tour": true,
       "number": 3
     }
-  ]
+  }
 }

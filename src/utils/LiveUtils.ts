@@ -1,7 +1,7 @@
 import { History } from 'history';
 import PageName, { toPublicUrl } from '../constants/PageName';
 import ILive from '../models/contents/live';
-import { ArtistUid, LiveUid } from '../models/Main';
+import { ArtistUid, LiveUid, TourUid } from '../models/Main';
 import { parseText2Json } from './MiscUtils';
 
 export const getLive = async (artistUid: ArtistUid, liveUid: LiveUid) =>
@@ -9,4 +9,8 @@ export const getLive = async (artistUid: ArtistUid, liveUid: LiveUid) =>
 
 export const convertLive = (live: ILive) => ({ ...live, date: new Date(live.date) });
 
-export const toLive = (liveUid: LiveUid, history: History) => history.push(toPublicUrl(PageName.LIVE, [liveUid]));
+export const toLive = (artistUid: ArtistUid, liveUid: LiveUid, history: History) =>
+  history.push(toPublicUrl(PageName.LIVE, [artistUid], { id: liveUid }));
+
+export const toTour = (artistUid: ArtistUid, tourUid: TourUid, history: History) =>
+  history.push(toPublicUrl(PageName.TOUR, [artistUid], { id: tourUid }));

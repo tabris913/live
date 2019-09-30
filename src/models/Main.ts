@@ -2,7 +2,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { ContentName } from '../constants/ContentName';
 import PageName from '../constants/PageName';
 import { IContent, IContentAdditionalState } from './content';
-import { IContentsState } from './ContentState';
+import { IContentState } from './ContentState';
 import { IContentRequest } from './request/ContentRequest';
 import { IContentSaveRequest } from './request/ContentSaveRequest';
 import { IListRequest } from './request/ListRequest';
@@ -30,7 +30,7 @@ export interface LiveUid extends Uid {}
 
 export interface MainProps<U extends Uid> extends RouteComponentProps<IMatchParams> {
   query: QueryType<U>;
-  contents?: IContentsState;
+  content?: IContentState;
 }
 
 export interface ListComponentProps<U extends Uid, T extends IContent<U>, A extends IContentAdditionalState>

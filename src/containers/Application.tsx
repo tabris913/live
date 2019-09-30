@@ -26,7 +26,14 @@ const Application = () => (
           <Route path={toPublicUrl(PageName.TOP)} component={Page.TopPage} exact={true} />
 
           {/* ListPage */}
-          {[[PageName.ARTIST, Page.ArtistPage, true], [PageName.WORKS, Page.WorksPage, true]]
+          {[
+            [PageName.ARTIST, Page.ArtistPage, true],
+            [PageName.WORKS, Page.WorksPage, true],
+            [PageName.LIVE_LIST, Page.LiveListPage, true],
+            [PageName.TOUR, Page.TourPage, true],
+            [PageName.SONG, Page.SongPage, true],
+            [PageName.LIVE, Page.LivePage, true],
+          ]
             .map(e => e as MakeRoute)
             .map(e => makeRoute(e))}
 

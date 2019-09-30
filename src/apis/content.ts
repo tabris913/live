@@ -50,4 +50,4 @@ export const contentApisBuilder = () => {
   };
 };
 
-export const Apis = contentApisBuilder();
+export const liveApis = contentApisBuilder();
