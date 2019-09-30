@@ -51,9 +51,7 @@ const LiveListPage = (props: Props) => {
   );
 
   return props.content.artist && props.content.artist.uid === props.match.params.id ? (
-    <Wireframe title={props.content.artist.name}>
-      <LiveList {...props} />
-    </Wireframe>
+    <Wireframe title={props.content.artist.name}>{props.content.lives ? <LiveList {...props} /> : <Spin />}</Wireframe>
   ) : (
     <Spin />
   );

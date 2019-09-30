@@ -27,6 +27,7 @@ const Live = (props: MainProps<LiveUid>) => {
           </List.Item>
         )}
         size="small"
+        style={{ overflowY: 'auto' }}
       />
     </>
   ) : (

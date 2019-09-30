@@ -14,6 +14,7 @@ import ISongRequest, { ISongsRequest } from '../../models/request/SongRequest';
 import IWorksRequest from '../../models/request/WorksRequest';
 import { ReturnedType } from '../../utils/MiscUtils';
 import { Encore } from '../../utils/SongUtils';
+import { infoFromDetail } from '../../utils/LiveUtils';
 
 export interface ContentSaga {
   getArtist: (action: Action<IArtistRequest>) => IterableIterator<any>;
@@ -56,10 +57,10 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       console.log('get works');
       const req = action.payload;
       const res: ReturnedType<typeof apis.getWorks> = yield call(apis.getWorks, req);
+      const resSongs: ReturnedType<typeof apis.getSongs> = yield call(apis.getSongs, {
+        artistUid: req.artistUid,
+      });
       for (const workUid of Object.keys(res)) {
-        const resSongs: ReturnedType<typeof apis.getSongs> = yield call(apis.getSongs, {
-          artistUid: req.artistUid,
-        });
         res[workUid as string].songs_detail = R.filter((value: ISongs) => res.songs.includes(value.uid), resSongs);
       }
       yield put(actions.getWorks.done({ params: req, result: res }));
@@ -136,20 +137,19 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
         }
       }
       const res: ReturnedType<typeof apis.getWorks> = yield call(apis.getWorks, req);
+      const resSongs: ReturnedType<typeof apis.getSongs> = yield call(apis.getSongs, {
+        artistUid: req.artistUid,
+      });
       for (const workUid of Object.keys(res)) {
-        const resSongs: ReturnedType<typeof apis.getSongs> = yield call(apis.getSongs, {
-          artistUid: req.artistUid,
-        });
         res[workUid as string].songs_detail = R.filter(
           (value: ISongs) => res[workUid as string].songs.includes(value.uid),
           resSongs
         );
       }
-      console.log(res);
       yield put(
         actions.prepareWorksPage.done({
           params: req,
-          result: artist === undefined ? { works: res } : { artist: artist, works: res },
+          result: artist === undefined ? { works: res } : { artist: artist, works: res, songs: resSongs },
         })
       );
     },
@@ -215,12 +215,22 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       const resLives: ReturnedType<typeof apis.getLives> = yield call(apis.getLives, req);
       const newLives: ILives = {};
       for (const year of Object.keys(resLives)) {
-        console.log(year);
         for (const liveUid of Object.keys(resLives[year])) {
-          console.log(liveUid);
           if (resLives[year][liveUid].is_tour) {
-            // ツアーの中見て，やってたら入れる
-            // そこからのリンクは，やってるライブだけにする制限をかける
+            for (let i = 1; i <= resLives[year][liveUid].number; i = i + 1) {
+              const tourLiveUid = `${liveUid}_${i > 9 ? i : `0${i}`}`;
+              const resLive: ReturnedType<typeof apis.getLive> = yield call(apis.getLive, {
+                artistUid: req.artistUid,
+                liveUid: tourLiveUid,
+              });
+              if (resLive.setlist.includes(req.songUid)) {
+                if (!Object.keys(newLives).includes(year)) {
+                  (newLives as object)[year] = { [tourLiveUid]: infoFromDetail(resLive) };
+                } else {
+                  newLives[year] = { ...newLives[year], [tourLiveUid]: infoFromDetail(resLive) };
+                }
+              }
+            }
           } else {
             const resLive: ReturnedType<typeof apis.getLive> = yield call(apis.getLive, {
               artistUid: req.artistUid,

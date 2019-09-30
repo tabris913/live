@@ -3,5 +3,6 @@
   "name": "堕天使ロック vol. 5",
   "date": "2003-11-18",
   "place": "横浜アリーナサウンドロック",
-  "setlist": ["sid002", "sid003", "sid013", "sid011", "sid001"]
+  "setlist": ["sid002", "sid003", "sid013", "sid011", "sid001"],
+  "is_tour": false
 }

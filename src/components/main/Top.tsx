@@ -37,15 +37,17 @@ const Top = (props: MainProps<Uid>) => {
                 type="link"
                 style={{ fontSize: 30, height: '100%' }}
                 onClick={
-                  popOver
-                    ? undefined
-                    : () =>
-                        props.history.push(
-                          toPublicUrl(
-                            linkto || PageName.UNDEFINED,
-                            query && query.id ? [query.id as string] : undefined
+                  query!.id === 'sid'
+                    ? popOver
+                      ? undefined
+                      : () =>
+                          props.history.push(
+                            toPublicUrl(
+                              linkto || PageName.UNDEFINED,
+                              query && query.id ? [query.id as string] : undefined
+                            )
                           )
-                        )
+                    : undefined
                 }
               >
                 {label}

@@ -1,7 +1,25 @@
 {
-  "uid": "2005_renai_tour_01",
-  "name": "憐哀-レンアイ-ツアー",
-  "date": "2005-01-07",
-  "place": "名古屋ハートランド",
-  "setlist": ["sid002", "sid003", "sid013", "sid011", "sid001"]
+  "uid": "2005_renai_tour_02",
+  "name": "憐哀-レンアイ-ツアー #02",
+  "date": "2005-01-09",
+  "place": "難波ロケッツ",
+  "setlist": [
+    "sid013",
+    "sid002",
+    "sid009",
+    "sid010",
+    "sid005",
+    "sid003",
+    "sid012",
+    "sid001",
+    "sid004",
+    "sid014",
+    "sid008",
+    "sid013",
+    "sid006",
+    "sid001",
+    "encore",
+    "sid015"
+  ],
+  "is_tour": true
 }

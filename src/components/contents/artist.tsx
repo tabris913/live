@@ -9,7 +9,7 @@ const buttonStyle: React.CSSProperties = { width: 200, fontSize: 20 };
 
 const Artist = (props: MainProps<ArtistUid>) =>
   props.content && props.content.artist ? (
-    <Row>
+    <Row style={{ textAlign: 'center' }}>
       <Col style={colStyle}>
         <Button type="primary" style={buttonStyle} onClick={() => toLives(props.match.params.id, props.history)}>
           Lives
@@ -20,6 +20,12 @@ const Artist = (props: MainProps<ArtistUid>) =>
           Songs
         </Button>
       </Col>
+      <Col style={colStyle}>
+        <Button type="primary" style={buttonStyle}>
+          Add Setlist
+        </Button>
+      </Col>
+      <Col>(↑↑↑作成中↑↑↑)</Col>
     </Row>
   ) : (
     <Spin />

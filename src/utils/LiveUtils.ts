@@ -1,6 +1,6 @@
 import { History } from 'history';
 import PageName, { toPublicUrl } from '../constants/PageName';
-import ILive from '../models/contents/live';
+import ILive, { ILiveInfo } from '../models/contents/live';
 import { ArtistUid, LiveUid, TourUid } from '../models/Main';
 import { parseText2Json } from './MiscUtils';
 
@@ -14,3 +14,10 @@ export const toLive = (artistUid: ArtistUid, liveUid: LiveUid, history: History)
 
 export const toTour = (artistUid: ArtistUid, tourUid: TourUid, history: History) =>
   history.push(toPublicUrl(PageName.TOUR, [artistUid], { id: tourUid }));
+
+export const infoFromDetail = (live: ILive): ILiveInfo => ({
+  uid: live.uid,
+  name: live.name,
+  number: 1,
+  is_tour: live.is_tour,
+});

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as Redux from 'redux';
 import { liveActions } from '../../actions/content';
-import LiveList from '../../components/contents/lives';
+import Song from '../../components/contents/song';
 import { IContentState } from '../../models/ContentState';
 import { IMatchParams, QueryType, SongUid } from '../../models/Main';
 import ISongRequest from '../../models/request/SongRequest';
@@ -52,7 +52,7 @@ const SongPage = (props: Props) => {
 
   return props.content.song ? (
     <Wireframe title={props.content.song.name}>
-      <LiveList {...props} />
+      <Song {...props} />
     </Wireframe>
   ) : (
     <Spin />
