@@ -11,6 +11,7 @@ interface IState {
 
 const Works = (props: MainProps<WorkUid>) => {
   const [localState, setLocalState] = React.useState<IState>({ searchWord: '', results: [] });
+  console.log(localState);
 
   return props.content && props.content.works ? (
     <>

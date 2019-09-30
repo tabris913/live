@@ -119,7 +119,6 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       const req = action.payload;
       const res: ReturnedType<typeof apis.getArtists> = yield call(apis.getArtists);
       if (!Object.keys(res).includes(req.artistUid as string)) throw {};
-      console.log(res);
       yield put(
         actions.prepareArtistPage.done({ params: req, result: { artists: res, artist: res[req.artistUid as string] } })
       );
@@ -149,7 +148,8 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       yield put(
         actions.prepareWorksPage.done({
           params: req,
-          result: artist === undefined ? { works: res } : { artist: artist, works: res, songs: resSongs },
+          result:
+            artist === undefined ? { works: res, songs: resSongs } : { artist: artist, works: res, songs: resSongs },
         })
       );
     },
