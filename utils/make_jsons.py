@@ -23,6 +23,7 @@ def add_live(
 
     year = date.split('-')[0]
     uid = f'{year}_{live_uid}'
+    title = '_'.join(uid.split('_')[:-1]) if is_tour else uid
 
     # make {live_uid}.json
     obj = {
@@ -52,17 +53,17 @@ def add_live(
     LIVES = json.load(open(LIVES_JSON, 'r', encoding='utf-8'))
     if year in LIVES:
         LIVES[year].update({
-            uid: {
-                'uid': uid,
+            title: {
+                'uid': title,
                 'name': name,
                 'is_tour': is_tour,
-                'number': 1
+                'number': LIVES[year][title]['number'] + 1 if is_tour and title in LIVES[year] else 1
             }
         })
     else:
         LIVES[year] = {
-            uid: {
-                'uid': uid,
+            title: {
+                'uid': title,
                 'name': name,
                 'is_tour': is_tour,
                 'number': 1
@@ -171,4 +172,25 @@ if __name__ == "__main__":
     # print(add_live('sample', songs=['encore', '眩暈'], date='2019-10-01'))
     # add_song(['モノクロのキス', 'season'])
     # add_work('sample', ['眩暈'], 'cv', '2008-08-13')
-    ...
+
+    # add songs
+    if False:
+        with open('songs.txt', 'r', encoding='utf-8') as file:
+            songs = map(str.strip, file.readlines())
+            add_song(songs)
+
+    # add work
+    if False:
+        with open('works.txt', 'r', encoding='utf-8') as file:
+            works = map(str.strip, file.readlines())
+            for work in works:
+                name, _class, date, *songs = work.split(' ')
+                add_work(name, songs, _class, date)
+
+    # add live
+    if False:
+        with open('lives.txt', 'r', encoding='utf-8') as file:
+            lives = map(str.strip, file.readlines())
+            for live in lives:
+                uid, name, date, place, is_tour, *songs = live.split(' ')
+                add_live(uid, name, date, place, songs, eval(is_tour))
