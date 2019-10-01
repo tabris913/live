@@ -20,6 +20,7 @@ const Top = (props: MainProps<Uid>) => {
               linkto: PageName.ARTIST,
               message: undefined,
               query: { id: curArtist.uid },
+              popOver: curArtist.uid === 'sid' ? undefined : 'まだ作ってない',
             }),
           [] as Array<ITopButton<Uid>>
         )) ||

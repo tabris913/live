@@ -10,6 +10,7 @@ import { IMatchParams, QueryType, Uid } from '../../models/Main';
 import ILivesRequest from '../../models/request/LivesRequest';
 import { IStoreState } from '../../reducers';
 import Wireframe from '../wireframe/Wireframe';
+import PageName, { toPublicUrl } from '../../constants/PageName';
 
 interface IOwnProps extends RouteComponentProps<IMatchParams> {}
 
@@ -43,15 +44,23 @@ const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDisp
 };
 
 const LiveListPage = (props: Props) => {
-  React.useState(() =>
+  React.useState(() => {
+    const isDifferentArtist = !props.content.artist || props.content.artist.uid !== props.match.params.id;
     props.actions.prepareLiveListPage({
       artistUid: props.match.params.id,
-      target: { artist: !props.content.artist || props.content.artist.uid !== props.match.params.id },
-    })
-  );
+      target: { artist: isDifferentArtist },
+    });
+  });
 
   return props.content.artist && props.content.artist.uid === props.match.params.id ? (
-    <Wireframe title={props.content.artist.name}>{props.content.lives ? <LiveList {...props} /> : <Spin />}</Wireframe>
+    <Wireframe
+      title={props.content.artist.name}
+      breadcrump={[
+        { hrefWithId: toPublicUrl(PageName.ARTIST, [props.match.params.id]), label: props.content.artist.name },
+      ]}
+    >
+      {props.content.lives ? <LiveList {...props} /> : <Spin />}
+    </Wireframe>
   ) : (
     <Spin />
   );

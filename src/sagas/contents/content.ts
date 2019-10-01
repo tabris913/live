@@ -214,7 +214,13 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       const req = action.payload;
       const res: ReturnedType<typeof apis.getSongs> = yield call(apis.getSongs, req);
       if (!Object.keys(res).includes(req.songUid as string)) throw {};
-      const resLives: ReturnedType<typeof apis.getLives> = yield call(apis.getLives, req);
+      // artist
+      let resArtist: ReturnedType<typeof apis.getArtists>;
+      if (req.target && req.target.artist) {
+        resArtist = yield call(apis.getArtists);
+        if (!Object.keys(resArtist).includes(req.artistUid as string)) throw {};
+      }
+      const resLives: ReturnedType<typeof apis.getLives> = yield call(apis.getLives, { artistUid: req.artistUid });
       const newLives: ILives = {};
       for (const year of Object.keys(resLives)) {
         for (const liveUid of Object.keys(resLives[year])) {
@@ -251,7 +257,13 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       yield put(
         actions.prepareSongPage.done({
           params: req,
-          result: { song: { ...res[req.songUid as string], lives: newLives } },
+          result:
+            resArtist === undefined
+              ? { song: { ...res[req.songUid as string], lives: newLives } }
+              : {
+                  song: { ...res[req.songUid as string], lives: newLives },
+                  artist: resArtist[req.artistUid as string],
+                },
         })
       );
     },
@@ -272,8 +284,22 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
         setlist.push({ ...resSongs[songUid], track_no: count });
         count = count + 1;
       }
+      // artist
+      let resArtist: ReturnedType<typeof apis.getArtists>;
+      if (req.target && req.target.artist) {
+        resArtist = yield call(apis.getArtists);
+        if (!Object.keys(resArtist).includes(req.artistUid as string)) throw {};
+      }
 
-      yield put(actions.prepareLivePage.done({ params: req, result: { live: res, songList: setlist } }));
+      yield put(
+        actions.prepareLivePage.done({
+          params: req,
+          result:
+            resArtist === undefined
+              ? { live: res, songList: setlist }
+              : { live: res, songList: setlist, artist: resArtist[req.artistUid as string] },
+        })
+      );
     },
 
   postLive: () =>

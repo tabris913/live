@@ -5,6 +5,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as Redux from 'redux';
 import { liveActions } from '../../actions/content';
 import Tour from '../../components/contents/tour';
+import PageName, { toPublicUrl } from '../../constants/PageName';
 import { IContentState } from '../../models/ContentState';
 import { IMatchParams, QueryType, TourUid } from '../../models/Main';
 import { ITourRequest } from '../../models/request/LivesRequest';
@@ -43,15 +44,25 @@ const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDisp
 };
 
 const TourPage = (props: Props) => {
-  React.useState(() =>
+  React.useState(() => {
+    const isDifferentArtist = !props.content.artist || props.content.artist.uid !== props.match.params.id;
     props.actions.prepareTourPage({
       artistUid: props.match.params.id,
       tourUid: props.query.id!,
-    })
-  );
+      target: {
+        artist: isDifferentArtist,
+      },
+    });
+  });
 
-  return props.content.liveInfo ? (
-    <Wireframe title={`${props.content.liveInfo.name}`}>
+  return props.content.liveInfo && props.content.artist ? (
+    <Wireframe
+      title={`${props.content.liveInfo.name}`}
+      breadcrump={[
+        { hrefWithId: toPublicUrl(PageName.ARTIST, [props.match.params.id]), label: props.content.artist.name },
+        { hrefWithId: toPublicUrl(PageName.LIVE_LIST, [props.match.params.id]), label: 'LIVES' },
+      ]}
+    >
       <Tour {...props} />
     </Wireframe>
   ) : (

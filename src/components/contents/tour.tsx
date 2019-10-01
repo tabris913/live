@@ -1,4 +1,4 @@
-import { Button, List, Spin } from 'antd';
+import { Button, Col, List, Row, Spin } from 'antd';
 import * as React from 'react';
 import { MainProps, TourUid } from '../../models/Main';
 import { toLive } from '../../utils/LiveUtils';
@@ -17,13 +17,16 @@ const Tour = (props: MainProps<TourUid>) => {
             <Button
               type="link"
               onClick={() => toLive(props.match.params.id, item.uid, props.history)}
-              style={{ whiteSpace: 'unset', textAlign: 'left' }}
+              style={{ whiteSpace: 'unset', textAlign: 'left', marginTop: 5, marginBottom: 5 }}
             >
-              [{item.date}] {item.name} ({item.place})
+              <Row>
+                <Col>[{item.date}]</Col>
+                <Col>{item.name}</Col>
+                <Col>({item.place})</Col>
+              </Row>
             </Button>
           </List.Item>
         )}
-        size="small"
       />
     </>
   ) : (

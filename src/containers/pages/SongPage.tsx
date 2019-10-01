@@ -5,6 +5,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as Redux from 'redux';
 import { liveActions } from '../../actions/content';
 import Song from '../../components/contents/song';
+import PageName, { toPublicUrl } from '../../constants/PageName';
 import { IContentState } from '../../models/ContentState';
 import { IMatchParams, QueryType, SongUid } from '../../models/Main';
 import ISongRequest from '../../models/request/SongRequest';
@@ -43,15 +44,26 @@ const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDisp
 };
 
 const SongPage = (props: Props) => {
-  React.useState(() =>
-    props.actions.prepareSongPage({
-      artistUid: props.match.params.id,
-      songUid: props.query.id!,
-    })
-  );
+  React.useState(() => {
+    const isDifferentSong = !props.content.song || props.content.song.uid !== props.query.id;
+    const isDifferentArtist = !props.content.artist || props.content.artist.uid !== props.match.params.id;
+    if (isDifferentSong || isDifferentArtist) {
+      props.actions.prepareSongPage({
+        artistUid: props.match.params.id,
+        songUid: props.query.id!,
+        target: { artist: isDifferentArtist },
+      });
+    }
+  });
 
-  return props.content.song ? (
-    <Wireframe title={props.content.song.name}>
+  return props.content.song && props.content.artist ? (
+    <Wireframe
+      title={props.content.song.name}
+      breadcrump={[
+        { label: props.content.artist.name, hrefWithId: toPublicUrl(PageName.ARTIST, [props.match.params.id]) },
+        { label: 'works', hrefWithId: toPublicUrl(PageName.WORKS, [props.match.params.id]) },
+      ]}
+    >
       <Song {...props} />
     </Wireframe>
   ) : (

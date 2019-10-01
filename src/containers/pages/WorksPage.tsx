@@ -5,6 +5,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as Redux from 'redux';
 import { liveActions } from '../../actions/content';
 import Works from '../../components/contents/works';
+import PageName, { toPublicUrl } from '../../constants/PageName';
 import { IContentState } from '../../models/ContentState';
 import { IMatchParams, QueryType, WorkUid } from '../../models/Main';
 import IWorksRequest from '../../models/request/WorksRequest';
@@ -43,15 +44,28 @@ const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDisp
 };
 
 const WorksPage = (props: Props) => {
-  React.useState(() =>
-    props.actions.prepareWorksPage({
-      artistUid: props.match.params.id,
-      target: { artist: !props.content.artist || props.content.artist.uid !== props.match.params.id },
-    })
-  );
+  React.useState(() => {
+    const isDifferentArtist = !props.content.artist || props.content.artist.uid !== props.match.params.id;
+    const isDifferentWorks =
+      !props.content.works ||
+      Object.keys(props.content.works).filter(key => key.startsWith(props.match.params.id)).length === 0;
+    if (isDifferentArtist || isDifferentWorks) {
+      props.actions.prepareWorksPage({
+        artistUid: props.match.params.id,
+        target: { artist: isDifferentArtist },
+      });
+    }
+  });
 
   return props.content.artist && props.content.artist.uid === props.match.params.id ? (
-    <Wireframe title={props.content.artist.name}>{props.content.works ? <Works {...props} /> : <Spin />}</Wireframe>
+    <Wireframe
+      title={props.content.artist.name}
+      breadcrump={[
+        { hrefWithId: toPublicUrl(PageName.ARTIST, [props.match.params.id]), label: props.content.artist.name },
+      ]}
+    >
+      {props.content.works ? <Works {...props} /> : <Spin />}
+    </Wireframe>
   ) : (
     <Spin />
   );

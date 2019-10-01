@@ -5,6 +5,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as Redux from 'redux';
 import { liveActions } from '../../actions/content';
 import Live from '../../components/contents/live';
+import PageName, { toPublicUrl } from '../../constants/PageName';
 import { IContentState } from '../../models/ContentState';
 import { IMatchParams, LiveUid, QueryType } from '../../models/Main';
 import ILiveRequest from '../../models/request/LiveRequest';
@@ -43,15 +44,38 @@ const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDisp
 };
 
 const LivePage = (props: Props) => {
-  React.useState(() =>
+  React.useState(() => {
+    const isDifferentArtist = !props.content.artist || props.content.artist.uid !== props.match.params.id;
     props.actions.prepareLivePage({
       artistUid: props.match.params.id,
       liveUid: props.query.id!,
-    })
-  );
+      target: {
+        artist: isDifferentArtist,
+      },
+    });
+  });
 
-  return props.content.live ? (
-    <Wireframe title={props.content.live.name}>
+  return props.content.live && props.content.artist ? (
+    <Wireframe
+      title={props.content.live.name}
+      breadcrump={
+        props.content.live.is_tour
+          ? [
+              { hrefWithId: toPublicUrl(PageName.ARTIST, [props.match.params.id]), label: props.content.artist.name },
+              { hrefWithId: toPublicUrl(PageName.LIVE_LIST, [props.match.params.id]), label: 'LIVES' },
+              {
+                hrefWithId: toPublicUrl(PageName.TOUR, [props.match.params.id], {
+                  id: props.content.live.uid.slice(0, -3),
+                }),
+                label: 'TOUR',
+              },
+            ]
+          : [
+              { hrefWithId: toPublicUrl(PageName.ARTIST, [props.match.params.id]), label: props.content.artist.name },
+              { hrefWithId: toPublicUrl(PageName.LIVE_LIST, [props.match.params.id]), label: 'LIVES' },
+            ]
+      }
+    >
       <Live {...props} />
     </Wireframe>
   ) : (
