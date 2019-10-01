@@ -44,6 +44,8 @@ export default function* rootSaga(): IterableIterator<any> {
     takeEvery(`${ActionTypes.PREPARE_TOUR_PAGE}_STARTED`, liveSaga.prepareTourPage),
     takeEvery(`${ActionTypes.PREPARE_SONG_PAGE}_STARTED`, liveSaga.prepareSongPage),
     takeEvery(`${ActionTypes.PREPARE_LIVE_PAGE}_STARTED`, liveSaga.prepareLivePage),
+
+    takeEvery(`${ActionTypes.POST_LIVE}_STARTED`, liveSaga.postLive),
     // ...ContentNames.reduce(
     //   (names, name) => [...names, ...createListeners(name, contentSagas[name]!)],
     //   [] as IListener[]

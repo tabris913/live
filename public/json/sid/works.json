@@ -2,17 +2,15 @@
   "sid_sg01": {
     "uid": "sid_sg01",
     "name": "吉開学17歳 (無職)",
-    "songs": ["sid001", "sid002", "sid003"]
+    "songs": ["sid001", "sid002", "sid003"],
+    "date": "2003-08"
   },
-  "sid_sg02": {
-    "uid": "sid_sg02",
-    "name": "会場盤 / 通販盤",
-    "songs": ["sid003", "sid004"]
-  },
+  "sid_sg02": { "uid": "sid_sg02", "name": "会場盤 / 通販盤", "songs": ["sid003", "sid004"], "date": "2004-03-28" },
   "sid_sg02_b": {
     "uid": "sid_sg02_b",
     "name": "流通盤",
-    "songs": ["sid003", "sid004", "sid005"]
+    "songs": ["sid003", "sid004", "sid005"],
+    "date": "2004-06-06"
   },
   "sid_al01": {
     "uid": "sid_al01",
@@ -29,11 +27,84 @@
       "sid013",
       "sid014",
       "sid015"
-    ]
+    ],
+    "date": "2004-12-22"
   },
-  "others": {
-    "uid": "sid_others",
-    "name": "その他",
-    "songs": ["sid006"]
-  }
+  "sid_sg03": {
+    "uid": "sid_sg03",
+    "name": "paint pops",
+    "songs": ["sid016", "sid017", "sid018", "sid019"],
+    "date": "2005-07-20"
+  },
+  "sid_sg04": { "uid": "sid_sg04", "name": "Sweet?", "songs": ["sid020", "sid021"], "date": "2005-10-12" },
+  "sid_al02": {
+    "uid": "sid_al02",
+    "name": "星の都",
+    "songs": [
+      "sid022",
+      "sid016",
+      "sid023",
+      "sid024",
+      "sid019",
+      "sid025",
+      "sid026",
+      "sid020",
+      "sid027",
+      "sid028",
+      "sid017"
+    ],
+    "date": "2005-11-16"
+  },
+  "sid_sg05": { "uid": "sid_sg05", "name": "ホソイコエ", "songs": ["sid029", "sid030"], "date": "2006-02-08" },
+  "sid_sg06": { "uid": "sid_sg06", "name": "chapter 1", "songs": ["sid031", "sid032"], "date": "2006-06-14" },
+  "sid_sg07": { "uid": "sid_sg07", "name": "御手紙", "songs": ["sid033", "sid034"], "date": "2006-08-16" },
+  "sid_al03": {
+    "uid": "sid_al03",
+    "name": "play",
+    "songs": [
+      "sid035",
+      "sid036",
+      "sid031",
+      "sid037",
+      "sid038",
+      "sid039",
+      "sid040",
+      "sid041",
+      "sid029",
+      "sid033",
+      "sid042",
+      "sid043"
+    ],
+    "date": "2006-11-08"
+  },
+  "sid_sg08": { "uid": "sid_sg08", "name": "smile", "songs": ["sid044", "sid045"], "date": "2007-04-04" },
+  "sid_sg09": { "uid": "sid_sg09", "name": "夏恋", "songs": ["sid046", "sid047"], "date": "2007-07-11" },
+  "sid_sg10": { "uid": "sid_sg10", "name": "蜜指 ～ミツユビ～", "songs": ["sid048", "sid049"], "date": "2007-09-26" },
+  "sid_sg11": { "uid": "sid_sg11", "name": "涙の温度", "songs": ["sid050", "sid051"], "date": "2007-12-05" },
+  "sid_al04": {
+    "uid": "sid_al04",
+    "name": "センチメンタルマキアート",
+    "songs": [
+      "sid052",
+      "sid046",
+      "sid053",
+      "sid048",
+      "sid054",
+      "sid055",
+      "sid056",
+      "sid057",
+      "sid044",
+      "sid058",
+      "sid050"
+    ],
+    "date": "2008-02-20"
+  },
+  "sid_ca01": {
+    "uid": "sid_ca01",
+    "name": "Side B complete collection ～e.B～",
+    "songs": ["sid018", "sid021", "sid030", "sid032", "sid034", "sid045", "sid047", "sid049", "sid051", "sid059"],
+    "date": "2008-08-13"
+  },
+
+  "others": { "uid": "sid_others", "name": "その他", "songs": ["sid006"], "date": "" }
 }

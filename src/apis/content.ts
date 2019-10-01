@@ -1,9 +1,11 @@
+import ILive from '../models/contents/live';
 import IArtistRequest from '../models/request/ArtistRequest';
 import ILiveRequest from '../models/request/LiveRequest';
 import ILivesRequest from '../models/request/LivesRequest';
+import IPRequest from '../models/request/PRequest';
 import ISongRequest, { ISongsRequest } from '../models/request/SongRequest';
 import IWorksRequest from '../models/request/WorksRequest';
-import { API_BASE_URL, get } from './api';
+import { API_BASE_URL, get, post } from './api';
 
 const baseUrl = API_BASE_URL;
 
@@ -15,6 +17,8 @@ export interface ContentApis {
   getSongs: (req: ISongsRequest) => Promise<any>;
   getLives: (req: ILivesRequest) => Promise<any>;
   getLive: (req: ILiveRequest) => Promise<any>;
+
+  postLive: (req: IPRequest<ILive>) => Promise<any>;
 }
 
 export const contentApisBuilder = () => {
@@ -46,6 +50,11 @@ export const contentApisBuilder = () => {
     getLive: (req: ILiveRequest): Promise<any> => {
       const url = `${baseUrl}/json/${req.artistUid}/lives/${req.liveUid}.json`;
       return get<ILiveRequest, any>(url, req);
+    },
+
+    postLive: (req: IPRequest<ILive>): Promise<any> => {
+      const url = `${baseUrl}/json/${req.artistUid}/lives/${req.body.uid}.json`;
+      return post<ILive, any>(url, req.body);
     },
   };
 };

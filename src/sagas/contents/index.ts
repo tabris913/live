@@ -22,6 +22,8 @@ export const liveSaga: ContentSaga = {
   prepareTourPage: sagas.prepareTourPage(),
   prepareSongPage: sagas.prepareSongPage(),
   prepareLivePage: sagas.prepareLivePage(),
+
+  postLive: sagas.postLive(),
 };
 
 // temp: ?

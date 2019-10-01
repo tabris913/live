@@ -11,9 +11,8 @@ interface IState {
 
 const Works = (props: MainProps<WorkUid>) => {
   const [localState, setLocalState] = React.useState<IState>({ searchWord: '', results: [] });
-  console.log(localState);
 
-  return props.content && props.content.works ? (
+  return props.content && props.content.works && props.content.songs ? (
     <>
       <Row type="flex" style={{ marginBottom: 5 }}>
         <Col>
@@ -28,14 +27,15 @@ const Works = (props: MainProps<WorkUid>) => {
             icon="search"
             type="primary"
             style={{ marginLeft: 5 }}
-            onClick={() => {
-              if (props.content!.songs) {
-                const songs = Object.values(props.content!.songs).filter(song =>
-                  song.name.includes(localState.searchWord)
-                );
-                setLocalState({ ...localState, results: songs });
-              }
-            }}
+            onClick={() =>
+              setLocalState({
+                ...localState,
+                results:
+                  props.content!.songs && localState.searchWord !== ''
+                    ? Object.values(props.content!.songs).filter(song => song.name.includes(localState.searchWord))
+                    : [],
+              })
+            }
           >
             Search
           </Button>
@@ -61,14 +61,19 @@ const Works = (props: MainProps<WorkUid>) => {
         {Object.values(props.content.works).map(work => (
           <Collapse.Panel header={work.name} key={work.uid as string}>
             <Row>
-              {work.songs_detail &&
-                Object.values(work.songs_detail).map(song => (
-                  <Col key={song.uid as string}>
-                    <Button type="link" onClick={() => toSong(props.match.params.id, song.uid, props.history)}>
-                      {song.name}
-                    </Button>
-                  </Col>
-                ))}
+              {work.songs.map(songUid => (
+                <Col key={songUid as string}>
+                  <Button type="link" onClick={() => toSong(props.match.params.id, songUid, props.history)}>
+                    {console.log(
+                      songUid,
+                      Object.keys(props.content!.songs!).includes(songUid as string),
+                      props.content!.songs![songUid as string].name
+                    )}
+                    {Object.keys(props.content!.songs!).includes(songUid as string) &&
+                      props.content!.songs![songUid as string].name}
+                  </Button>
+                </Col>
+              ))}
             </Row>
           </Collapse.Panel>
         ))}

@@ -7,8 +7,10 @@ import Wireframe from '../wireframe/Wireframe';
 
 import { liveActions } from '../../actions/content';
 import Top from '../../components/main/Top';
+import ILive from '../../models/contents/live';
 import { IContentState } from '../../models/ContentState';
 import { IMatchParams, QueryType, Uid } from '../../models/Main';
+import IPRequest from '../../models/request/PRequest';
 import { IStoreState } from '../../reducers';
 
 interface IOwnProps extends RouteComponentProps<IMatchParams> {}
@@ -21,6 +23,7 @@ interface IStateProps {
 interface IDispatchProps {
   actions: {
     prepareTopPage: () => void;
+    postLive: (req: IPRequest<ILive>) => void;
   };
 }
 
@@ -38,6 +41,7 @@ const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDisp
   return {
     actions: {
       prepareTopPage: () => dispatch(liveActions.prepareTopPage.started()),
+      postLive: (req: IPRequest<ILive>) => dispatch(liveActions.postLive.started(req)),
     },
   };
 };

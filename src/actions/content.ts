@@ -1,12 +1,15 @@
 import actionCreatorFactory, { AsyncActionCreators } from 'typescript-fsa';
+import { IContent } from '../models/content';
 import IArtist, { IArtists } from '../models/contents/artist';
 import ILive, { ILives } from '../models/contents/live';
 import ISong, { ISongs } from '../models/contents/song';
 import { IWorks } from '../models/contents/work';
 import { IContentState } from '../models/ContentState';
+import { Uid } from '../models/Main';
 import IArtistRequest from '../models/request/ArtistRequest';
 import ILiveRequest from '../models/request/LiveRequest';
 import ILivesRequest, { ITourRequest } from '../models/request/LivesRequest';
+import IPRequest from '../models/request/PRequest';
 import ISongRequest, { ISongsRequest } from '../models/request/SongRequest';
 import IWorksRequest from '../models/request/WorksRequest';
 import { ActionTypes } from './types';
@@ -27,6 +30,8 @@ export interface ContentActions {
   prepareTourPage: AsyncActionCreators<ITourRequest, IContentState, any>;
   prepareSongPage: AsyncActionCreators<ISongRequest, IContentState, any>;
   prepareLivePage: AsyncActionCreators<ILiveRequest, IContentState, any>;
+
+  postLive: AsyncActionCreators<IPRequest<IContent<Uid>>, void, any>;
 }
 
 export const contentActionsBuilder = (actionTypeMap: { [P in keyof ContentActions]: string }): ContentActions => {
@@ -48,6 +53,8 @@ export const contentActionsBuilder = (actionTypeMap: { [P in keyof ContentAction
     prepareTourPage: actionCreatorFactory().async<ITourRequest, IContentState, any>(actionTypeMap.prepareTourPage),
     prepareSongPage: actionCreatorFactory().async<ISongRequest, IContentState, any>(actionTypeMap.prepareSongPage),
     prepareLivePage: actionCreatorFactory().async<ILiveRequest, IContentState, any>(actionTypeMap.prepareLivePage),
+
+    postLive: actionCreatorFactory().async<IPRequest<IContent<Uid>>, void, any>(actionTypeMap.postLive),
   };
 
   // if (actionTypeMap.getHistory) {
@@ -73,4 +80,6 @@ export const liveActions = contentActionsBuilder({
   prepareTourPage: ActionTypes.PREPARE_TOUR_PAGE,
   prepareSongPage: ActionTypes.PREPARE_SONG_PAGE,
   prepareLivePage: ActionTypes.PREPARE_LIVE_PAGE,
+
+  postLive: ActionTypes.POST_LIVE,
 });

@@ -20,12 +20,12 @@ const Artist = (props: MainProps<ArtistUid>) =>
           Songs
         </Button>
       </Col>
-      <Col style={colStyle}>
+      {/* <Col style={colStyle}>
         <Button type="primary" style={buttonStyle}>
           Add Setlist
         </Button>
       </Col>
-      <Col>(↑↑↑作成中↑↑↑)</Col>
+      <Col>(↑↑↑作成中↑↑↑)</Col> */}
     </Row>
   ) : (
     <Spin />

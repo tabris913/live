@@ -7,6 +7,7 @@ export interface IWorks {
 }
 
 export default interface IWork extends IContent<WorkUid> {
+  date: string;
   songs: SongUid[];
   songs_detail?: ISongs;
 }

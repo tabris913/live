@@ -1,11 +1,6 @@
 {
   "2003": {
-    "2003_tokyo_under_map": {
-      "uid": "2003_tokyo_under_map",
-      "name": "東京UNDER MAP",
-      "is_tour": false,
-      "number": 1
-    },
+    "2003_tokyo_under_map": { "uid": "2003_tokyo_under_map", "name": "東京UNDER MAP", "is_tour": false, "number": 1 },
     "2003_datenshi_rock_vol5": {
       "uid": "2003_datenshi_rock_vol5",
       "name": "堕天使ロック vol. 5",
@@ -21,11 +16,6 @@
   },
   "2004": {},
   "2005": {
-    "2005_renai_tour": {
-      "uid": "2005_renai_tour",
-      "name": "憐哀-レンアイ-ツアー",
-      "is_tour": true,
-      "number": 3
-    }
+    "2005_renai_tour": { "uid": "2005_renai_tour", "name": "憐哀-レンアイ-ツアー", "is_tour": true, "number": 3 }
   }
 }

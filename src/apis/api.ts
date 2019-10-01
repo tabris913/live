@@ -31,3 +31,21 @@ export const get = async <T, U>(url: string, data: T) => {
     return res.json();
   });
 };
+
+export const post = async <T, U>(url: string, data: T) => {
+  return fetchWithErrorHandling(url, { method: 'POST', body: JSON.stringify(data) })
+    .then(res => {
+      if (!res.ok) throw new Error(res.statusText);
+      return res;
+    })
+    .then(res => res.json());
+};
+
+export const put = async <T, U>(url: string, data: T) => {
+  return fetchWithErrorHandling(url, { method: 'PUT', body: JSON.stringify(data) })
+    .then(res => {
+      if (!res.ok) throw new Error(res.statusText);
+      return res;
+    })
+    .then(res => res.json());
+};
