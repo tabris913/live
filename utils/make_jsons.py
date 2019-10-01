@@ -157,9 +157,13 @@ def add_work(name: str, songs: List[str], _class: str, date: str = ''):
         if k.split('_')[1].startswith(_class) and len(k.split('_')) == 2:
             num += 1
     uid = f'{ARTIST_UID}_{_class}{num + 1:02d}'
-    ex.update({uid: {'uid': uid, 'name': name, 'date': date, 'songs': [
+    obj = {uid: {'uid': uid, 'name': name, 'date': date, 'songs': [
         CONVERTED_SONGS[song] if song in CONVERTED_SONGS else 'unknown' for song in songs
-    ]}})
+    ]}}
+    if 'unknown' in obj[uid]['songs']:
+        print(f'unknown song is in {uid} ({name})')
+        print(obj[uid]['songs'])
+    ex.update(obj)
     # sort
     ex = dict(sorted(ex.items(), key=lambda key_val: (
         ex[key_val[0]]['date'], class_order(key_val[0]), ex[key_val[0]]['name']
@@ -185,7 +189,9 @@ if __name__ == "__main__":
             works = map(str.strip, file.readlines())
             for work in works:
                 name, _class, date, *songs = work.split(' ')
-                add_work(name, songs, _class, date)
+                songs = map(lambda s: s.replace('_', ' '), songs)
+                add_work(name.replace('_', ' '), songs, _class, date)
+                # print(list(songs))
 
     # add live
     if False:
