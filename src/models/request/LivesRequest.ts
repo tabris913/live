@@ -4,7 +4,7 @@ export default interface ILivesRequest {
   artistUid: ArtistUid;
   songUid?: SongUid;
   target?: {
-    artist: boolean;
+    artist?: boolean;
   };
 }
 
@@ -12,7 +12,8 @@ export interface ITourRequest {
   artistUid: ArtistUid;
   tourUid: TourUid;
   target?: {
-    artist: boolean;
+    artist?: boolean;
+    lives?: boolean;
   };
 }
 
