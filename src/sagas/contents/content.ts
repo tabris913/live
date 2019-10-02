@@ -186,17 +186,24 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
     function*(action: Action<ISongRequest>): IterableIterator<any> {
       console.log('prepare song page');
       const req = action.payload;
-      const res: ReturnedType<typeof apis.getSongs> = yield call(apis.getSongs, req);
-      console.log(yield call(apis.getArtist, req));
-      if (!Object.keys(res).includes(req.songUid as string)) throw {};
-      // artist
-      let resArtist: ReturnedType<typeof apis.getArtists>;
-      if (req.target && req.target.artist) {
-        resArtist = yield call(apis.getArtists);
-        if (!Object.keys(resArtist).includes(req.artistUid as string)) throw {};
-      }
-      const resLives: ReturnedType<typeof apis.getLives> = yield call(apis.getLives, { artistUid: req.artistUid });
+      const result: IContentState = { song: yield call(apis.getSong, req), lives: yield call(apis.getLives, req) };
+      if (!result.song || !result.lives) throw {};
+
       const newLives: ILives = {};
+      for (const year of Object.keys(result.lives)) {
+        for (const liveUid of Object.keys(result.lives[year])) {
+          if (result.lives[year][liveUid].is_tour) {
+            //
+          }
+        }
+      }
+
+      if (req.target) {
+        if (req.target.artist) result.artist = yield call(apis.getArtist, req);
+        if (req.target.songs) result.songs = yield call(apis.getSongs, req);
+      }
+
+      const resLives: ReturnedType<typeof apis.getLives> = yield call(apis.getLives, { artistUid: req.artistUid });
       for (const year of Object.keys(resLives)) {
         for (const liveUid of Object.keys(resLives[year])) {
           if (resLives[year][liveUid].is_tour) {
@@ -229,18 +236,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
           }
         }
       }
-      yield put(
-        actions.prepareSongPage.done({
-          params: req,
-          result:
-            resArtist === undefined
-              ? { song: { ...res[req.songUid as string], lives: newLives } }
-              : {
-                  song: { ...res[req.songUid as string], lives: newLives },
-                  artist: resArtist[req.artistUid as string],
-                },
-        })
-      );
+      yield put(actions.prepareSongPage.done({ params: req, result: result }));
     },
   prepareLivePage: () =>
     function*(action: Action<ILiveRequest>): IterableIterator<any> {

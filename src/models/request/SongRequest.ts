@@ -5,6 +5,7 @@ export default interface ISongRequest {
   songUid: SongUid;
   target?: {
     artist?: boolean;
+    songs?: boolean;
   };
 }
 
