@@ -12,7 +12,7 @@ enum PageName {
   LIVE_LIST = '/lives',
   TOUR = '/tour',
   LIVE = '/live',
-  LIVE_SUMMARY = '/live/summary',
+  TOUR_SUMMARY = '/tour/summary',
 
   UNDEFINED = '',
 }

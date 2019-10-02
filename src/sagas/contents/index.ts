@@ -16,12 +16,14 @@ export const liveSaga: ContentSaga = {
   getLive: sagas.getLive(),
 
   prepareTopPage: sagas.prepareTopPage(),
-  prepareArtistPage: sagas.prepareArtistsPage(),
+  prepareArtistPage: sagas.prepareArtistPage(),
   prepareWorksPage: sagas.prepareWorksPage(),
   prepareLiveListPage: sagas.prepareLiveListPage(),
   prepareTourPage: sagas.prepareTourPage(),
   prepareSongPage: sagas.prepareSongPage(),
   prepareLivePage: sagas.prepareLivePage(),
+  prepareSongSummaryPage: sagas.prepareSongSummaryPage(),
+  prepareTourSummaryPage: sagas.prepareTourSummaryPage(),
 
   postLive: sagas.postLive(),
 };

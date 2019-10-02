@@ -6,12 +6,13 @@ import { ContentApis } from '../../apis/content';
 import IArtist from '../../models/contents/artist';
 import ILive, { ILives } from '../../models/contents/live';
 import ISong, { ISongs } from '../../models/contents/song';
-import { TourUid } from '../../models/Main';
+import { IContentState } from '../../models/ContentState';
+import { LiveUid } from '../../models/Main';
 import IArtistRequest from '../../models/request/ArtistRequest';
 import ILiveRequest from '../../models/request/LiveRequest';
-import ILivesRequest, { ITourRequest } from '../../models/request/LivesRequest';
+import ILivesRequest, { ITourRequest, ITourSummaryRequest } from '../../models/request/LivesRequest';
 import IPRequest from '../../models/request/PRequest';
-import ISongRequest, { ISongsRequest } from '../../models/request/SongRequest';
+import ISongRequest, { ISongsRequest, ISongSummaryRequest } from '../../models/request/SongRequest';
 import IWorksRequest from '../../models/request/WorksRequest';
 import { infoFromDetail } from '../../utils/LiveUtils';
 import { ReturnedType } from '../../utils/MiscUtils';
@@ -33,6 +34,8 @@ export interface ContentSaga {
   prepareTourPage: (action: Action<ITourRequest>) => IterableIterator<any>;
   prepareSongPage: (action: Action<ISongRequest>) => IterableIterator<any>;
   prepareLivePage: (action: Action<ILiveRequest>) => IterableIterator<any>;
+  prepareSongSummaryPage: (action: Action<ISongSummaryRequest>) => IterableIterator<any>;
+  prepareTourSummaryPage: (action: Action<ITourSummaryRequest>) => IterableIterator<any>;
 
   postLive: (action: Action<IPRequest<ILive>>) => IterableIterator<any>;
 }
@@ -112,48 +115,36 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
     function*(action: Action<void>): IterableIterator<any> {
       console.log('prepare top page');
       const req = action.payload;
-      const res: ReturnedType<typeof apis.getArtists> = yield call(apis.getArtists);
-      yield put(actions.prepareTopPage.done({ params: req, result: { artists: res } }));
+      const resArtist: ReturnedType<typeof apis.getArtists> = yield call(apis.getArtists);
+      yield put(actions.prepareTopPage.done({ params: req, result: { artists: resArtist } }));
     },
-  prepareArtistsPage: () =>
+  prepareArtistPage: () =>
     function*(action: Action<IArtistRequest>): IterableIterator<any> {
       console.log('prepare artist page');
       const req = action.payload;
-      const res: ReturnedType<typeof apis.getArtists> = yield call(apis.getArtists);
-      if (!Object.keys(res).includes(req.artistUid as string)) throw {};
-      yield put(
-        actions.prepareArtistPage.done({ params: req, result: { artists: res, artist: res[req.artistUid as string] } })
-      );
+      const resArtist: ReturnedType<typeof apis.getArtist> = yield call(apis.getArtist, req);
+      if (!resArtist) throw {};
+      yield put(actions.prepareArtistPage.done({ params: req, result: { artist: resArtist } }));
     },
   prepareWorksPage: () =>
     function*(action: Action<IWorksRequest>): IterableIterator<any> {
       console.log('prepare works page');
       const req = action.payload;
-      let artist: IArtist | undefined;
-      if (req.target) {
-        if (req.target.artist) {
-          const artists: ReturnedType<typeof apis.getArtists> = yield call(apis.getArtists);
-          if (Object.keys(artists).includes(req.artistUid as string)) artist = artists[req.artistUid as string];
-          else throw {};
-        }
+      const result: IContentState = { works: yield call(apis.getWorks, req), songs: yield call(apis.getSongs, req) };
+      if (!result.works) throw {};
+
+      if (req.target && req.target.artist) result.artist = yield call(apis.getArtist, req);
+
+      // songUid でフィルタリング
+      if (req.songUid) {
+        result.works = Object.entries(result.works).reduce(
+          (prev, [curKey, curVal]) =>
+            curVal.songs.includes(req.songUid as string) ? { ...prev, [curKey]: curVal } : { ...prev },
+          {}
+        );
       }
-      const res: ReturnedType<typeof apis.getWorks> = yield call(apis.getWorks, req);
-      const resSongs: ReturnedType<typeof apis.getSongs> = yield call(apis.getSongs, {
-        artistUid: req.artistUid,
-      });
-      // for (const workUid of Object.keys(res)) {
-      //   res[workUid as string].songs_detail = R.filter(
-      //     (value: ISongs) => res[workUid as string].songs.includes(value.uid),
-      //     resSongs
-      //   );
-      // }
-      yield put(
-        actions.prepareWorksPage.done({
-          params: req,
-          result:
-            artist === undefined ? { works: res, songs: resSongs } : { artist: artist, works: res, songs: resSongs },
-        })
-      );
+
+      yield put(actions.prepareWorksPage.done({ params: req, result: result }));
     },
   prepareLiveListPage: () =>
     function*(action: Action<ILivesRequest>): IterableIterator<any> {
@@ -191,12 +182,12 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       const resLives: ReturnedType<typeof apis.getLives> = yield call(apis.getLives, { artistUid: req.artistUid });
       if (!Object.keys(resLives).includes(year)) throw {};
       if (!Object.keys(resLives[year]).includes(req.tourUid as string)) throw {};
-      const tours: TourUid[] = [];
+      const tours: LiveUid[] = [];
       for (let i = 1; i <= resLives[year][req.tourUid as string].number; i = i + 1) {
         tours.push(`${req.tourUid}_${i > 9 ? i : `0${i}`}`);
       }
       const res: ReturnedType<typeof apis.getLive> = yield all(
-        tours.map(tourUid => call(apis.getLive, { artistUid: req.artistUid, liveUid: tourUid }))
+        tours.map(liveUid => call(apis.getLive, { artistUid: req.artistUid, liveUid: liveUid }))
       );
       yield put(
         actions.prepareTourPage.done({
@@ -213,6 +204,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       console.log('prepare song page');
       const req = action.payload;
       const res: ReturnedType<typeof apis.getSongs> = yield call(apis.getSongs, req);
+      console.log(yield call(apis.getArtist, req));
       if (!Object.keys(res).includes(req.songUid as string)) throw {};
       // artist
       let resArtist: ReturnedType<typeof apis.getArtists>;
@@ -300,6 +292,33 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
               : { live: res, songList: setlist, artist: resArtist[req.artistUid as string] },
         })
       );
+    },
+  prepareSongSummaryPage: () =>
+    function*(action: Action<ISongSummaryRequest>): IterableIterator<any> {
+      console.log('prepare song summary page');
+      const req = action.payload;
+      const result: IContentState = {};
+
+      const resSongs: ReturnedType<typeof apis.getSongs> = yield call(apis.getSongs, { artistUid: req.artistUid });
+
+      if (req.target.songs) result.songs = resSongs;
+      if (req.target.song && !Object.keys(resSongs).includes(req.songUid as string)) {
+        result.song = resSongs[req.songUid as string];
+      }
+      if (req.target.works) result.works = yield call(apis.getWorks, { artistUid: req.artistUid });
+      if (req.target.artist) {
+        result.artists = yield call(apis.getArtists);
+        if (result.artists) {
+          if (!Object.keys(result.artists).includes(req.artistUid as string)) throw {};
+          result.artist = result.artists[req.artistUid as string];
+        }
+      }
+
+      yield put(actions.prepareSongSummaryPage.done({ params: req, result: result }));
+    },
+  prepareTourSummaryPage: () =>
+    function*(action: Action<ITourSummaryRequest>): IterableIterator<any> {
+      console.log('prepare tour summary page');
     },
 
   postLive: () =>

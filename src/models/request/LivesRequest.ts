@@ -15,3 +15,11 @@ export interface ITourRequest {
     artist: boolean;
   };
 }
+
+export interface ITourSummaryRequest {
+  artistUid: ArtistUid;
+  tourUid: TourUid;
+  target: {
+    artist?: boolean;
+  };
+}

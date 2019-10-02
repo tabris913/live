@@ -1,4 +1,6 @@
-import ILive from '../models/contents/live';
+import { IArtists } from '../models/contents/artist';
+import ILive, { ILives } from '../models/contents/live';
+import { ISongs } from '../models/contents/song';
 import IArtistRequest from '../models/request/ArtistRequest';
 import ILiveRequest from '../models/request/LiveRequest';
 import ILivesRequest from '../models/request/LivesRequest';
@@ -16,36 +18,73 @@ export interface ContentApis {
   getSong: (req: ISongRequest) => Promise<any>;
   getSongs: (req: ISongsRequest) => Promise<any>;
   getLives: (req: ILivesRequest) => Promise<any>;
+  getLiveInfo: (req: ILiveRequest) => Promise<any>;
   getLive: (req: ILiveRequest) => Promise<any>;
 
   postLive: (req: IPRequest<ILive>) => Promise<any>;
 }
 
 export const contentApisBuilder = () => {
+  const getArtists = (): Promise<any> => {
+    const url = `${baseUrl}/json/artists.json`;
+    return get<void, any>(url, undefined);
+  };
+
+  const getSongs = (req: ISongsRequest): Promise<any> => {
+    const url = `${baseUrl}/json/${req.artistUid}/songs.json`;
+    return get<ISongsRequest, any>(url, req);
+  };
+
+  const getWorks = (req: IWorksRequest): Promise<any> => {
+    const url = `${baseUrl}/json/${req.artistUid}/works.json`;
+    return get<IWorksRequest, any>(url, req);
+  };
+
+  const getLives = (req: ILivesRequest): Promise<any> => {
+    const url = `${baseUrl}/json/${req.artistUid}/lives.json`;
+    return get<ILivesRequest, any>(url, req);
+  };
+
   return {
+    getArtists: getArtists,
+    getWorks: getWorks,
+    getSongs: getSongs,
+    getLives: getLives,
     getArtist: (req: IArtistRequest): Promise<any> => {
-      const url = `${baseUrl}/json/artists.json`;
-      return get<IArtistRequest, any>(url, req);
-    },
-    getArtists: (): Promise<any> => {
-      const url = `${baseUrl}/json/artists.json`;
-      return get<void, any>(url, undefined);
-    },
-    getWorks: (req: IWorksRequest): Promise<any> => {
-      const url = `${baseUrl}/json/${req.artistUid}/works.json`;
-      return get<IWorksRequest, any>(url, req);
+      return new Promise((resolve, reject) =>
+        resolve(
+          getArtists().then((artists: IArtists) =>
+            Object.keys(artists).includes(req.artistUid as string) ? artists[req.artistUid as string] : undefined
+          )
+        )
+      );
     },
     getSong: (req: ISongRequest): Promise<any> => {
-      const url = `${baseUrl}/json/${req.artistUid}/songs.json`;
-      return get<ISongRequest, any>(url, req);
+      return new Promise(resolve =>
+        resolve(
+          getSongs(req).then((songs: ISongs) =>
+            Object.keys(songs).includes(req.songUid as string) ? songs[req.songUid as string] : undefined
+          )
+        )
+      );
     },
-    getSongs: (req: ISongsRequest): Promise<any> => {
-      const url = `${baseUrl}/json/${req.artistUid}/songs.json`;
-      return get<ISongsRequest, any>(url, req);
-    },
-    getLives: (req: ILivesRequest): Promise<any> => {
-      const url = `${baseUrl}/json/${req.artistUid}/lives.json`;
-      return get<ILivesRequest, any>(url, req);
+    getLiveInfo: (req: ILiveRequest): Promise<any> => {
+      const year = req.liveUid.split('_')[0];
+      const tourUid = req.liveUid
+        .split('_')
+        .slice(0, -1)
+        .join('_');
+      return new Promise(resolve =>
+        resolve(
+          getLives({ artistUid: req.artistUid }).then((lives: ILives) =>
+            Object.keys(lives).includes(year)
+              ? Object.keys(lives[year]).includes(req.liveUid as string)
+                ? lives[year][req.liveUid as string]
+                : Object.keys(lives[year]).includes(tourUid ? lives[year][tourUid] : undefined)
+              : undefined
+          )
+        )
+      );
     },
     getLive: (req: ILiveRequest): Promise<any> => {
       const url = `${baseUrl}/json/${req.artistUid}/lives/${req.liveUid}.json`;

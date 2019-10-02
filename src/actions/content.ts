@@ -10,7 +10,7 @@ import IArtistRequest from '../models/request/ArtistRequest';
 import ILiveRequest from '../models/request/LiveRequest';
 import ILivesRequest, { ITourRequest } from '../models/request/LivesRequest';
 import IPRequest from '../models/request/PRequest';
-import ISongRequest, { ISongsRequest } from '../models/request/SongRequest';
+import ISongRequest, { ISongsRequest, ISongSummaryRequest } from '../models/request/SongRequest';
 import IWorksRequest from '../models/request/WorksRequest';
 import { ActionTypes } from './types';
 
@@ -30,6 +30,8 @@ export interface ContentActions {
   prepareTourPage: AsyncActionCreators<ITourRequest, IContentState, any>;
   prepareSongPage: AsyncActionCreators<ISongRequest, IContentState, any>;
   prepareLivePage: AsyncActionCreators<ILiveRequest, IContentState, any>;
+  prepareSongSummaryPage: AsyncActionCreators<ISongSummaryRequest, IContentState, any>;
+  prepareTourSummaryPage: AsyncActionCreators<ITourRequest, IContentState, any>;
 
   postLive: AsyncActionCreators<IPRequest<IContent<Uid>>, void, any>;
 }
@@ -53,6 +55,12 @@ export const contentActionsBuilder = (actionTypeMap: { [P in keyof ContentAction
     prepareTourPage: actionCreatorFactory().async<ITourRequest, IContentState, any>(actionTypeMap.prepareTourPage),
     prepareSongPage: actionCreatorFactory().async<ISongRequest, IContentState, any>(actionTypeMap.prepareSongPage),
     prepareLivePage: actionCreatorFactory().async<ILiveRequest, IContentState, any>(actionTypeMap.prepareLivePage),
+    prepareSongSummaryPage: actionCreatorFactory().async<ISongSummaryRequest, IContentState, any>(
+      actionTypeMap.prepareSongSummaryPage
+    ),
+    prepareTourSummaryPage: actionCreatorFactory().async<ITourRequest, IContentState, any>(
+      actionTypeMap.prepareTourSummaryPage
+    ),
 
     postLive: actionCreatorFactory().async<IPRequest<IContent<Uid>>, void, any>(actionTypeMap.postLive),
   };
@@ -80,6 +88,8 @@ export const liveActions = contentActionsBuilder({
   prepareTourPage: ActionTypes.PREPARE_TOUR_PAGE,
   prepareSongPage: ActionTypes.PREPARE_SONG_PAGE,
   prepareLivePage: ActionTypes.PREPARE_LIVE_PAGE,
+  prepareSongSummaryPage: ActionTypes.PREPARE_SONG_SUMMARY_PAGE,
+  prepareTourSummaryPage: ActionTypes.PREPARE_TOUR_SUMMERY_PAGE,
 
   postLive: ActionTypes.POST_LIVE,
 });
