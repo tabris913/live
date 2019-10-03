@@ -9,4 +9,7 @@ export interface ISongs {
 export default interface ISong extends IContent<SongUid> {
   lives: ILives;
   track_no?: number;
+  misc?: {
+    [x: string]: any;
+  };
 }

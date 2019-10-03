@@ -64,7 +64,7 @@ const SongPage = (props: Props) => {
         { label: 'WORKS', hrefWithId: toPublicUrl(PageName.WORKS, [props.match.params.id]) },
         {
           label: props.content.song.name,
-          hrefWithId: toPublicUrl(PageName.SONG, [props.match.params.id], props.query.id),
+          hrefWithId: toPublicUrl(PageName.SONG, [props.match.params.id], { id: props.query.id }),
         },
         { label: 'summary' },
       ]}

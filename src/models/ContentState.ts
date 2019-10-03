@@ -11,7 +11,6 @@ export interface IContentState {
   song?: ISong;
   songList?: ISong[];
   songs?: ISongs;
-  songsList?: ISongs[];
   live?: ILive;
   liveList?: ILive[];
   lives?: ILives;

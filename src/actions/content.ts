@@ -8,7 +8,7 @@ import { IContentState } from '../models/ContentState';
 import { Uid } from '../models/Main';
 import IArtistRequest from '../models/request/ArtistRequest';
 import ILiveRequest from '../models/request/LiveRequest';
-import ILivesRequest, { ITourRequest } from '../models/request/LivesRequest';
+import ILivesRequest, { ITourRequest, ITourSummaryRequest } from '../models/request/LivesRequest';
 import IPRequest from '../models/request/PRequest';
 import ISongRequest, { ISongsRequest, ISongSummaryRequest } from '../models/request/SongRequest';
 import IWorksRequest from '../models/request/WorksRequest';
@@ -31,7 +31,7 @@ export interface ContentActions {
   prepareSongPage: AsyncActionCreators<ISongRequest, IContentState, any>;
   prepareLivePage: AsyncActionCreators<ILiveRequest, IContentState, any>;
   prepareSongSummaryPage: AsyncActionCreators<ISongSummaryRequest, IContentState, any>;
-  prepareTourSummaryPage: AsyncActionCreators<ITourRequest, IContentState, any>;
+  prepareTourSummaryPage: AsyncActionCreators<ITourSummaryRequest, IContentState, any>;
 
   postLive: AsyncActionCreators<IPRequest<IContent<Uid>>, void, any>;
 }
@@ -47,7 +47,9 @@ export const contentActionsBuilder = (actionTypeMap: { [P in keyof ContentAction
     getLive: actionCreatorFactory().async<ILiveRequest, ILive, any>(actionTypeMap.getLives),
 
     prepareTopPage: actionCreatorFactory().async<void, IContentState, any>(actionTypeMap.prepareTopPage),
-    prepareArtistPage: actionCreatorFactory().async<IWorksRequest, IContentState, any>(actionTypeMap.prepareArtistPage),
+    prepareArtistPage: actionCreatorFactory().async<IArtistRequest, IContentState, any>(
+      actionTypeMap.prepareArtistPage
+    ),
     prepareWorksPage: actionCreatorFactory().async<IWorksRequest, IContentState, any>(actionTypeMap.prepareWorksPage),
     prepareLiveListPage: actionCreatorFactory().async<ILivesRequest, IContentState, any>(
       actionTypeMap.prepareLiveListPage
@@ -58,7 +60,7 @@ export const contentActionsBuilder = (actionTypeMap: { [P in keyof ContentAction
     prepareSongSummaryPage: actionCreatorFactory().async<ISongSummaryRequest, IContentState, any>(
       actionTypeMap.prepareSongSummaryPage
     ),
-    prepareTourSummaryPage: actionCreatorFactory().async<ITourRequest, IContentState, any>(
+    prepareTourSummaryPage: actionCreatorFactory().async<ITourSummaryRequest, IContentState, any>(
       actionTypeMap.prepareTourSummaryPage
     ),
 

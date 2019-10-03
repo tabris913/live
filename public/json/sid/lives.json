@@ -16,6 +16,12 @@
   },
   "2004": {},
   "2005": {
-    "2005_renai_tour": { "uid": "2005_renai_tour", "name": "憐哀-レンアイ-ツアー", "is_tour": true, "number": 3 }
+    "2005_renai_tour": {
+      "uid": "2005_renai_tour",
+      "name": "憐哀-レンアイ-ツアー",
+      "is_tour": true,
+      "number": 3,
+      "relatedWorks": "sid_al01"
+    }
   }
 }

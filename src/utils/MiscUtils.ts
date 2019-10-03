@@ -10,3 +10,10 @@ export const parseText2Json = (blob: Blob) => {
 };
 
 export type ReturnedType<T> = T extends ((...args: any[]) => infer U) ? (U extends Promise<infer R> ? R : U) : never;
+
+export const sortAscending = (array: any[], path?: string[]) =>
+  array.sort((a, b) => ((path ? R.path<any>(path, a) < R.path<any>(path, b) : a < b) ? -1 : 1));
+
+// sortDesending(props.content.songList, ['misc', 'times'])
+export const sortDesending = (array: any[], path?: string[]) =>
+  array.sort((a, b) => ((path ? R.path<any>(path, a) < R.path<any>(path, b) : a < b) ? 1 : -1));

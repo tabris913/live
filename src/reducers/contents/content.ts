@@ -14,10 +14,10 @@ export const contentReducerBuilder = (actions: ContentActions) => {
     .caseWithAction(actions.getLives.done, (state, action) => ({ ...state, lives: action.payload.result }))
     .caseWithAction(actions.getLive.done, (state, action) => ({ ...state, live: action.payload.result }))
 
-    .case(actions.prepareWorksPage.started, state => ({ ...state, works: undefined }))
-    .case(actions.prepareLiveListPage.started, state => ({ ...state, lives: undefined }))
-    .case(actions.prepareTourPage.started, state => ({ ...state, liveList: undefined }))
-    .case(actions.prepareSongPage.started, state => ({ ...state, songList: undefined }))
+    // .case(actions.prepareWorksPage.started, state => ({ ...state, works: undefined }))
+    // .case(actions.prepareLiveListPage.started, state => ({ ...state, lives: undefined }))
+    // .case(actions.prepareTourPage.started, state => ({ ...state, liveList: undefined }))
+    // .case(actions.prepareSongPage.started, state => ({ ...state, songList: undefined }))
     .casesWithAction(
       [
         actions.prepareTopPage.done,
@@ -30,7 +30,11 @@ export const contentReducerBuilder = (actions: ContentActions) => {
     .casesWithAction(
       [actions.prepareTourPage.done, actions.prepareSongPage.done, actions.prepareLivePage.done],
       (state, action) => ({ ...state, ...action.payload.result })
-    );
+    )
+    .casesWithAction([actions.prepareSongSummaryPage.done, actions.prepareTourSummaryPage.done], (state, action) => ({
+      ...state,
+      ...action.payload.result,
+    }));
 
   return reducer;
 };

@@ -170,7 +170,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       if (!result.liveInfo) throw {};
       result.liveList = [];
 
-      for (let i = 0; i <= result.liveInfo.number; i = i + 1) {
+      for (let i = 1; i <= result.liveInfo.number; i = i + 1) {
         const liveUid = `${req.tourUid}_${i > 9 ? i : `0${i}`}`;
         const resLives = yield call(apis.getLive, { artistUid: req.artistUid, liveUid: liveUid });
         if (resLives) result.liveList.push(resLives);
@@ -292,11 +292,29 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       };
       if (!result.liveInfo) throw {};
       result.liveList = [];
+      const songPlayed = {};
 
-      for (let i = 0; i <= result.liveInfo.number; i = i + 1) {
+      for (let i = 1; i <= result.liveInfo.number; i = i + 1) {
         const liveUid = `${req.tourUid}_${i > 9 ? i : `0${i}`}`;
-        const resLives = yield call(apis.getLive, { artistUid: req.artistUid, liveUid: liveUid });
-        if (resLives) result.liveList.push(resLives);
+        const resLive: ReturnedType<typeof apis.getLive> = yield call(apis.getLive, {
+          artistUid: req.artistUid,
+          liveUid: liveUid,
+        });
+        if (resLive) {
+          result.liveList.push(resLive);
+          for (const songUid of resLive.setlist) {
+            songPlayed[songUid] = Object.keys(songPlayed).includes(songUid) ? songPlayed[songUid] + 1 : 1;
+          }
+        }
+      }
+
+      result.songList = [];
+      for (const songUid of Object.keys(songPlayed)) {
+        const resSong: ReturnedType<typeof apis.getSong> = yield call(apis.getSong, {
+          artistUid: req.artistUid,
+          songUid: songUid,
+        });
+        if (resSong) result.songList.push({ ...resSong, misc: { times: songPlayed[songUid] } });
       }
 
       if (req.target.artist) result.artist = yield call(apis.getArtist, { artistUid: req.artistUid });

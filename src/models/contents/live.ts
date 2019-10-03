@@ -1,5 +1,5 @@
 import { IContent } from '../content';
-import { LiveUid, SongUid, TourUid } from '../Main';
+import { LiveUid, SongUid, TourUid, WorkUid } from '../Main';
 
 export interface ILives {
   [year: string]: ILiveInfo[];
@@ -8,6 +8,7 @@ export interface ILives {
 export interface ILiveInfo extends IContent<LiveUid | TourUid> {
   is_tour: boolean;
   number: number;
+  relatedWork?: WorkUid;
 }
 
 export default interface ILive extends IContent<LiveUid> {

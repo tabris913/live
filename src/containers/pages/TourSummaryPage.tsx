@@ -63,7 +63,7 @@ const TourSummaryPage = (props: Props) => {
         { hrefWithId: toPublicUrl(PageName.ARTIST, [props.match.params.id]), label: props.content.artist.name },
         { hrefWithId: toPublicUrl(PageName.LIVE_LIST, [props.match.params.id]), label: 'LIVES' },
         {
-          hrefWithId: toPublicUrl(PageName.TOUR, [props.match.params.id], props.query.id),
+          hrefWithId: toPublicUrl(PageName.TOUR, [props.match.params.id], { id: props.query.id }),
           label: props.content.liveInfo.name,
         },
         { label: 'summary' },
