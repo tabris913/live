@@ -13,7 +13,6 @@ import ILivesRequest, { ITourRequest, ITourSummaryRequest } from '../../models/r
 import IPRequest from '../../models/request/PRequest';
 import ISongRequest, { ISongsRequest, ISongSummaryRequest } from '../../models/request/SongRequest';
 import IWorksRequest from '../../models/request/WorksRequest';
-import { infoFromDetail } from '../../utils/LiveUtils';
 import { ReturnedType } from '../../utils/MiscUtils';
 import { Encore } from '../../utils/SongUtils';
 
@@ -126,7 +125,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       const result: IContentState = { artist: yield call(apis.getArtist, req) };
       if (!result.artist) throw {};
 
-      if (req.target && req.target.artist) result.artists = yield call(apis.getArtists);
+      if (req.target && req.target.artists) result.artists = yield call(apis.getArtists);
 
       yield put(actions.prepareArtistPage.done({ params: req, result: result }));
     },
@@ -137,7 +136,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       const result: IContentState = { works: yield call(apis.getWorks, req), songs: yield call(apis.getSongs, req) };
       if (!result.works) throw {};
 
-      if (req.target && req.target.artist) result.artist = yield call(apis.getArtist, req);
+      if (req.target && req.target.artist) result.artist = yield call(apis.getArtist, { artistUid: req.artistUid });
 
       // songUid でフィルタリング
       if (req.songUid) {
@@ -157,7 +156,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       const result: IContentState = { lives: yield call(apis.getLives, req) };
       if (!result.lives) throw {};
 
-      if (req.target && req.target.artist) result.artist = yield call(apis.getArtist, req);
+      if (req.target && req.target.artist) result.artist = yield call(apis.getArtist, { artistUid: req.artistUid });
 
       yield put(actions.prepareLiveListPage.done({ params: req, result: result }));
     },
@@ -177,7 +176,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
         if (resLives) result.liveList.push(resLives);
       }
 
-      if (req.target && req.target.artist) result.artist = yield call(apis.getArtist, req);
+      if (req.target && req.target.artist) result.artist = yield call(apis.getArtist, { artistUid: req.artistUid });
       if (req.target && req.target.lives) result.lives = yield call(apis.getLives, req);
 
       yield put(actions.prepareTourPage.done({ params: req, result: result }));
@@ -193,32 +192,15 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       for (const year of Object.keys(result.lives)) {
         for (const liveUid of Object.keys(result.lives[year])) {
           if (result.lives[year][liveUid].is_tour) {
-            //
-          }
-        }
-      }
-
-      if (req.target) {
-        if (req.target.artist) result.artist = yield call(apis.getArtist, req);
-        if (req.target.songs) result.songs = yield call(apis.getSongs, req);
-      }
-
-      const resLives: ReturnedType<typeof apis.getLives> = yield call(apis.getLives, { artistUid: req.artistUid });
-      for (const year of Object.keys(resLives)) {
-        for (const liveUid of Object.keys(resLives[year])) {
-          if (resLives[year][liveUid].is_tour) {
-            for (let i = 1; i <= resLives[year][liveUid].number; i = i + 1) {
-              const tourLiveUid = `${liveUid}_${i > 9 ? i : `0${i}`}`;
+            for (let i = 1; i <= result.lives[year][liveUid].number; i = i + 1) {
+              const uid = `${liveUid}_${i > 9 ? i : `0${i}`}`;
               const resLive: ReturnedType<typeof apis.getLive> = yield call(apis.getLive, {
                 artistUid: req.artistUid,
-                liveUid: tourLiveUid,
+                liveUid: uid,
               });
-              if (resLive.setlist.includes(req.songUid)) {
-                if (!Object.keys(newLives).includes(year)) {
-                  (newLives as object)[year] = { [tourLiveUid]: infoFromDetail(resLive) };
-                } else {
-                  newLives[year] = { ...newLives[year], [tourLiveUid]: infoFromDetail(resLive) };
-                }
+              if (resLive && resLive.setlist.includes(req.songUid)) {
+                if (!Object.keys(newLives).includes(year)) newLives[year] = [resLive];
+                else newLives[year].push(resLive);
               }
             }
           } else {
@@ -226,16 +208,19 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
               artistUid: req.artistUid,
               liveUid: liveUid,
             });
-            if (resLive.setlist.includes(req.songUid)) {
-              if (!Object.keys(newLives).includes(year)) {
-                (newLives as object)[year] = { [liveUid]: resLives[year][liveUid as string] };
-              } else {
-                newLives[year] = { ...newLives[year], [liveUid]: resLives[year][liveUid as string] };
-              }
+            if (resLive && resLive.setlist.includes(req.songUid)) {
+              if (!Object.keys(newLives).includes(year)) newLives[year] = [resLive];
+              else newLives[year].push(resLive);
             }
           }
         }
       }
+
+      if (req.target) {
+        if (req.target.artist) result.artist = yield call(apis.getArtist, { artistUid: req.artistUid });
+        if (req.target.songs) result.songs = yield call(apis.getSongs, req);
+      }
+
       yield put(actions.prepareSongPage.done({ params: req, result: result }));
     },
   prepareLivePage: () =>
@@ -258,7 +243,20 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       }
 
       // artist
-      if (req.target && req.target.artist) result.artist = yield call(apis.getArtist, req);
+      if (req.target && req.target.artist) result.artist = yield call(apis.getArtist, { artistUid: req.artistUid });
+      if (req.target && req.target.liveInfo) {
+        const resLives: ReturnedType<typeof apis.getLives> = yield call(apis.getLives, req);
+        const yearLives = resLives[req.liveUid.split('_')[0]];
+        if (result.live.is_tour) {
+          result.liveInfo =
+            yearLives[
+              req.liveUid
+                .split('_')
+                .slice(0, -1)
+                .join('_')
+            ];
+        } else result.liveInfo = yearLives[req.liveUid as string];
+      }
 
       yield put(actions.prepareLivePage.done({ params: req, result: result }));
     },
@@ -288,6 +286,23 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
   prepareTourSummaryPage: () =>
     function*(action: Action<ITourSummaryRequest>): IterableIterator<any> {
       console.log('prepare tour summary page');
+      const req = action.payload;
+      const result: IContentState = {
+        liveInfo: yield call(apis.getLiveInfo, { artistUid: req.artistUid, liveUid: req.tourUid }),
+      };
+      if (!result.liveInfo) throw {};
+      result.liveList = [];
+
+      for (let i = 0; i <= result.liveInfo.number; i = i + 1) {
+        const liveUid = `${req.tourUid}_${i > 9 ? i : `0${i}`}`;
+        const resLives = yield call(apis.getLive, { artistUid: req.artistUid, liveUid: liveUid });
+        if (resLives) result.liveList.push(resLives);
+      }
+
+      if (req.target.artist) result.artist = yield call(apis.getArtist, { artistUid: req.artistUid });
+      if (req.target.lives) result.lives = yield call(apis.getLives, req);
+
+      yield put(actions.prepareTourSummaryPage.done({ params: req, result: result }));
     },
 
   postLive: () =>

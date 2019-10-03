@@ -22,5 +22,6 @@ export interface ITourSummaryRequest {
   tourUid: TourUid;
   target: {
     artist?: boolean;
+    lives?: boolean;
   };
 }

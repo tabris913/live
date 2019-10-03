@@ -43,10 +43,18 @@ const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDisp
 };
 
 const ArtistPage = (props: Props) => {
-  React.useState(() => props.actions.prepareArtistPage({ artistUid: props.match.params.id }));
+  React.useState(() => {
+    const isDifferentArtist = !props.content.artist || props.content.artist.uid !== props.match.params.id;
+    if (isDifferentArtist) {
+      props.actions.prepareArtistPage({
+        artistUid: props.match.params.id,
+        target: { artists: !props.content.artists },
+      });
+    }
+  });
 
   return props.content.artist && props.content.artist.uid === props.match.params.id ? (
-    <Wireframe title={props.content.artist.name}>
+    <Wireframe title={props.content.artist.name} breadcrump={[{ label: props.content.artist.name }]}>
       <Artist {...props} />
     </Wireframe>
   ) : (

@@ -51,7 +51,7 @@ const SongPage = (props: Props) => {
       props.actions.prepareSongPage({
         artistUid: props.match.params.id,
         songUid: props.query.id!,
-        target: { artist: isDifferentArtist },
+        target: { artist: isDifferentArtist, songs: !props.content.songs },
       });
     }
   });
@@ -62,6 +62,7 @@ const SongPage = (props: Props) => {
       breadcrump={[
         { label: props.content.artist.name, hrefWithId: toPublicUrl(PageName.ARTIST, [props.match.params.id]) },
         { label: 'works', hrefWithId: toPublicUrl(PageName.WORKS, [props.match.params.id]) },
+        { label: props.content.song.name },
       ]}
     >
       <Song {...props} />

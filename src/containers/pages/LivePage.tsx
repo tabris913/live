@@ -46,11 +46,13 @@ const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDisp
 const LivePage = (props: Props) => {
   React.useState(() => {
     const isDifferentArtist = !props.content.artist || props.content.artist.uid !== props.match.params.id;
+    const isDifferentLiveInfo = !props.content.liveInfo || props.content.liveInfo.uid !== props.query.id;
     props.actions.prepareLivePage({
       artistUid: props.match.params.id,
       liveUid: props.query.id!,
       target: {
         artist: isDifferentArtist,
+        liveInfo: isDifferentLiveInfo,
       },
     });
   });
@@ -69,10 +71,12 @@ const LivePage = (props: Props) => {
                 }),
                 label: 'TOUR',
               },
+              { label: props.content.live.name },
             ]
           : [
               { hrefWithId: toPublicUrl(PageName.ARTIST, [props.match.params.id]), label: props.content.artist.name },
               { hrefWithId: toPublicUrl(PageName.LIVE_LIST, [props.match.params.id]), label: 'LIVES' },
+              { label: props.content.live.name },
             ]
       }
     >

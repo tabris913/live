@@ -62,6 +62,7 @@ const WorksPage = (props: Props) => {
       title={props.content.artist.name}
       breadcrump={[
         { hrefWithId: toPublicUrl(PageName.ARTIST, [props.match.params.id]), label: props.content.artist.name },
+        { label: 'WORKS' },
       ]}
     >
       {props.content.works ? <Works {...props} /> : <Spin />}

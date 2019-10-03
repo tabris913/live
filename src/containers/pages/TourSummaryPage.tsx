@@ -4,24 +4,24 @@ import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as Redux from 'redux';
 import { liveActions } from '../../actions/content';
-import LiveList from '../../components/contents/lives';
+import TourSummary from '../../components/contents/tourSummary';
+import PageName, { toPublicUrl } from '../../constants/PageName';
 import { IContentState } from '../../models/ContentState';
-import { IMatchParams, QueryType, Uid } from '../../models/Main';
-import ILivesRequest from '../../models/request/LivesRequest';
+import { IMatchParams, QueryType, TourUid } from '../../models/Main';
+import { ITourSummaryRequest } from '../../models/request/LivesRequest';
 import { IStoreState } from '../../reducers';
 import Wireframe from '../wireframe/Wireframe';
-import PageName, { toPublicUrl } from '../../constants/PageName';
 
 interface IOwnProps extends RouteComponentProps<IMatchParams> {}
 
 interface IStateProps {
-  query: QueryType<Uid>;
+  query: QueryType<TourUid>;
   content: IContentState;
 }
 
 interface IDispatchProps {
   actions: {
-    prepareLiveListPage: (req: ILivesRequest) => void;
+    prepareTourSummaryPage: (req: ITourSummaryRequest) => void;
   };
 }
 
@@ -38,29 +38,38 @@ const mapState2Props = (state: IStoreState, ownProps: IOwnProps): IStateProps =>
 const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDispatchProps => {
   return {
     actions: {
-      prepareLiveListPage: (req: ILivesRequest) => dispatch(liveActions.prepareLiveListPage.started(req)),
+      prepareTourSummaryPage: (req: ITourSummaryRequest) => dispatch(liveActions.prepareTourSummaryPage.started(req)),
     },
   };
 };
 
-const LiveListPage = (props: Props) => {
+const TourSummaryPage = (props: Props) => {
   React.useState(() => {
     const isDifferentArtist = !props.content.artist || props.content.artist.uid !== props.match.params.id;
-    props.actions.prepareLiveListPage({
+    props.actions.prepareTourSummaryPage({
       artistUid: props.match.params.id,
-      target: { artist: isDifferentArtist },
+      tourUid: props.query.id!,
+      target: {
+        artist: isDifferentArtist,
+        lives: !props.content.lives,
+      },
     });
   });
 
-  return props.content.artist && props.content.artist.uid === props.match.params.id ? (
+  return props.content.liveInfo && props.content.artist ? (
     <Wireframe
-      title={props.content.artist.name}
+      title={`${props.content.liveInfo.name}`}
       breadcrump={[
         { hrefWithId: toPublicUrl(PageName.ARTIST, [props.match.params.id]), label: props.content.artist.name },
-        { label: 'LIVES' },
+        { hrefWithId: toPublicUrl(PageName.LIVE_LIST, [props.match.params.id]), label: 'LIVES' },
+        {
+          hrefWithId: toPublicUrl(PageName.TOUR, [props.match.params.id], props.query.id),
+          label: props.content.liveInfo.name,
+        },
+        { label: 'summary' },
       ]}
     >
-      {props.content.lives ? <LiveList {...props} /> : <Spin />}
+      <TourSummary {...props} />
     </Wireframe>
   ) : (
     <Spin />
@@ -71,5 +80,5 @@ export default withRouter(
   connect(
     mapState2Props,
     mapDispatch2Props
-  )(LiveListPage)
+  )(TourSummaryPage)
 );

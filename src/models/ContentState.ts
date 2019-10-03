@@ -6,7 +6,6 @@ import { IWorks } from './contents/work';
 
 export interface IContentState {
   artist?: IArtist;
-  artistList?: IArtist[];
   artists?: IArtists;
   works?: IWorks;
   song?: ISong;

@@ -5,5 +5,6 @@ export default interface ILiveRequest {
   liveUid: LiveUid;
   target?: {
     artist?: boolean;
+    liveInfo?: boolean;
   };
 }
