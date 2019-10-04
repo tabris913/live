@@ -6,6 +6,7 @@ import { ContentApis } from '../../apis/content';
 import IArtist from '../../models/contents/artist';
 import ILive, { ILives } from '../../models/contents/live';
 import ISong, { ISongs } from '../../models/contents/song';
+import IWork from '../../models/contents/work';
 import { IContentState } from '../../models/ContentState';
 import IArtistRequest from '../../models/request/ArtistRequest';
 import ILiveRequest from '../../models/request/LiveRequest';
@@ -199,8 +200,9 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
                 liveUid: uid,
               });
               if (resLive && resLive.setlist.includes(req.songUid)) {
-                if (!Object.keys(newLives).includes(year)) newLives[year] = [resLive];
-                else newLives[year].push(resLive);
+                newLives[year] = Object.keys(newLives).includes(year)
+                  ? { ...newLives[year], [resLive.uid]: resLive }
+                  : { [resLive.uid]: resLive };
               }
             }
           } else {
@@ -209,11 +211,22 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
               liveUid: liveUid,
             });
             if (resLive && resLive.setlist.includes(req.songUid)) {
-              if (!Object.keys(newLives).includes(year)) newLives[year] = [resLive];
-              else newLives[year].push(resLive);
+              newLives[year] = Object.keys(newLives).includes(year)
+                ? { ...newLives[year], [resLive.uid]: resLive }
+                : { [resLive.uid]: resLive };
             }
           }
         }
+      }
+      result.lives = newLives;
+
+      result.works = yield call(apis.getWorks, req);
+      if (result.works) {
+        result.works = Object.entries(result.works).reduce(
+          (prev, [curKey, curVal]) =>
+            (curVal as IWork).songs.includes(req.songUid as string) ? { ...prev, [curKey]: curVal } : { ...prev },
+          {}
+        );
       }
 
       if (req.target) {
@@ -264,12 +277,45 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
     function*(action: Action<ISongSummaryRequest>): IterableIterator<any> {
       console.log('prepare song summary page');
       const req = action.payload;
-      const result: IContentState = {};
+      const result: IContentState = { lives: yield call(apis.getLives, req), liveList: [] };
 
       const resSongs: ReturnedType<typeof apis.getSongs> = yield call(apis.getSongs, { artistUid: req.artistUid });
 
+      const newLives: ILives = {};
+      if (result.lives) {
+        for (const year of Object.keys(result.lives)) {
+          for (const liveInfo of Object.values(result.lives[year])) {
+            if (liveInfo.is_tour) {
+              for (let i = 1; i <= liveInfo.number; i = i + 1) {
+                const resLive: ReturnedType<typeof apis.getLive> = yield call(apis.getLive, {
+                  artistUid: req.artistUid,
+                  liveUid: `${liveInfo.uid}_${i > 9 ? i : `0${i}`}`,
+                });
+                if (resLive && resLive.setlist.includes(req.songUid)) {
+                  result.liveList!.push(resLive);
+                  if (Object.keys(newLives).includes(year)) {
+                    if (!Object.keys(newLives[year]).includes(liveInfo.uid as string)) {
+                      newLives[year] = { ...newLives[year], [liveInfo.uid as string]: liveInfo };
+                    }
+                  } else newLives[year] = { [liveInfo.uid as string]: liveInfo };
+                }
+              }
+            } else {
+              const resLive: ReturnedType<typeof apis.getLive> = yield call(apis.getLive, {
+                artistUid: req.artistUid,
+                liveUid: liveInfo.uid,
+              });
+              if (resLive && resLive.setlist.includes(req.songUid)) {
+                result.liveList!.push(resLive);
+              }
+            }
+          }
+        }
+      }
+      result.lives = newLives;
+
       if (req.target.songs) result.songs = resSongs;
-      if (req.target.song && !Object.keys(resSongs).includes(req.songUid as string)) {
+      if (req.target.song && Object.keys(resSongs).includes(req.songUid as string)) {
         result.song = resSongs[req.songUid as string];
       }
       if (req.target.works) result.works = yield call(apis.getWorks, { artistUid: req.artistUid });
@@ -289,6 +335,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       const req = action.payload;
       const result: IContentState = {
         liveInfo: yield call(apis.getLiveInfo, { artistUid: req.artistUid, liveUid: req.tourUid }),
+        works: yield call(apis.getWorks, req),
       };
       if (!result.liveInfo) throw {};
       result.liveList = [];

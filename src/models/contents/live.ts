@@ -2,7 +2,9 @@ import { IContent } from '../content';
 import { LiveUid, SongUid, TourUid, WorkUid } from '../Main';
 
 export interface ILives {
-  [year: string]: ILiveInfo[];
+  [year: string]: {
+    [liveUid: string]: ILiveInfo;
+  };
 }
 
 export interface ILiveInfo extends IContent<LiveUid | TourUid> {

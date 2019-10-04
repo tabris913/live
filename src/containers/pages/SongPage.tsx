@@ -45,15 +45,12 @@ const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDisp
 
 const SongPage = (props: Props) => {
   React.useState(() => {
-    const isDifferentSong = !props.content.song || props.content.song.uid !== props.query.id;
     const isDifferentArtist = !props.content.artist || props.content.artist.uid !== props.match.params.id;
-    if (isDifferentSong || isDifferentArtist) {
-      props.actions.prepareSongPage({
-        artistUid: props.match.params.id,
-        songUid: props.query.id!,
-        target: { artist: isDifferentArtist, songs: !props.content.songs },
-      });
-    }
+    props.actions.prepareSongPage({
+      artistUid: props.match.params.id,
+      songUid: props.query.id!,
+      target: { artist: isDifferentArtist, songs: !props.content.songs },
+    });
   });
 
   return props.content.song && props.content.artist ? (
@@ -61,7 +58,7 @@ const SongPage = (props: Props) => {
       title={props.content.song.name}
       breadcrump={[
         { label: props.content.artist.name, hrefWithId: toPublicUrl(PageName.ARTIST, [props.match.params.id]) },
-        { label: 'works', hrefWithId: toPublicUrl(PageName.WORKS, [props.match.params.id]) },
+        { label: 'WORKS', hrefWithId: toPublicUrl(PageName.WORKS, [props.match.params.id]) },
         { label: props.content.song.name },
       ]}
     >

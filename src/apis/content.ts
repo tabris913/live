@@ -80,7 +80,9 @@ export const contentApisBuilder = () => {
             Object.keys(lives).includes(year)
               ? Object.keys(lives[year]).includes(req.liveUid as string)
                 ? lives[year][req.liveUid as string]
-                : Object.keys(lives[year]).includes(tourUid ? lives[year][tourUid] : undefined)
+                : Object.keys(lives[year]).includes(tourUid)
+                ? lives[year][tourUid]
+                : undefined
               : undefined
           )
         )

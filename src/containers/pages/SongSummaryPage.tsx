@@ -47,13 +47,16 @@ const SongPage = (props: Props) => {
   React.useState(() => {
     const isDifferentSong = !props.content.song || props.content.song.uid !== props.query.id;
     const isDifferentArtist = !props.content.artist || props.content.artist.uid !== props.match.params.id;
-    if (isDifferentSong || isDifferentArtist) {
-      props.actions.prepareSongSummaryPage({
-        artistUid: props.match.params.id,
-        songUid: props.query.id!,
-        target: { artist: isDifferentArtist, songs: !props.content.songs },
-      });
-    }
+    props.actions.prepareSongSummaryPage({
+      artistUid: props.match.params.id,
+      songUid: props.query.id!,
+      target: {
+        artist: isDifferentArtist,
+        songs: !props.content.songs,
+        song: isDifferentSong,
+        works: !props.content.works,
+      },
+    });
   });
 
   return props.content.song && props.content.artist ? (

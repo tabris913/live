@@ -46,15 +46,10 @@ const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDisp
 const WorksPage = (props: Props) => {
   React.useState(() => {
     const isDifferentArtist = !props.content.artist || props.content.artist.uid !== props.match.params.id;
-    const isDifferentWorks =
-      !props.content.works ||
-      Object.keys(props.content.works).filter(key => key.startsWith(props.match.params.id)).length === 0;
-    if (isDifferentArtist || isDifferentWorks) {
-      props.actions.prepareWorksPage({
-        artistUid: props.match.params.id,
-        target: { artist: isDifferentArtist },
-      });
-    }
+    props.actions.prepareWorksPage({
+      artistUid: props.match.params.id,
+      target: { artist: isDifferentArtist },
+    });
   });
 
   return props.content.artist && props.content.artist.uid === props.match.params.id ? (

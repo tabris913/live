@@ -15,5 +15,4 @@ export const toSong = (artistUid: ArtistUid, songUid: SongUid, history: History)
 export const Encore: ISong = {
   uid: 'encore',
   name: 'Encore',
-  lives: {},
 };
