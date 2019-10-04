@@ -23,7 +23,7 @@ const Tour = (props: MainProps<TourUid>) => {
             <Button
               type="link"
               onClick={() => toLive(props.match.params.id, item.uid, props.history)}
-              style={{ whiteSpace: 'unset', textAlign: 'left', marginTop: 5, marginBottom: 5 }}
+              style={{ whiteSpace: 'unset', textAlign: 'left', marginTop: 5, marginBottom: 5, height: '100%' }}
             >
               <Row>
                 <Col>[{item.date}]</Col>

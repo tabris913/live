@@ -1,4 +1,4 @@
-import { Button, List, Typography } from 'antd';
+import { Button, Checkbox, List, Typography } from 'antd';
 import React from 'react';
 import { MainProps, TourUid } from '../../models/Main';
 
@@ -7,6 +7,7 @@ const TourSummary = (props: MainProps<TourUid>) => {
     props.content && props.content.songList ? (
       <>
         <Typography.Title level={4}>曲ごとの演奏回数</Typography.Title>
+        <Checkbox>CHECK</Checkbox>
         {/* チェックボックスでフォーカス曲を選択させる */}
         <List
           dataSource={props.content.songList.sort((a, b) => {
