@@ -21,7 +21,7 @@
       "name": "憐哀-レンアイ-ツアー",
       "is_tour": true,
       "number": 3,
-      "relatedWork": "sid_al01"
+      "relatedWorks": ["sid_al01"]
     }
   },
   "2019": {
@@ -29,7 +29,8 @@
       "uid": "2019_shounin_yokkyu",
       "name": "SID TOUR 2019 -承認欲求-",
       "is_tour": true,
-      "number": 4
+      "number": 4,
+      "relatedWorks": ["sid_al11"]
     }
   }
 }

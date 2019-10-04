@@ -1,6 +1,7 @@
-import { Button, List, Typography } from 'antd';
+import { Button, Divider, List, Typography } from 'antd';
 import React from 'react';
 import { MainProps, SongUid } from '../../models/Main';
+import { toSong } from '../../utils/SongUtils';
 
 interface State {
   timesEachTour: {
@@ -28,6 +29,7 @@ const SongSummary = (props: MainProps<SongUid>) => {
     const timesEachTour = {};
     const front = {};
     const back = {};
+    console.log(props.content);
     if (props.content && props.content.liveList) {
       if (props.content.lives) {
         for (const year of Object.keys(props.content.lives)) {
@@ -66,6 +68,7 @@ const SongSummary = (props: MainProps<SongUid>) => {
         }
       }
     }
+    console.log(timesEachTour, front, back);
     setLocalState({ ...localState, timesEachTour: timesEachTour, neighbour: { front: front, back: back } });
   });
 
@@ -148,11 +151,21 @@ const SongSummary = (props: MainProps<SongUid>) => {
   };
 
   return (
-    <div style={{ overflowY: 'auto' }}>
-      <TimesEachTour />
-      <Position />
-      <Neighbour />
-    </div>
+    <>
+      <div style={{ overflowY: 'auto' }}>
+        <TimesEachTour />
+        <Position />
+        <Neighbour />
+      </div>
+      <Divider />
+      <Button
+        type="primary"
+        onClick={() => toSong(props.match.params.id, props.query.id!, props.history)}
+        style={{ width: 200 }}
+      >
+        楽曲ページへ
+      </Button>
+    </>
   );
 };
 

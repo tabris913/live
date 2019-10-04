@@ -1,8 +1,9 @@
-import { Button, Collapse, List, Spin, Typography } from 'antd';
+import { Button, Collapse, Divider, List, Spin, Typography } from 'antd';
 import * as React from 'react';
 import PageName, { toPublicUrl } from '../../constants/PageName';
 import { LiveUid, MainProps } from '../../models/Main';
 import { toLive } from '../../utils/LiveUtils';
+import { toWorks } from '../../utils/WorksUtils';
 
 const Song = (props: MainProps<LiveUid>) => {
   return props.content && props.content.song ? (
@@ -54,6 +55,10 @@ const Song = (props: MainProps<LiveUid>) => {
         }
       >
         Summary
+      </Button>
+      <Divider />
+      <Button type="primary" onClick={() => toWorks(props.match.params.id, props.history)} style={{ width: 200 }}>
+        作品一覧へ
       </Button>
     </>
   ) : (

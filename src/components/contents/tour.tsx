@@ -1,21 +1,13 @@
-import { Button, Col, List, Row, Spin } from 'antd';
+import { Button, Col, List, Row, Spin, Divider } from 'antd';
 import * as React from 'react';
 import PageName, { toPublicUrl } from '../../constants/PageName';
 import { MainProps, TourUid } from '../../models/Main';
 import { toLive } from '../../utils/LiveUtils';
+import { toLives } from '../../utils/LivesUtils';
 
 const Tour = (props: MainProps<TourUid>) => {
   return props.content && props.content.liveList ? (
     <>
-      <Button
-        type="primary"
-        style={{ marginBottom: 5, width: 100 }}
-        onClick={() =>
-          props.history.push(toPublicUrl(PageName.TOUR_SUMMARY, [props.match.params.id], { id: props.query.id }))
-        }
-      >
-        Summary
-      </Button>
       <List
         dataSource={props.content.liveList}
         renderItem={item => (
@@ -34,6 +26,19 @@ const Tour = (props: MainProps<TourUid>) => {
           </List.Item>
         )}
       />
+      <Button
+        type="primary"
+        style={{ marginBottom: 5, width: 100 }}
+        onClick={() =>
+          props.history.push(toPublicUrl(PageName.TOUR_SUMMARY, [props.match.params.id], { id: props.query.id }))
+        }
+      >
+        Summary
+      </Button>
+      <Divider />
+      <Button type="primary" onClick={() => toLives(props.match.params.id, props.history)} style={{ width: 200 }}>
+        ライブ一覧へ
+      </Button>
     </>
   ) : (
     <Spin />

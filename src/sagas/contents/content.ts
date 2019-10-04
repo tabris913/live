@@ -246,8 +246,12 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
 
       let track_count = 1;
       for (const songUid of result.live.setlist) {
-        let resSong: ISong | undefined = Encore;
-        if (songUid !== 'encore') {
+        let resSong: ISong | undefined;
+        if (songUid === 'encore') resSong = Encore;
+        else if (songUid.startsWith('[unknown]')) {
+          resSong = { uid: songUid, name: songUid.slice(10) };
+          track_count = track_count + 1;
+        } else {
           resSong = yield call(apis.getSong, { artistUid: req.artistUid, songUid: songUid });
           track_count = track_count + 1;
         }
@@ -357,11 +361,15 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
 
       result.songList = [];
       for (const songUid of Object.keys(songPlayed)) {
-        const resSong: ReturnedType<typeof apis.getSong> = yield call(apis.getSong, {
-          artistUid: req.artistUid,
-          songUid: songUid,
-        });
-        if (resSong) result.songList.push({ ...resSong, misc: { times: songPlayed[songUid] } });
+        if (songUid.startsWith('[unknown]')) {
+          result.songList.push({ uid: songUid, name: songUid.slice(10), misc: { times: songPlayed[songUid] } });
+        } else {
+          const resSong: ReturnedType<typeof apis.getSong> = yield call(apis.getSong, {
+            artistUid: req.artistUid,
+            songUid: songUid,
+          });
+          if (resSong) result.songList.push({ ...resSong, misc: { times: songPlayed[songUid] } });
+        }
       }
 
       if (req.target.artist) result.artist = yield call(apis.getArtist, { artistUid: req.artistUid });

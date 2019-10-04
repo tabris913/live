@@ -1,7 +1,8 @@
-import { Button, Col, Collapse, Input, List, Row, Spin } from 'antd';
+import { Button, Col, Collapse, Divider, Input, List, Row, Spin } from 'antd';
 import * as React from 'react';
 import ISong from '../../models/contents/song';
 import { MainProps, SongUid, WorkUid } from '../../models/Main';
+import { toArtist } from '../../utils/ArtistUtils';
 import { toSong } from '../../utils/SongUtils';
 
 interface IState {
@@ -84,6 +85,10 @@ const Works = (props: MainProps<WorkUid>) => {
     <>
       <SearchArea />
       {localState.results.length > 0 ? <SearchResultArea /> : <WorksArea />}
+      <Divider />
+      <Button type="primary" onClick={() => toArtist(props.match.params.id, props.history)} style={{ width: 200 }}>
+        アーティストページへ
+      </Button>
     </>
   );
 };

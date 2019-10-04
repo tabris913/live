@@ -1,7 +1,8 @@
-import { Button, Collapse, List, Spin, Typography } from 'antd';
+import { Button, Collapse, List, Spin, Typography, Divider } from 'antd';
 import * as React from 'react';
 import { LiveUid, MainProps } from '../../models/Main';
 import { toLive, toTour } from '../../utils/LiveUtils';
+import { toArtist } from '../../utils/ArtistUtils';
 
 const LiveList = (props: MainProps<LiveUid>) => {
   return (
@@ -33,6 +34,10 @@ const LiveList = (props: MainProps<LiveUid>) => {
       ) : (
         <Spin />
       )}
+      <Divider />
+      <Button type="primary" onClick={() => toArtist(props.match.params.id, props.history)} style={{ width: 200 }}>
+        アーティストページへ
+      </Button>
     </>
   );
 };

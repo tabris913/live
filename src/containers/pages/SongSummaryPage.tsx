@@ -43,7 +43,7 @@ const mapDispatch2Props = (dispatch: Redux.Dispatch, ownProps: IOwnProps): IDisp
   };
 };
 
-const SongPage = (props: Props) => {
+const SongSummaryPage = (props: Props) => {
   React.useState(() => {
     const isDifferentSong = !props.content.song || props.content.song.uid !== props.query.id;
     const isDifferentArtist = !props.content.artist || props.content.artist.uid !== props.match.params.id;
@@ -59,7 +59,7 @@ const SongPage = (props: Props) => {
     });
   });
 
-  return props.content.song && props.content.artist ? (
+  return props.content.song && props.content.artist && props.content.lives && props.content.liveList ? (
     <Wireframe
       title={props.content.song.name}
       breadcrump={[
@@ -83,5 +83,5 @@ export default withRouter(
   connect(
     mapState2Props,
     mapDispatch2Props
-  )(SongPage)
+  )(SongSummaryPage)
 );
