@@ -18,6 +18,7 @@ export const contentReducerBuilder = (actions: ContentActions) => {
     // .case(actions.prepareLiveListPage.started, state => ({ ...state, lives: undefined }))
     // .case(actions.prepareTourPage.started, state => ({ ...state, liveList: undefined }))
     // .case(actions.prepareSongPage.started, state => ({ ...state, songList: undefined }))
+    .case(actions.prepareSongSummaryPage.started, state => ({ ...state, liveList: undefined }))
     .casesWithAction(
       [
         actions.prepareTopPage.done,

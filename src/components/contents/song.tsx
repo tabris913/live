@@ -7,7 +7,7 @@ import { toWorks } from '../../utils/WorksUtils';
 
 const Song = (props: MainProps<LiveUid>) => {
   return props.content && props.content.song ? (
-    <>
+    <div style={{ overflowY: 'auto' }}>
       <div style={{ marginBottom: 10 }}>
         <Typography.Title level={4}>演奏されたライブ</Typography.Title>
         {!props.content.lives || Object.keys(props.content.lives).length === 0 ? (
@@ -60,7 +60,7 @@ const Song = (props: MainProps<LiveUid>) => {
       <Button type="primary" onClick={() => toWorks(props.match.params.id, props.history)} style={{ width: 200 }}>
         作品一覧へ
       </Button>
-    </>
+    </div>
   ) : (
     <Spin />
   );

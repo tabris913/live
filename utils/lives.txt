@@ -1,4 +1,13 @@
-shounin_yokkyu_01 SID_TOUR_2019_-承認欲求-_#01 2019-09-13 松戸 True 承認欲求 see_through アリバイ V.I.P 2月 手 淡い足跡 罠 妄想日記 Trick ポジティブの魔法 ホソイコエ Blood_Vessel MUSIC Dear_Tokyo その未来へ 涙雨 encore デアイ＝キセキ サマラバ 夏恋 君色の朝
-shounin_yokkyu_02 SID_TOUR_2019_-承認欲求-_#02 2019-09-14 松戸 True 承認欲求 see_through ANNIVERSARY V.I.P 2月 手 淡い足跡 罠 妄想日記 Trick ポジティブの魔法 ホソイコエ Blood_Vessel MUSIC Dear_Tokyo その未来へ 涙雨 encore デアイ＝キセキ 循環 Re:Dreamer one_way 君色の朝
-shounin_yokkyu_03 SID_TOUR_2019_-承認欲求-_#03 2019-09-23 群馬 True 承認欲求 see_through ANNIVERSARY MUSIC 2月 手 淡い足跡 罠 妄想日記 Trick ポジティブの魔法 ホソイコエ Blood_Vessel プロポーズ Dear_Tokyo その未来へ 涙雨 encore デアイ＝キセキ 循環 エール one_way 君色の朝
-shounin_yokkyu_04 SID_TOUR_2019_-承認欲求-_#04 2019-09-25 川崎 True 承認欲求 see_through ANNIVERSARY MUSIC 2月 手 淡い足跡 罠 妄想日記 Trick ポジティブの魔法 ホソイコエ Blood_Vessel プロポーズ 敬礼ボウイ その未来へ 涙雨 encore デアイ＝キセキ 循環 dummy one_way 君色の朝
+stylish_wave_circuit04_manatsu stylish_wave_CIRCUIT'04_真夏の狂宴 2004-08-01 川崎クラブチッタ False 紫陽花 循環 ノイロヲゼパアティー 吉開学17歳_(無職)
+beat_5years BEAT5周年イベント_doozer0808 2004-08-08 名古屋BOTTOM_LINE False 必要悪 紫陽花 お別れの唄 妄想日記 循環 ノイロヲゼパアティー できそこない 青 吉開学17歳_(無職)
+quattro_oneman クワトロワンマン 2004-08-30 渋谷CLUB_QUATTRO False 紫陽花 妄想日記 隣人 青 循環 ? 土曜日の女 ノイロヲゼパアティー 必要悪 ? ドラムソロ お別れの唄 できそこない 吉開学17歳_(無職) encore Blurry_Eyes 私は雨
+hevn_no_omatsuri_3 hevnのお祭り 2004-09-04 目黒鹿鳴館 False 紫陽花 隣人 土曜日の女 吉開学17歳_(無職)
+hevn_no_omatsuri_soukan_2years_01 hevnのお祭り！天まで飛ぼう!!～hevn創刊2周年記念イベント東名阪TOUR～_#01 2004-09-07 渋谷O-WEST True 吉開学17歳_(無職) できそこない 土曜日の女 隣人 必要悪 妄想日記 青 循環 紫陽花
+hevn_no_omatsuri_soukan_2years_02 hevnのお祭り！天まで飛ぼう!!～hevn創刊2周年記念イベント東名阪TOUR～_#02 2004-10-01 大阪バナナホール True 紫陽花 お別れの唄 できそこない 土曜日の女 隣人 循環 空の便箋、空への手紙
+hevn_no_omatsuri_soukan_2years_03 hevnのお祭り！天まで飛ぼう!!～hevn創刊2周年記念イベント東名阪TOUR～_#03 2004-10-02 名古屋BOTTOM_LINE True 空の便箋、空への手紙 妄想日記 隣人 紫陽花 土曜日の女 循環 吉開学17歳_(無職)
+ohtani_matsuri_01 大谷祭×1_#01 2004-11-03 渋谷O-EAST True 土曜日の女 循環 できそこない 吉開学17歳_(無職) 空の便箋、空への手紙
+ohtani_matsuri_02 大谷祭×1_#02 2004-11-06 OSAKA_MUSE True 空の便箋、空への手紙 隣人 循環 必要悪 吉開学17歳_(無職)
+ohtani_matsuri_03 大谷祭×1_#03 2004-11-13 名古屋club_Diamond_Hall True 紫陽花 妄想日記 空の便箋、空への手紙 隣人 吉開学17歳_(無職)
+suddenly_oneman 急遽、ワンマン 2004-12-09 池袋CYBER False 紫陽花 隣人 バーチャル晩餐会 青 循環 ノイロヲゼパアティー 私は雨 土曜日の女 赤紙シャッフォー お別れの唄 必要悪 吉開学17歳_(無職) encore できそこない 空の便箋、空への手紙
+danger_03 天嘉-参_DANGER_III 2004-12-25 日本武道館 False 青 紫陽花 空の便箋、空への手紙
+beauti-fools_fest_04 Beauti-Fool's_Fest_04 2004-12-26 東京ベイNKホール False 紫陽花 循環 空の便箋、空への手紙

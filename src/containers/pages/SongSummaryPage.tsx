@@ -52,7 +52,7 @@ const SongSummaryPage = (props: Props) => {
       songUid: props.query.id!,
       target: {
         artist: isDifferentArtist,
-        songs: !props.content.songs,
+        songs: true,
         song: isDifferentSong,
         works: !props.content.works,
       },

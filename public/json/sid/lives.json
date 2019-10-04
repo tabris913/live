@@ -14,7 +14,93 @@
       "number": 1
     }
   },
-  "2004": {},
+  "2004": {
+    "2004_tokyo_under_map": { "uid": "2004_tokyo_under_map", "name": "東京UNDER MAP", "is_tour": false, "number": 1 },
+    "2004_tribal_arrival_vol78": {
+      "uid": "2004_tribal_arrival_vol78",
+      "name": "TRIBAL ARRIVAL VOL.78",
+      "is_tour": false,
+      "number": 1
+    },
+    "2004_kinmiraiteki_gensoukukan": {
+      "uid": "2004_kinmiraiteki_gensoukukan",
+      "name": "近未来的幻想空間-バレンタイン大暴走-040214-",
+      "is_tour": false,
+      "number": 1
+    },
+    "2004_hevn_no_omatsuri": {
+      "uid": "2004_hevn_no_omatsuri",
+      "name": "hevnのお祭り-★天まで飛ぼう!★-",
+      "is_tour": false,
+      "number": 1
+    },
+    "2004_takadanobaba_area_oneman": {
+      "uid": "2004_takadanobaba_area_oneman",
+      "name": "高田馬場AREAワンマン",
+      "is_tour": false,
+      "number": 1
+    },
+    "2004_stylish_wave_circuit04": {
+      "uid": "2004_stylish_wave_circuit04",
+      "name": "stylish wave CIRCUIT'04 春の嵐",
+      "is_tour": false,
+      "number": 1
+    },
+    "2004_live_in_do": { "uid": "2004_live_in_do", "name": "Live in (do)", "is_tour": false, "number": 1 },
+    "2004_hevn_two_three": { "uid": "2004_hevn_two_three", "name": "hevnツースリー", "is_tour": false, "number": 1 },
+    "2004_stylish_wave_04": {
+      "uid": "2004_stylish_wave_04",
+      "name": "stylish wave'04 渋谷の大乱",
+      "is_tour": false,
+      "number": 1
+    },
+    "2004_hevn_no_omatsuri_2": {
+      "uid": "2004_hevn_no_omatsuri_2",
+      "name": "hevnのお祭り！★天まで飛ぼう!★～2周年まで★★日です～",
+      "is_tour": true,
+      "number": 3
+    },
+    "2004_stylish_wave_circuis04_natsu": {
+      "uid": "2004_stylish_wave_circuis04_natsu",
+      "name": "stylish wave CIRCUIT'04 夏の陣",
+      "is_tour": true,
+      "number": 8
+    },
+    "2004_stylish_wave_circuit04_manatsu": {
+      "uid": "2004_stylish_wave_circuit04_manatsu",
+      "name": "stylish wave CIRCUIT'04 真夏の狂宴",
+      "is_tour": false,
+      "number": 1
+    },
+    "2004_beat_5years": {
+      "uid": "2004_beat_5years",
+      "name": "BEAT5周年イベント doozer0808",
+      "is_tour": false,
+      "number": 1
+    },
+    "2004_quattro_oneman": { "uid": "2004_quattro_oneman", "name": "クワトロワンマン", "is_tour": false, "number": 1 },
+    "2004_hevn_no_omatsuri_3": {
+      "uid": "2004_hevn_no_omatsuri_3",
+      "name": "hevnのお祭り",
+      "is_tour": false,
+      "number": 1
+    },
+    "2004_hevn_no_omatsuri_soukan_2years": {
+      "uid": "2004_hevn_no_omatsuri_soukan_2years",
+      "name": "hevnのお祭り！天まで飛ぼう!!～hevn創刊2周年記念イベント東名阪TOUR～",
+      "is_tour": true,
+      "number": 3
+    },
+    "2004_ohtani_matsuri": { "uid": "2004_ohtani_matsuri", "name": "大谷祭×1", "is_tour": true, "number": 3 },
+    "2004_suddenly_oneman": { "uid": "2004_suddenly_oneman", "name": "急遽、ワンマン", "is_tour": false, "number": 1 },
+    "2004_danger_03": { "uid": "2004_danger_03", "name": "天嘉-参 DANGER III", "is_tour": false, "number": 1 },
+    "2004_beauti-fools_fest_04": {
+      "uid": "2004_beauti-fools_fest_04",
+      "name": "Beauti-Fool's Fest 04",
+      "is_tour": false,
+      "number": 1
+    }
+  },
   "2005": {
     "2005_renai_tour": {
       "uid": "2005_renai_tour",

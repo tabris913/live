@@ -1,13 +1,13 @@
-import { Button, Descriptions, List, Spin, Divider } from 'antd';
+import { Button, Descriptions, Divider, List, Spin } from 'antd';
 import * as React from 'react';
 import { LiveUid, MainProps } from '../../models/Main';
-import { toSong } from '../../utils/SongUtils';
-import { toTour } from '../../utils/LiveUtils';
 import { toLives } from '../../utils/LivesUtils';
+import { toTour } from '../../utils/LiveUtils';
+import { toSong } from '../../utils/SongUtils';
 
 const Live = (props: MainProps<LiveUid>) => {
   return props.content && props.content.live && props.content.songList ? (
-    <>
+    <div style={{ overflowY: 'auto' }}>
       <Descriptions column={1}>
         <Descriptions.Item label="date">{props.content.live.date}</Descriptions.Item>
         <Descriptions.Item label="place">{props.content.live.place}</Descriptions.Item>
@@ -35,7 +35,6 @@ const Live = (props: MainProps<LiveUid>) => {
           </List.Item>
         )}
         size="small"
-        style={{ overflowY: 'auto' }}
       />
       <Divider />
       <Button
@@ -49,7 +48,7 @@ const Live = (props: MainProps<LiveUid>) => {
       >
         {props.content.live.is_tour ? 'ツアーページへ' : 'ライブ一覧へ'}
       </Button>
-    </>
+    </div>
   ) : (
     <Spin />
   );

@@ -9,7 +9,7 @@ const buttonStyle: React.CSSProperties = { width: 200, fontSize: 20 };
 
 const Artist = (props: MainProps<ArtistUid>) =>
   props.content && props.content.artist ? (
-    <Row style={{ textAlign: 'center' }}>
+    <Row style={{ textAlign: 'center', overflowY: 'auto' }}>
       <Col style={colStyle}>
         <Button type="primary" style={buttonStyle} onClick={() => toLives(props.match.params.id, props.history)}>
           Lives

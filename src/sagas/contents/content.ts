@@ -244,7 +244,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       if (!result.live || !result.songs) throw {};
       result.songList = [];
 
-      let track_count = 1;
+      let track_count = 0;
       for (const songUid of result.live.setlist) {
         let resSong: ISong | undefined;
         if (songUid === 'encore') resSong = Encore;

@@ -1,12 +1,12 @@
-import { Button, Collapse, List, Spin, Typography, Divider } from 'antd';
+import { Button, Collapse, Divider, List, Spin, Typography } from 'antd';
 import * as React from 'react';
 import { LiveUid, MainProps } from '../../models/Main';
-import { toLive, toTour } from '../../utils/LiveUtils';
 import { toArtist } from '../../utils/ArtistUtils';
+import { toLive, toTour } from '../../utils/LiveUtils';
 
 const LiveList = (props: MainProps<LiveUid>) => {
   return (
-    <>
+    <div style={{ overflowY: 'auto' }}>
       <Typography.Title level={4}>ライヴ一覧</Typography.Title>
       {props.content && props.content.lives ? (
         <Collapse style={{ overflowY: 'auto' }}>
@@ -38,7 +38,7 @@ const LiveList = (props: MainProps<LiveUid>) => {
       <Button type="primary" onClick={() => toArtist(props.match.params.id, props.history)} style={{ width: 200 }}>
         アーティストページへ
       </Button>
-    </>
+    </div>
   );
 };
 

@@ -49,7 +49,7 @@ const SongPage = (props: Props) => {
     props.actions.prepareSongPage({
       artistUid: props.match.params.id,
       songUid: props.query.id!,
-      target: { artist: isDifferentArtist, songs: !props.content.songs },
+      target: { artist: isDifferentArtist, songs: true },
     });
   });
 

@@ -1,13 +1,13 @@
-import { Button, Col, List, Row, Spin, Divider } from 'antd';
+import { Button, Col, Divider, List, Row, Spin } from 'antd';
 import * as React from 'react';
 import PageName, { toPublicUrl } from '../../constants/PageName';
 import { MainProps, TourUid } from '../../models/Main';
-import { toLive } from '../../utils/LiveUtils';
 import { toLives } from '../../utils/LivesUtils';
+import { toLive } from '../../utils/LiveUtils';
 
 const Tour = (props: MainProps<TourUid>) => {
   return props.content && props.content.liveList ? (
-    <>
+    <div style={{ overflowY: 'auto' }}>
       <List
         dataSource={props.content.liveList}
         renderItem={item => (
@@ -39,7 +39,7 @@ const Tour = (props: MainProps<TourUid>) => {
       <Button type="primary" onClick={() => toLives(props.match.params.id, props.history)} style={{ width: 200 }}>
         ライブ一覧へ
       </Button>
-    </>
+    </div>
   ) : (
     <Spin />
   );

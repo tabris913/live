@@ -1,9 +1,9 @@
-import { Button, Checkbox, List, Typography, Divider } from 'antd';
+import { Button, Checkbox, Divider, List, Typography } from 'antd';
 import React from 'react';
 import IWork from '../../models/contents/work';
 import { MainProps, TourUid } from '../../models/Main';
-import { toSong } from '../../utils/SongUtils';
 import { toTour } from '../../utils/LiveUtils';
+import { toSong } from '../../utils/SongUtils';
 
 interface State {
   containesSongsFocused: boolean;
@@ -83,7 +83,9 @@ const TourSummary = (props: MainProps<TourUid>) => {
                 <Button type="link" onClick={() => toSong(props.match.params.id, item.uid, props.history)}>
                   {item.name} (
                   {item.misc
-                    ? `${item.misc.times} / ${(item.misc.times / props.content!.liveInfo!.number) * 100}%`
+                    ? `${item.misc.times}回 / ${((item.misc.times / props.content!.liveInfo!.number) * 100).toFixed(
+                        2
+                      )}%`
                     : '?'}
                   )
                 </Button>
@@ -91,7 +93,6 @@ const TourSummary = (props: MainProps<TourUid>) => {
             </List.Item>
           )}
           size="small"
-          style={{ overflowY: 'auto' }}
           bordered={true}
         />
       </>
@@ -100,7 +101,7 @@ const TourSummary = (props: MainProps<TourUid>) => {
     );
 
   return (
-    <>
+    <div style={{ overflowY: 'auto' }}>
       <TimePlayed />
       <p>曲順の法則性とかも表示したい</p>
       {/* memo.txt */}
@@ -112,7 +113,7 @@ const TourSummary = (props: MainProps<TourUid>) => {
       >
         ツアーページへ
       </Button>
-    </>
+    </div>
   );
 };
 
