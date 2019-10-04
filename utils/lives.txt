@@ -1,3 +1,4 @@
-sample サンプル 2019-10-01 渋谷 False 隣人 眩暈
-sample2_01 a 2019-10-02 x True 青
-sample2_02 a 2019-10-03 x True 私は雨
+shounin_yokkyu_01 SID_TOUR_2019_-承認欲求-_#01 2019-09-13 松戸 True 承認欲求 see_through アリバイ V.I.P 2月 手 淡い足跡 罠 妄想日記 Trick ポジティブの魔法 ホソイコエ Blood_Vessel MUSIC Dear_Tokyo その未来へ 涙雨 encore デアイ＝キセキ サマラバ 夏恋 君色の朝
+shounin_yokkyu_02 SID_TOUR_2019_-承認欲求-_#02 2019-09-14 松戸 True 承認欲求 see_through ANNIVERSARY V.I.P 2月 手 淡い足跡 罠 妄想日記 Trick ポジティブの魔法 ホソイコエ Blood_Vessel MUSIC Dear_Tokyo その未来へ 涙雨 encore デアイ＝キセキ 循環 Re:Dreamer one_way 君色の朝
+shounin_yokkyu_03 SID_TOUR_2019_-承認欲求-_#03 2019-09-23 群馬 True 承認欲求 see_through ANNIVERSARY MUSIC 2月 手 淡い足跡 罠 妄想日記 Trick ポジティブの魔法 ホソイコエ Blood_Vessel プロポーズ Dear_Tokyo その未来へ 涙雨 encore デアイ＝キセキ 循環 エール one_way 君色の朝
+shounin_yokkyu_04 SID_TOUR_2019_-承認欲求-_#04 2019-09-25 川崎 True 承認欲求 see_through ANNIVERSARY MUSIC 2月 手 淡い足跡 罠 妄想日記 Trick ポジティブの魔法 ホソイコエ Blood_Vessel プロポーズ 敬礼ボウイ その未来へ 涙雨 encore デアイ＝キセキ 循環 dummy one_way 君色の朝

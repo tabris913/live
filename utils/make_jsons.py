@@ -55,7 +55,7 @@ def add_live(
         LIVES[year].update({
             title: {
                 'uid': title,
-                'name': name,
+                'name': name if not is_tour else ' '.join(name.split(' ')[:-1]),
                 'is_tour': is_tour,
                 'number': LIVES[year][title]['number'] + 1 if is_tour and title in LIVES[year] else 1
             }
@@ -194,9 +194,18 @@ if __name__ == "__main__":
                 # print(list(songs))
 
     # add live
-    if False:
+    if True:
         with open('lives.txt', 'r', encoding='utf-8') as file:
             lives = map(str.strip, file.readlines())
             for live in lives:
                 uid, name, date, place, is_tour, *songs = live.split(' ')
-                add_live(uid, name, date, place, songs, eval(is_tour))
+                add_live(
+                    uid,
+                    name.replace(
+                        '_',
+                        ' '),
+                    date,
+                    place,
+                    list(map(lambda x: x.replace('_', ' '), songs)),
+                    eval(is_tour)
+                )
