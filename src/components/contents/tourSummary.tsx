@@ -58,15 +58,19 @@ const TourSummary = (props: MainProps<TourUid>) => {
           dataSource={props.content.songList
             .filter(song => (localState.containesSongsFocused ? true : !localState.isFocused[song.uid as string]))
             .sort((a, b) => {
-              if (a.misc!.times < b.misc!.times) return 1;
-              if (a.misc!.times > b.misc!.times) return -1;
+              if (a.misc && b.misc) {
+                if (a.misc!.times < b.misc!.times) return 1;
+                if (a.misc!.times > b.misc!.times) return -1;
+              }
               // 回数が同じなら uid 順
               return Number(a.uid.slice(-3)) < Number(b.uid.slice(-3)) ? -1 : 1;
             })}
           renderItem={item => (
             <List.Item>
               <Button type="link" onClick={() => toSong(props.match.params.id, item.uid, props.history)}>
-                {item.name} ({item.misc!.times})
+                {item.name} (
+                {item.misc ? `${item.misc.times} / ${(item.misc.times / props.content!.liveInfo!.number) * 100}%` : '?'}
+                )
               </Button>
             </List.Item>
           )}

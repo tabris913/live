@@ -36,7 +36,11 @@ def add_live(
     }
     for idx, song in enumerate(songs):
         if song != 'encore':
-            obj['setlist'][idx] = CONVERTED_SONGS[song]
+            if (song in CONVERTED_SONGS):
+                obj['setlist'][idx] = CONVERTED_SONGS[song]
+            else:
+                print(f'{song} is unknown')
+                obj['setlist'][idx] = f'[unknown] {song}'
         else:
             obj['setlist'][idx] = song
     json.dump(

@@ -23,5 +23,13 @@
       "number": 3,
       "relatedWork": "sid_al01"
     }
+  },
+  "2019": {
+    "2019_shounin_yokkyu": {
+      "uid": "2019_shounin_yokkyu",
+      "name": "SID TOUR 2019 -承認欲求-",
+      "is_tour": true,
+      "number": 4
+    }
   }
 }
