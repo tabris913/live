@@ -1,13 +1,7 @@
-stylish_wave_circuit04_manatsu stylish_wave_CIRCUIT'04_真夏の狂宴 2004-08-01 川崎クラブチッタ False 紫陽花 循環 ノイロヲゼパアティー 吉開学17歳_(無職)
-beat_5years BEAT5周年イベント_doozer0808 2004-08-08 名古屋BOTTOM_LINE False 必要悪 紫陽花 お別れの唄 妄想日記 循環 ノイロヲゼパアティー できそこない 青 吉開学17歳_(無職)
-quattro_oneman クワトロワンマン 2004-08-30 渋谷CLUB_QUATTRO False 紫陽花 妄想日記 隣人 青 循環 ? 土曜日の女 ノイロヲゼパアティー 必要悪 ? ドラムソロ お別れの唄 できそこない 吉開学17歳_(無職) encore Blurry_Eyes 私は雨
-hevn_no_omatsuri_3 hevnのお祭り 2004-09-04 目黒鹿鳴館 False 紫陽花 隣人 土曜日の女 吉開学17歳_(無職)
-hevn_no_omatsuri_soukan_2years_01 hevnのお祭り！天まで飛ぼう!!～hevn創刊2周年記念イベント東名阪TOUR～_#01 2004-09-07 渋谷O-WEST True 吉開学17歳_(無職) できそこない 土曜日の女 隣人 必要悪 妄想日記 青 循環 紫陽花
-hevn_no_omatsuri_soukan_2years_02 hevnのお祭り！天まで飛ぼう!!～hevn創刊2周年記念イベント東名阪TOUR～_#02 2004-10-01 大阪バナナホール True 紫陽花 お別れの唄 できそこない 土曜日の女 隣人 循環 空の便箋、空への手紙
-hevn_no_omatsuri_soukan_2years_03 hevnのお祭り！天まで飛ぼう!!～hevn創刊2周年記念イベント東名阪TOUR～_#03 2004-10-02 名古屋BOTTOM_LINE True 空の便箋、空への手紙 妄想日記 隣人 紫陽花 土曜日の女 循環 吉開学17歳_(無職)
-ohtani_matsuri_01 大谷祭×1_#01 2004-11-03 渋谷O-EAST True 土曜日の女 循環 できそこない 吉開学17歳_(無職) 空の便箋、空への手紙
-ohtani_matsuri_02 大谷祭×1_#02 2004-11-06 OSAKA_MUSE True 空の便箋、空への手紙 隣人 循環 必要悪 吉開学17歳_(無職)
-ohtani_matsuri_03 大谷祭×1_#03 2004-11-13 名古屋club_Diamond_Hall True 紫陽花 妄想日記 空の便箋、空への手紙 隣人 吉開学17歳_(無職)
-suddenly_oneman 急遽、ワンマン 2004-12-09 池袋CYBER False 紫陽花 隣人 バーチャル晩餐会 青 循環 ノイロヲゼパアティー 私は雨 土曜日の女 赤紙シャッフォー お別れの唄 必要悪 吉開学17歳_(無職) encore できそこない 空の便箋、空への手紙
-danger_03 天嘉-参_DANGER_III 2004-12-25 日本武道館 False 青 紫陽花 空の便箋、空への手紙
-beauti-fools_fest_04 Beauti-Fool's_Fest_04 2004-12-26 東京ベイNKホール False 紫陽花 循環 空の便箋、空への手紙
+independence-d-vol0 INDEPENDENCE-D_VOL.0_DAY#3>>METAL_/_SHOCK_ROCK 2005-03-13 新木場STUDIO_COAST False 紫陽花 循環 妄想日記 できそこない 吉開学17歳_(無職)
+secret_live シークレットライブ 2005-04-21 目黒鹿鳴館 False 紫陽花 循環 隣人 空の便箋、空への手紙
+darkness_wing_of_pain Darkness_wing_of_pain_～傷ついた翼を広げて～ 2005-04-24 品川プリンスホテル_stella_Ball False 青 バーチャル晩餐会 隣人 赤紙シャッフォー 土曜日の女 紫陽花 ノイロヲゼパアティー Sweet? 妄想日記 お別れの唄 必要悪 私は雨 循環 できそこない 吉開学17歳_(無職) encore 合鍵 encore 空の便箋、空への手紙
+stylish_wave05 stylish_wave'05_渋谷の大乱 2005-05-01 SHIBUYA-AX False 合鍵 隣人 循環 空の便箋、空への手紙 吉開学17歳_(無職)
+kakugari_only_01 角刈り限定ライブ(嘘) 2005-07-25 昭和女子大学人見記念講堂 False 紫陽花 Re:Dreamer バーチャル晩餐会 赤紙シャッフォー 合鍵 土曜日の女 ノイロヲゼパアティー お別れの唄 私は雨 アリバイ 隣人 吉開学17歳_(無職) 妄想日記 循環 できそこない 空の便箋、空への手紙 encore 微熱
+kakugari_only_02 角刈り限定ライブ(嘘) 2005-07-26 昭和女子大学人見記念講堂 False Re:Dreamer 隣人 バーチャル晩餐会 赤紙シャッフォー 合鍵 土曜日の女 青 空の便箋、空への手紙 紫陽花 必要悪 ノイロヲゼパアティー アリバイ 妄想日記 循環 できそこない 吉開学17歳_(無職) encore 微熱
+id-s_hossoku ID-S_発足記念イベント 2005-10-04 SHIBUYA-AX False アリバイ 土曜日の女 空の便箋、空への手紙 紫陽花 微熱 Sweet?
