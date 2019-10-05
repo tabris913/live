@@ -29,7 +29,6 @@ const SongSummary = (props: MainProps<SongUid>) => {
     const timesEachTour = {};
     const front = {};
     const back = {};
-    console.log(props.content);
     if (props.content && props.content.liveList) {
       if (props.content.lives) {
         for (const year of Object.keys(props.content.lives)) {
@@ -70,7 +69,6 @@ const SongSummary = (props: MainProps<SongUid>) => {
         }
       }
     }
-    console.log(timesEachTour, front, back);
     setLocalState({ ...localState, timesEachTour: timesEachTour, neighbour: { front: front, back: back } });
   });
 
@@ -106,11 +104,14 @@ const SongSummary = (props: MainProps<SongUid>) => {
   // ライブでやるときの位置
   const Position = () => <></>;
 
+  let frontTop5 = 0;
+  let backTop5 = 0;
+
   // 前後
   const Neighbour = () => {
     return props.content ? (
       <>
-        <Typography.Title level={4}>前後</Typography.Title>
+        <Typography.Title level={4}>前後 上位5</Typography.Title>
         {localState.neighbour && props.content && props.content.songs ? (
           <>
             <Typography.Text style={{ fontSize: 16 }} strong={true}>
@@ -119,15 +120,17 @@ const SongSummary = (props: MainProps<SongUid>) => {
             {Object.keys(localState.neighbour.front).length > 0 ? (
               <List
                 dataSource={Object.entries(localState.neighbour.front).sort((a, b) => (a[1] < b[1] ? 1 : -1))}
-                renderItem={([songUid, times]) =>
-                  Object.keys(props.content!.songs!).includes(songUid) ? (
-                    <List.Item>
-                      <Button type="link">{props.content!.songs![songUid].name}</Button> ({times})
-                    </List.Item>
-                  ) : (
-                    <></>
-                  )
-                }
+                renderItem={([songUid, times], idx) => {
+                  if (Object.keys(props.content!.songs!).includes(songUid) && (idx < 5 || times === frontTop5)) {
+                    frontTop5 = times;
+                    return (
+                      <List.Item>
+                        <Button type="link">{props.content!.songs![songUid].name}</Button> ({times})
+                      </List.Item>
+                    );
+                  }
+                  return <></>;
+                }}
                 size="small"
               />
             ) : (
@@ -139,15 +142,17 @@ const SongSummary = (props: MainProps<SongUid>) => {
             {Object.keys(localState.neighbour.back).length > 0 ? (
               <List
                 dataSource={Object.entries(localState.neighbour.back).sort((a, b) => (a[1] < b[1] ? 1 : -1))}
-                renderItem={([songUid, times]) =>
-                  Object.keys(props.content!.songs!).includes(songUid) ? (
-                    <List.Item>
-                      <Button type="link">{props.content!.songs![songUid].name}</Button> ({times})
-                    </List.Item>
-                  ) : (
-                    <></>
-                  )
-                }
+                renderItem={([songUid, times], idx) => {
+                  if (Object.keys(props.content!.songs!).includes(songUid) && (idx < 5 || times === backTop5)) {
+                    backTop5 = times;
+                    return (
+                      <List.Item>
+                        <Button type="link">{props.content!.songs![songUid].name}</Button> ({times})
+                      </List.Item>
+                    );
+                  }
+                  return <></>;
+                }}
                 size="small"
               />
             ) : (
