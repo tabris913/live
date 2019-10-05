@@ -1,8 +1,8 @@
-independence-d independence-D 2006-03-05 新木場STUDIO_COAST False 隣人 dummy 循環 ホソイコエ キャラメル 吉開学17歳_(無職)
-spring_special_01 2006._Spring_Special_#01 2006-04-16 東京国際フォーラム・ホールA False 紫陽花 林檎飴 Sweet? 隣人 合鍵 土曜日の女 刺と猫 青いレンガ その代償 お別れの唄 妄想日記 dummy 循環 できそこない 吉開学17歳_(無職) ホソイコエ 空の便箋、空への手紙 encore 星の都 キャラメル Re:Dreamer アリバイ エール encore chapter_1 微熱
-spring_special_02 2006._Spring_Special_#02 2006-04-30 大阪厚生年金会館大ホール False 林檎飴 Sweet? Re:Dreamer 隣人 赤紙シャッフォー 紫陽花 土曜日の女 合鍵 お別れの唄 青いレンガ 空の便箋、空への手紙 妄想日記 dummy 循環 できそこない 吉開学17歳_(無職) ホソイコエ encore 星の都 キャラメル encore chapter_1 アリバイ エール 微熱
-live_for_lolita LIVE_FOR_LOLITA 2006-08-24 高田馬場AREA False dummy できそこない 妄想日記 吉開学17歳_(無職) 青 必要悪 隣人 Sweet? Re:Dreamer エール encore 赤紙シャッフォー encore 循環 吉開学17歳_(無職)
-live_for_id-s_I LIVE_FOR_ID-S_I 2006-08-25 高田馬場AREA False 林檎飴 Sweet? Re:Dreamer キャラメル 刺と猫 私は雨 エール 循環 隣人 赤紙シャッフォー encore 御手紙 吉開学17歳_(無職)
-summer_festa_2006 Summer_Festa_2006_「LIVE_AT_BUDOKAN」 2006-08-29 日本武道館 False chapter_1 Re:Dreamer 赤紙シャッフォー 紫陽花 刺と猫 合鍵 空の便箋、空への手紙 キャラメル 星の都 妄想日記 dummy ホソイコエ 御手紙 アリバイ Sweet? 循環 エール encore できそこない 隣人 吉開学17歳_(無職) 微熱
-danger_05 天嘉-伍_DANGER_V 2006-12-25 日本武道館 False 御手紙 chapter_1 Sweet? スロウ 空の便箋、空への手紙
-tour0607_play_01 SID_TOUR_06⇒07_"play"_#01 2006-12-28 市原市市民会館大ホール True 罠 汚れた指 Room Re:Dreamer 妄想日記 隣人 ミルク 白いブラウス_可愛い人 シャッタースピード ホソイコエ 御手紙 chapter_1 スロウ Sweet? エール park 吉開学17歳_(無職) encore 循環 dummy 星の都 アリバイ live
+what's_in_zepp_tour_2007_01 LIVE_for_MUSIC_PEOPLE_WE_LOVE_MUSIC_@ZEPP_TOUR_2007_#01 2007-09-11 Zepp_Fukuoka True 夏恋 Sweet? 蜜指_～ミツユビ～ ハナビラ プロポーズ 妄想日記 エール encore スロウ
+what's_in_zepp_tour_2007_02 LIVE_for_MUSIC_PEOPLE_WE_LOVE_MUSIC_@ZEPP_TOUR_2007_#02 2007-09-13 Zepp_Nagoya True 夏恋 スロウ 蜜指_～ミツユビ～ Sweet? 御手紙 妄想日記 循環 エール encore 空の便箋、空への手紙
+what's_in_zepp_tour_2007_03 LIVE_for_MUSIC_PEOPLE_WE_LOVE_MUSIC_@ZEPP_TOUR_2007_#03 2007-09-14 Zepp_Osaka True 紫陽花 Sweet? 隣人 蜜指_～ミツユビ～ 御手紙 妄想日記 エール encore 夏恋
+what's_in_zepp_tour_2007_04 LIVE_for_MUSIC_PEOPLE_WE_LOVE_MUSIC_@ZEPP_TOUR_2007_#04 2007-09-18 Zepp_Sendai True ミルク Sweet? 隣人 蜜指_～ミツユビ～ 御手紙 妄想日記 エール encore 夏恋
+what's_in_zepp_tour_2007_05 LIVE_for_MUSIC_PEOPLE_WE_LOVE_MUSIC_@ZEPP_TOUR_2007_#05 2007-09-20 Zepp_Kanazawa True 夏恋 Sweet? 蜜指_～ミツユビ～ 御手紙 妄想日記 循環 エール encore 微熱
+what's_in_zepp_tour_2007_06 LIVE_for_MUSIC_PEOPLE_WE_LOVE_MUSIC_@ZEPP_TOUR_2007_#06 2007-09-24 Zepp_Tokyo True 合鍵 Sweet? 隣人 蜜指_～ミツユビ～ 御手紙 循環 妄想日記 エール encore 夏恋 微熱
+id-s_2years シドFC発足2周年記念イベントです_ズキューン_バキューン_ズッコケ四兄弟が来た夜は木曜日です 2007-10-04 LIQUID_ROOM False 合鍵 夏恋 Sweet? 妄想日記 必要悪 御手紙 蜜指_～ミツユビ～ 小さな幸せ 隣人 循環 プロポーズ 吉開学17歳_(無職) encore ノイロヲゼパアティー 罠 dummy エール 涙の温度
+jack_in_the_box_2007 社名変更記念イベント「天嘉」改め「JACK_IN_THE_BOX_2007」 2007-12-26 日本武道館 False 私は雨 夏恋 Sweet? エール 涙の温度
