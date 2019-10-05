@@ -108,6 +108,52 @@
       "is_tour": true,
       "number": 3,
       "relatedWorks": ["sid_al01"]
+    },
+    "2005_independence-d-vol0": {
+      "uid": "2005_independence-d-vol0",
+      "name": "INDEPENDENCE-D VOL.0 DAY#3>>METAL / SHOCK ROCK",
+      "is_tour": false,
+      "number": 1
+    },
+    "2005_secret_live": { "uid": "2005_secret_live", "name": "シークレットライブ", "is_tour": false, "number": 1 },
+    "2005_darkness_wing_of_pain": {
+      "uid": "2005_darkness_wing_of_pain",
+      "name": "Darkness wing of pain ～傷ついた翼を広げて～",
+      "is_tour": false,
+      "number": 1
+    },
+    "2005_stylish_wave05": {
+      "uid": "2005_stylish_wave05",
+      "name": "stylish wave'05 渋谷の大乱",
+      "is_tour": false,
+      "number": 1
+    },
+    "2005_kakugari_only_01": {
+      "uid": "2005_kakugari_only_01",
+      "name": "角刈り限定ライブ(嘘)",
+      "is_tour": false,
+      "number": 1
+    },
+    "2005_kakugari_only_02": {
+      "uid": "2005_kakugari_only_02",
+      "name": "角刈り限定ライブ(嘘)",
+      "is_tour": false,
+      "number": 1
+    },
+    "2005_id-s_hossoku": { "uid": "2005_id-s_hossoku", "name": "ID-S 発足記念イベント", "is_tour": false, "number": 1 },
+    "2005_autumn_tour_sweet": {
+      "uid": "2005_autumn_tour_sweet",
+      "name": "2005 Autumn Tour \"Sweet?\"",
+      "is_tour": true,
+      "number": 10,
+      "relatedWorks": ["sid_sg04", "sid_al02"]
+    },
+    "2005_danger_04": { "uid": "2005_danger_04", "name": "天嘉-四 DANGER IV", "is_tour": false, "number": 1 },
+    "2005_beat_shuffle_live_side_2005": {
+      "uid": "2005_beat_shuffle_live_side_2005",
+      "name": "BEAT SHUFFLE LIVE SIDE 2005～7th Anniversary～",
+      "is_tour": false,
+      "number": 1
     }
   },
   "2019": {

@@ -1,7 +1,8 @@
-independence-d-vol0 INDEPENDENCE-D_VOL.0_DAY#3>>METAL_/_SHOCK_ROCK 2005-03-13 新木場STUDIO_COAST False 紫陽花 循環 妄想日記 できそこない 吉開学17歳_(無職)
-secret_live シークレットライブ 2005-04-21 目黒鹿鳴館 False 紫陽花 循環 隣人 空の便箋、空への手紙
-darkness_wing_of_pain Darkness_wing_of_pain_～傷ついた翼を広げて～ 2005-04-24 品川プリンスホテル_stella_Ball False 青 バーチャル晩餐会 隣人 赤紙シャッフォー 土曜日の女 紫陽花 ノイロヲゼパアティー Sweet? 妄想日記 お別れの唄 必要悪 私は雨 循環 できそこない 吉開学17歳_(無職) encore 合鍵 encore 空の便箋、空への手紙
-stylish_wave05 stylish_wave'05_渋谷の大乱 2005-05-01 SHIBUYA-AX False 合鍵 隣人 循環 空の便箋、空への手紙 吉開学17歳_(無職)
-kakugari_only_01 角刈り限定ライブ(嘘) 2005-07-25 昭和女子大学人見記念講堂 False 紫陽花 Re:Dreamer バーチャル晩餐会 赤紙シャッフォー 合鍵 土曜日の女 ノイロヲゼパアティー お別れの唄 私は雨 アリバイ 隣人 吉開学17歳_(無職) 妄想日記 循環 できそこない 空の便箋、空への手紙 encore 微熱
-kakugari_only_02 角刈り限定ライブ(嘘) 2005-07-26 昭和女子大学人見記念講堂 False Re:Dreamer 隣人 バーチャル晩餐会 赤紙シャッフォー 合鍵 土曜日の女 青 空の便箋、空への手紙 紫陽花 必要悪 ノイロヲゼパアティー アリバイ 妄想日記 循環 できそこない 吉開学17歳_(無職) encore 微熱
-id-s_hossoku ID-S_発足記念イベント 2005-10-04 SHIBUYA-AX False アリバイ 土曜日の女 空の便箋、空への手紙 紫陽花 微熱 Sweet?
+independence-d independence-D 2006-03-05 新木場STUDIO_COAST False 隣人 dummy 循環 ホソイコエ キャラメル 吉開学17歳_(無職)
+spring_special_01 2006._Spring_Special_#01 2006-04-16 東京国際フォーラム・ホールA False 紫陽花 林檎飴 Sweet? 隣人 合鍵 土曜日の女 刺と猫 青いレンガ その代償 お別れの唄 妄想日記 dummy 循環 できそこない 吉開学17歳_(無職) ホソイコエ 空の便箋、空への手紙 encore 星の都 キャラメル Re:Dreamer アリバイ エール encore chapter_1 微熱
+spring_special_02 2006._Spring_Special_#02 2006-04-30 大阪厚生年金会館大ホール False 林檎飴 Sweet? Re:Dreamer 隣人 赤紙シャッフォー 紫陽花 土曜日の女 合鍵 お別れの唄 青いレンガ 空の便箋、空への手紙 妄想日記 dummy 循環 できそこない 吉開学17歳_(無職) ホソイコエ encore 星の都 キャラメル encore chapter_1 アリバイ エール 微熱
+live_for_lolita LIVE_FOR_LOLITA 2006-08-24 高田馬場AREA False dummy できそこない 妄想日記 吉開学17歳_(無職) 青 必要悪 隣人 Sweet? Re:Dreamer エール encore 赤紙シャッフォー encore 循環 吉開学17歳_(無職)
+live_for_id-s_I LIVE_FOR_ID-S_I 2006-08-25 高田馬場AREA False 林檎飴 Sweet? Re:Dreamer キャラメル 刺と猫 私は雨 エール 循環 隣人 赤紙シャッフォー encore 御手紙 吉開学17歳_(無職)
+summer_festa_2006 Summer_Festa_2006_「LIVE_AT_BUDOKAN」 2006-08-29 日本武道館 False chapter_1 Re:Dreamer 赤紙シャッフォー 紫陽花 刺と猫 合鍵 空の便箋、空への手紙 キャラメル 星の都 妄想日記 dummy ホソイコエ 御手紙 アリバイ Sweet? 循環 エール encore できそこない 隣人 吉開学17歳_(無職) 微熱
+danger_05 天嘉-伍_DANGER_V 2006-12-25 日本武道館 False 御手紙 chapter_1 Sweet? スロウ 空の便箋、空への手紙
+tour0607_play_01 SID_TOUR_06⇒07_"play"_#01 2006-12-28 市原市市民会館大ホール True 罠 汚れた指 Room Re:Dreamer 妄想日記 隣人 ミルク 白いブラウス_可愛い人 シャッタースピード ホソイコエ 御手紙 chapter_1 スロウ Sweet? エール park 吉開学17歳_(無職) encore 循環 dummy 星の都 アリバイ live

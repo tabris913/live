@@ -354,6 +354,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
         if (resLive) {
           result.liveList.push(resLive);
           for (const songUid of resLive.setlist) {
+            if (['?', '...'].includes(songUid as string)) continue;
             songPlayed[songUid] = Object.keys(songPlayed).includes(songUid) ? songPlayed[songUid] + 1 : 1;
           }
         }
@@ -362,6 +363,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       result.songList = [];
       for (const songUid of Object.keys(songPlayed)) {
         if (songUid.startsWith('[unknown]')) {
+          if (['[unknown] ?', '[unknown] ...'].includes(songUid as string)) continue;
           result.songList.push({ uid: songUid, name: songUid.slice(10), misc: { times: songPlayed[songUid] } });
         } else {
           const resSong: ReturnedType<typeof apis.getSong> = yield call(apis.getSong, {
