@@ -1,8 +1,2 @@
-what's_in_zepp_tour_2007_01 LIVE_for_MUSIC_PEOPLE_WE_LOVE_MUSIC_@ZEPP_TOUR_2007_#01 2007-09-11 Zepp_Fukuoka True 夏恋 Sweet? 蜜指_～ミツユビ～ ハナビラ プロポーズ 妄想日記 エール encore スロウ
-what's_in_zepp_tour_2007_02 LIVE_for_MUSIC_PEOPLE_WE_LOVE_MUSIC_@ZEPP_TOUR_2007_#02 2007-09-13 Zepp_Nagoya True 夏恋 スロウ 蜜指_～ミツユビ～ Sweet? 御手紙 妄想日記 循環 エール encore 空の便箋、空への手紙
-what's_in_zepp_tour_2007_03 LIVE_for_MUSIC_PEOPLE_WE_LOVE_MUSIC_@ZEPP_TOUR_2007_#03 2007-09-14 Zepp_Osaka True 紫陽花 Sweet? 隣人 蜜指_～ミツユビ～ 御手紙 妄想日記 エール encore 夏恋
-what's_in_zepp_tour_2007_04 LIVE_for_MUSIC_PEOPLE_WE_LOVE_MUSIC_@ZEPP_TOUR_2007_#04 2007-09-18 Zepp_Sendai True ミルク Sweet? 隣人 蜜指_～ミツユビ～ 御手紙 妄想日記 エール encore 夏恋
-what's_in_zepp_tour_2007_05 LIVE_for_MUSIC_PEOPLE_WE_LOVE_MUSIC_@ZEPP_TOUR_2007_#05 2007-09-20 Zepp_Kanazawa True 夏恋 Sweet? 蜜指_～ミツユビ～ 御手紙 妄想日記 循環 エール encore 微熱
-what's_in_zepp_tour_2007_06 LIVE_for_MUSIC_PEOPLE_WE_LOVE_MUSIC_@ZEPP_TOUR_2007_#06 2007-09-24 Zepp_Tokyo True 合鍵 Sweet? 隣人 蜜指_～ミツユビ～ 御手紙 循環 妄想日記 エール encore 夏恋 微熱
-id-s_2years シドFC発足2周年記念イベントです_ズキューン_バキューン_ズッコケ四兄弟が来た夜は木曜日です 2007-10-04 LIQUID_ROOM False 合鍵 夏恋 Sweet? 妄想日記 必要悪 御手紙 蜜指_～ミツユビ～ 小さな幸せ 隣人 循環 プロポーズ 吉開学17歳_(無職) encore ノイロヲゼパアティー 罠 dummy エール 涙の温度
-jack_in_the_box_2007 社名変更記念イベント「天嘉」改め「JACK_IN_THE_BOX_2007」 2007-12-26 日本武道館 False 私は雨 夏恋 Sweet? エール 涙の温度
+id-s_3years_01 シドvsシド 2008-10-01 大阪BIG_CAT False 夏恋 smile 妄想日記 蜜指_～ミツユビ～ 隣人 赤紙シャッフォー 合鍵 ミルク 御手紙 モノクロのキス 循環 プロポーズ 右手のスプーンと初恋とナイフ encore 眩暈 dummy 吉開学17歳_(無職) encore エール
+id-s_3years_02 シドvsシド 2008-10-04 SHIBUYA-AX False 夏恋 smile Re:Dreamer 蜜指_～ミツユビ～ 妄想日記 赤紙シャッフォー 合鍵 刺と猫 御手紙 モノクロのキス 循環 Sweet? Dear_Tokyo encore 眩暈 プロポーズ dummy 吉開学17歳_(無職) encore エール

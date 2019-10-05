@@ -49,15 +49,20 @@ const TourSummary = (props: MainProps<TourUid>) => {
   });
 
   const TimePlayed = () =>
-    props.content && props.content.songList ? (
+    props.content && props.content.songList && props.content.liveInfo ? (
       <>
         <Typography.Title level={4}>曲ごとの演奏回数</Typography.Title>
-        <Checkbox
-          checked={localState.containesSongsFocused}
-          onChange={e => setLocalState({ ...localState, containesSongsFocused: e.target.checked })}
-        >
-          フォーカス曲を含む
-        </Checkbox>
+        {props.content.liveInfo.relatedWorks ? (
+          <Checkbox
+            checked={localState.containesSongsFocused}
+            onChange={e => setLocalState({ ...localState, containesSongsFocused: e.target.checked })}
+          >
+            フォーカス曲を含む
+          </Checkbox>
+        ) : (
+          <></>
+        )}
+
         <List
           dataSource={props.content.songList
             .filter(song => (localState.containesSongsFocused ? true : !localState.isFocused[song.uid as string]))
