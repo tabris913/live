@@ -25,16 +25,27 @@ def convert(string: str) -> str:
 
 
 if __name__ == '__main__':
-    s = '''証言
+    s = '''(新曲)
+誘感コレクション
 Dear Tokyo
-ワイフ
-日傘
-いつか
+レイニーデイ
 冬のベンチ
-歌姫
+モノクロのキス
+合鍵
+sleep
+残り香
+嘘
+アリバイ
+gossip!!
+smile
 one way
-Sympathy
+S
+
+私は雨
+夏恋
+Re:Dreamer
 眩暈
-2月'''
+Sympathy
+涙の温度'''
 
     convert(s)
