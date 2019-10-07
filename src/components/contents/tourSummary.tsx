@@ -1,5 +1,6 @@
 import { Button, Checkbox, Divider, List, Typography } from 'antd';
 import React from 'react';
+import ISong from '../../models/contents/song';
 import IWork from '../../models/contents/work';
 import { MainProps, TourUid } from '../../models/Main';
 import { toTour } from '../../utils/LiveUtils';
@@ -22,11 +23,13 @@ const TourSummary = (props: MainProps<TourUid>) => {
 
   React.useState(() => {
     if (props.content) {
-      const relatedWorks: IWork[] = [];
-      if (props.content.works && props.content.liveInfo && props.content.liveInfo.relatedWorks) {
+      const relatedWorks: Array<IWork | ISong> = [];
+      if (props.content.works && props.content.songs && props.content.liveInfo && props.content.liveInfo.relatedWorks) {
         for (const relatedWork of props.content.liveInfo.relatedWorks) {
           if (Object.keys(props.content.works).includes(relatedWork as string)) {
             relatedWorks.push(props.content.works[relatedWork as string]);
+          } else if (Object.keys(props.content.songs).includes(relatedWork as string)) {
+            relatedWorks.push(props.content.songs[relatedWork as string]);
           }
         }
       }
@@ -38,7 +41,11 @@ const TourSummary = (props: MainProps<TourUid>) => {
               ...prev,
               [current.uid as string]:
                 relatedWorks.length > 0
-                  ? relatedWorks.filter(relatedWork => relatedWork.songs.includes(current.uid)).length > 0
+                  ? relatedWorks.filter(relatedWork =>
+                      Object.keys(relatedWork).includes('songs')
+                        ? (relatedWork as IWork).songs.includes(current.uid)
+                        : (relatedWork as ISong).uid === current.uid
+                    ).length > 0
                   : false,
             }),
             {}

@@ -56,7 +56,7 @@ const TourSummaryPage = (props: Props) => {
     });
   });
 
-  return props.content.liveInfo && props.content.artist && props.content.works ? (
+  return props.content.liveInfo && props.content.artist && props.content.works && props.content.songs ? (
     <Wireframe
       title={`${props.content.liveInfo.name}`}
       breadcrump={[

@@ -10,7 +10,7 @@ export interface ILives {
 export interface ILiveInfo extends IContent<LiveUid | TourUid> {
   is_tour: boolean;
   number: number;
-  relatedWorks?: WorkUid[];
+  relatedWorks?: Array<WorkUid | SongUid>;
 }
 
 export default interface ILive extends IContent<LiveUid> {

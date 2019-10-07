@@ -340,6 +340,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       const result: IContentState = {
         liveInfo: yield call(apis.getLiveInfo, { artistUid: req.artistUid, liveUid: req.tourUid }),
         works: yield call(apis.getWorks, req),
+        songs: yield call(apis.getSongs, req),
       };
       if (!result.liveInfo) throw {};
       result.liveList = [];
