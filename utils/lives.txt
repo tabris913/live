@@ -1,23 +1,29 @@
-m&w_preview_01 TOUR_2012_「M&W」preview_#01 2012-06-01 桐生市市民文化会館　シルクホール True (新曲) 誘感コレクション Dear_Tokyo レイニーデイ 冬のベンチ モノクロのキス 合鍵 sleep 残り香 嘘 アリバイ gossip!! smile one_way S encore 2月 サーカス 夏恋 Sympathy 涙の温度
-m&w_preview_02 TOUR_2012_「M&W」preview_#02 2012-06-06 盛岡市民文化ホール　大ホール True (新曲) 誘感コレクション Dear_Tokyo レイニーデイ 冬のベンチ モノクロのキス 合鍵 sleep 残り香 嘘 アリバイ gossip!! smile one_way S encore 日傘 妄想日記 妄想日記2 エール 涙の温度
-m&w_preview_03 TOUR_2012_「M&W」preview_#03 2012-06-08 郡山市民文化センター　大ホール True (新曲) 誘感コレクション Dear_Tokyo レイニーデイ 冬のベンチ モノクロのキス 合鍵 sleep 残り香 嘘 アリバイ gossip!! smile one_way S encore マスカラ Graduation 夏恋 エール 妄想日記 涙の温度
-m&w_preview_04 TOUR_2012_「M&W」preview_#04 2012-06-10 仙台サンプラザホール True (新曲) 誘感コレクション Dear_Tokyo レイニーデイ 冬のベンチ モノクロのキス 合鍵 sleep 残り香 嘘 アリバイ gossip!! smile one_way S encore 私は雨 夏恋 Re:Dreamer 眩暈 Sympathy 涙の温度
-m&w_preview_05 TOUR_2012_「M&W」preview_#05 2012-06-12 本多の森ホール True 
-m&w_preview_06 TOUR_2012_「M&W」preview_#06 2012-06-14 ホクト文化ホール True 
-m&w_preview_07 TOUR_2012_「M&W」preview_#07 2012-06-21 愛知県芸術劇場　大ホール True 
-m&w_preview_08 TOUR_2012_「M&W」preview_#08 2012-06-22 愛知県芸術劇場　大ホール True 
-m&w_preview_09 TOUR_2012_「M&W」preview_#09 2012-06-24 岐阜市民会館 True 
-m&w_preview_10 TOUR_2012_「M&W」preview_#10 2012-06-26 倉敷市民会館 True 
-m&w_preview_11 TOUR_2012_「M&W」preview_#11 2012-06-28 松山市民会館 True 
-m&w_preview_12 TOUR_2012_「M&W」preview_#12 2012-06-30 滋賀県立芸術劇場_びわ湖ホール True 
-m&w_preview_13 TOUR_2012_「M&W」preview_#13 2012-07-02 なら100年会館 True 
-m&w_preview_14 TOUR_2012_「M&W」preview_#14 2012-07-04 オリックス劇場 True 
-m&w_preview_15 TOUR_2012_「M&W」preview_#15 2012-07-05 オリックス劇場 True 
-m&w_preview_16 TOUR_2012_「M&W」preview_#16 2012-07-11 メディキッド県民文化センター_演劇ホール True 
-m&w_preview_17 TOUR_2012_「M&W」preview_#17 2012-07-13 福岡市民会館 True 
-m&w_preview_18 TOUR_2012_「M&W」preview_#18 2012-07-14 宝山ホール True 
-m&w_preview_19 TOUR_2012_「M&W」preview_#19 2012-07-19 帯広市民文化ホール　大ホール True 
-m&w_preview_20 TOUR_2012_「M&W」preview_#20 2012-07-21 札幌ニトリ文化ホール True 
-m&w_preview_21 TOUR_2012_「M&W」preview_#21 2012-07-22 札幌ニトリ文化ホール True 
-m&w_preview_22 TOUR_2012_「M&W」preview_#22 2012-07-26 東京国際フォーラム　ホールA True 
-m&w_preview_23 TOUR_2012_「M&W」preview_#23 2012-07-27 東京国際フォーラム　ホールA True 
+outsider_tour_01 SID_TOUR_2014_OUTSIDER_#01 2014-04-09 松戸・森のホール21 True 
+outsider_tour_02 SID_TOUR_2014_OUTSIDER_#02 2014-04-12 愛知県芸術劇場_大ホール True 
+outsider_tour_03 SID_TOUR_2014_OUTSIDER_#03 2014-04-13 愛知県芸術劇場_大ホール True 
+outsider_tour_04 SID_TOUR_2014_OUTSIDER_#04 2014-04-16 渋谷公会堂 True 
+outsider_tour_05 SID_TOUR_2014_OUTSIDER_#05 2014-04-17 渋谷公会堂 True 
+outsider_tour_06 SID_TOUR_2014_OUTSIDER_#06 2014-04-20 ベイシア文化ホール True 
+outsider_tour_07 SID_TOUR_2014_OUTSIDER_#07 2014-04-22 コラニー文化ホール True 
+outsider_tour_08 SID_TOUR_2014_OUTSIDER_#08 2014-04-25 新潟県民会館 True 
+outsider_tour_09 SID_TOUR_2014_OUTSIDER_#09 2014-04-27 富山オーバードホール True 
+outsider_tour_10 SID_TOUR_2014_OUTSIDER_#10 2014-04-29 秋田市文化会館 True 
+outsider_tour_11 SID_TOUR_2014_OUTSIDER_#11 2014-05-01 宇都宮市文化会館 True 
+outsider_tour_12 SID_TOUR_2014_OUTSIDER_#12 2014-05-04 福岡サンパレス True 
+outsider_tour_13 SID_TOUR_2014_OUTSIDER_#13 2014-05-05 福岡サンパレス True 
+outsider_tour_14 SID_TOUR_2014_OUTSIDER_#14 2014-05-08 中野サンプラザホール True 
+outsider_tour_15 SID_TOUR_2014_OUTSIDER_#15 2014-05-09 中野サンプラザホール True 
+outsider_tour_16 SID_TOUR_2014_OUTSIDER_#16 2014-05-16 Macpherson_Stadium_(Hong_Kong) True 
+outsider_tour_17 SID_TOUR_2014_OUTSIDER_#17 2014-05-23 ATT_Show_Box_(Taiwan) True 
+outsider_tour_18 SID_TOUR_2014_OUTSIDER_#18 2014-05-24 ATT_Show_Box_(Taiwan) True 
+outsider_tour_19 SID_TOUR_2014_OUTSIDER_#19 2014-06-06 広島上野学園ホール True 
+outsider_tour_20 SID_TOUR_2014_OUTSIDER_#20 2014-06-08 鳴門市文化会館 True 
+outsider_tour_21 SID_TOUR_2014_OUTSIDER_#21 2014-06-14 東京エレクトロンホール宮城 True 
+outsider_tour_22 SID_TOUR_2014_OUTSIDER_#22 2014-06-15 東京エレクトロンホール宮城 True 
+outsider_tour_23 SID_TOUR_2014_OUTSIDER_#23 2014-06-18 よこすか芸術劇場 True 
+outsider_tour_24 SID_TOUR_2014_OUTSIDER_#24 2014-06-21 札幌　ニトリ文化ホール True 
+outsider_tour_25 SID_TOUR_2014_OUTSIDER_#25 2014-06-22 札幌　ニトリ文化ホール True 
+outsider_tour_26 SID_TOUR_2014_OUTSIDER_#26 2014-06-26 茨城県立県民文化センター True 
+outsider_tour_27 SID_TOUR_2014_OUTSIDER_#27 2014-06-30 大宮ソニックシティ True 
+outsider_tour_28 SID_TOUR_2014_OUTSIDER_#28 2014-07-05 神戸ワールド記念ホール True 
+outsider_tour_29 SID_TOUR_2014_OUTSIDER_#29 2014-07-06 神戸ワールド記念ホール True 

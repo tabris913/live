@@ -23,51 +23,63 @@ def make_tour(strings: str, tid: str, year: int):
 
 
 if __name__ == "__main__":
-    s = '''06.01
-TOUR 2012 「M&W」preview / 桐生市市民文化会館　シルクホール
+    s = '''04.09
+SID TOUR 2014 OUTSIDER / 松戸・森のホール21
+04.12
+SID TOUR 2014 OUTSIDER / 愛知県芸術劇場 大ホール
+04.13
+SID TOUR 2014 OUTSIDER / 愛知県芸術劇場 大ホール
+04.16
+SID TOUR 2014 OUTSIDER / 渋谷公会堂
+04.17
+SID TOUR 2014 OUTSIDER / 渋谷公会堂
+04.20
+SID TOUR 2014 OUTSIDER / ベイシア文化ホール
+04.22
+SID TOUR 2014 OUTSIDER / コラニー文化ホール
+04.25
+SID TOUR 2014 OUTSIDER / 新潟県民会館
+04.27
+SID TOUR 2014 OUTSIDER / 富山オーバードホール
+04.29
+SID TOUR 2014 OUTSIDER / 秋田市文化会館
+05.01
+SID TOUR 2014 OUTSIDER / 宇都宮市文化会館
+05.04
+SID TOUR 2014 OUTSIDER / 福岡サンパレス
+05.05
+SID TOUR 2014 OUTSIDER / 福岡サンパレス
+05.08
+SID TOUR 2014 OUTSIDER / 中野サンプラザホール
+05.09
+SID TOUR 2014 OUTSIDER / 中野サンプラザホール
+05.16
+SID TOUR 2014 OUTSIDER / Macpherson Stadium (Hong Kong)
+05.23
+SID TOUR 2014 OUTSIDER / ATT Show Box (Taiwan)
+05.24
+SID TOUR 2014 OUTSIDER / ATT Show Box (Taiwan)
 06.06
-TOUR 2012 「M&W」preview / 盛岡市民文化ホール　大ホール
+SID TOUR 2014 OUTSIDER / 広島上野学園ホール
 06.08
-TOUR 2012 「M&W」preview / 郡山市民文化センター　大ホール
-06.10
-TOUR 2012 「M&W」preview / 仙台サンプラザホール
-06.12
-TOUR 2012 「M&W」preview / 本多の森ホール
+SID TOUR 2014 OUTSIDER / 鳴門市文化会館
 06.14
-TOUR 2012 「M&W」preview / ホクト文化ホール
+SID TOUR 2014 OUTSIDER / 東京エレクトロンホール宮城
+06.15
+SID TOUR 2014 OUTSIDER / 東京エレクトロンホール宮城
+06.18
+SID TOUR 2014 OUTSIDER / よこすか芸術劇場
 06.21
-TOUR 2012 「M&W」preview / 愛知県芸術劇場　大ホール
+SID TOUR 2014 OUTSIDER / 札幌　ニトリ文化ホール
 06.22
-TOUR 2012 「M&W」preview / 愛知県芸術劇場　大ホール
-06.24
-TOUR 2012 「M&W」preview / 岐阜市民会館
+SID TOUR 2014 OUTSIDER / 札幌　ニトリ文化ホール
 06.26
-TOUR 2012 「M&W」preview / 倉敷市民会館
-06.28
-TOUR 2012 「M&W」preview / 松山市民会館
+SID TOUR 2014 OUTSIDER / 茨城県立県民文化センター
 06.30
-TOUR 2012 「M&W」preview / 滋賀県立芸術劇場 びわ湖ホール
-07.02
-TOUR 2012 「M&W」preview / なら100年会館
-07.04
-TOUR 2012 「M&W」preview / オリックス劇場
+SID TOUR 2014 OUTSIDER / 大宮ソニックシティ
 07.05
-TOUR 2012 「M&W」preview / オリックス劇場
-07.11
-TOUR 2012 「M&W」preview / メディキッド県民文化センター 演劇ホール
-07.13
-TOUR 2012 「M&W」preview / 福岡市民会館
-07.14
-TOUR 2012 「M&W」preview / 宝山ホール
-07.19
-TOUR 2012 「M&W」preview / 帯広市民文化ホール　大ホール
-07.21
-TOUR 2012 「M&W」preview / 札幌ニトリ文化ホール
-07.22
-TOUR 2012 「M&W」preview / 札幌ニトリ文化ホール
-07.26
-TOUR 2012 「M&W」preview / 東京国際フォーラム　ホールA
-07.27
-TOUR 2012 「M&W」preview / 東京国際フォーラム　ホールA'''
+SID TOUR 2014 OUTSIDER / 神戸ワールド記念ホール
+07.06
+SID TOUR 2014 OUTSIDER / 神戸ワールド記念ホール'''
 
-    make_tour(s, 'm&w_preview', 2012)
+    make_tour(s, 'outsider_tour', 2014)

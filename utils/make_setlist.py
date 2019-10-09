@@ -7,6 +7,9 @@ def convert(string: str) -> str:
     l = string.split('\n')
     remove = []
     for i in range(len(l)):
+        if ';;' in l[i]:
+            l[i] = l[i].split(';;')[0].replace(' ', '_')
+
         if l[i] == '':
             l[i] = 'encore'
         elif l[i] == '蜜指～ミツユビ～':
@@ -15,6 +18,8 @@ def convert(string: str) -> str:
             l[i] = '吉開学17歳_(無職)'
         elif l[i] == '楽園':
             l[i] = '落園'
+        elif l[i] == 'Cafe de Bossa':
+            l[i] = 'Café_de_Bossa'
         elif ' ' in l[i]:
             l[i] = l[i].replace(' ', '_')
         elif l[i].startswith('///'):
@@ -25,27 +30,19 @@ def convert(string: str) -> str:
 
 
 if __name__ == '__main__':
-    s = '''(新曲)
-誘感コレクション
-Dear Tokyo
-レイニーデイ
-冬のベンチ
-モノクロのキス
-合鍵
-sleep
-残り香
-嘘
-アリバイ
-gossip!!
-smile
-one way
-S
-
-私は雨
+    s = '''アリバイ
 夏恋
-Re:Dreamer
+SENSE
+私は雨
+hug
+ドレスコード
+ノイロヲゼパアティー
+ANNIVERSARY
+循環
 眩暈
-Sympathy
-涙の温度'''
+吉開学17歳(無職)
+
+妄想日記
+Dear Tokyo'''
 
     convert(s)
