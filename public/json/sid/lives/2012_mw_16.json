@@ -1,0 +1,30 @@
+{
+  "uid": "2012_mw_16",
+  "name": "TOUR 2012 「M&W」 #16",
+  "date": "2012-10-26",
+  "place": "大阪国際会議場メインホール",
+  "setlist": [
+    "sid098",
+    "sid102",
+    "sid068",
+    "sid103",
+    "sid090",
+    "sid075",
+    "sid015",
+    "sid100",
+    "sid033",
+    "sid092",
+    "sid096",
+    "sid099",
+    "sid104",
+    "sid046",
+    "encore",
+    "sid101",
+    "sid083",
+    "sid058",
+    "sid044",
+    "sid073",
+    "sid094"
+  ],
+  "is_tour": true
+}

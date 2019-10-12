@@ -23,63 +23,15 @@ def make_tour(strings: str, tid: str, year: int):
 
 
 if __name__ == "__main__":
-    s = '''04.09
-SID TOUR 2014 OUTSIDER / 松戸・森のホール21
-04.12
-SID TOUR 2014 OUTSIDER / 愛知県芸術劇場 大ホール
-04.13
-SID TOUR 2014 OUTSIDER / 愛知県芸術劇場 大ホール
-04.16
-SID TOUR 2014 OUTSIDER / 渋谷公会堂
-04.17
-SID TOUR 2014 OUTSIDER / 渋谷公会堂
-04.20
-SID TOUR 2014 OUTSIDER / ベイシア文化ホール
-04.22
-SID TOUR 2014 OUTSIDER / コラニー文化ホール
-04.25
-SID TOUR 2014 OUTSIDER / 新潟県民会館
-04.27
-SID TOUR 2014 OUTSIDER / 富山オーバードホール
-04.29
-SID TOUR 2014 OUTSIDER / 秋田市文化会館
-05.01
-SID TOUR 2014 OUTSIDER / 宇都宮市文化会館
-05.04
-SID TOUR 2014 OUTSIDER / 福岡サンパレス
-05.05
-SID TOUR 2014 OUTSIDER / 福岡サンパレス
-05.08
-SID TOUR 2014 OUTSIDER / 中野サンプラザホール
-05.09
-SID TOUR 2014 OUTSIDER / 中野サンプラザホール
-05.16
-SID TOUR 2014 OUTSIDER / Macpherson Stadium (Hong Kong)
-05.23
-SID TOUR 2014 OUTSIDER / ATT Show Box (Taiwan)
-05.24
-SID TOUR 2014 OUTSIDER / ATT Show Box (Taiwan)
-06.06
-SID TOUR 2014 OUTSIDER / 広島上野学園ホール
-06.08
-SID TOUR 2014 OUTSIDER / 鳴門市文化会館
-06.14
-SID TOUR 2014 OUTSIDER / 東京エレクトロンホール宮城
-06.15
-SID TOUR 2014 OUTSIDER / 東京エレクトロンホール宮城
-06.18
-SID TOUR 2014 OUTSIDER / よこすか芸術劇場
-06.21
-SID TOUR 2014 OUTSIDER / 札幌　ニトリ文化ホール
-06.22
-SID TOUR 2014 OUTSIDER / 札幌　ニトリ文化ホール
-06.26
-SID TOUR 2014 OUTSIDER / 茨城県立県民文化センター
-06.30
-SID TOUR 2014 OUTSIDER / 大宮ソニックシティ
-07.05
-SID TOUR 2014 OUTSIDER / 神戸ワールド記念ホール
-07.06
-SID TOUR 2014 OUTSIDER / 神戸ワールド記念ホール'''
+    s = '''08.16
+シド 女限定ツアー2015“乙魂-otodama-” / 仙台Rensa
+08.26
+シド 女限定ツアー2015“乙魂-otodama-” / Zepp Nagoya
+09.05
+シド 女限定ツアー2015“乙魂-otodama-” / Zepp Namba
+09.12
+シド 女限定ツアー2015“乙魂-otodama-” / Zepp Fukuoka
+09.26
+シド 女限定ツアー2015“乙魂-otodama-” / 幕張メッセ イベントホール'''
 
-    make_tour(s, 'outsider_tour', 2014)
+    make_tour(s, 'otodama_women', 2015)

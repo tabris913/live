@@ -1,0 +1,30 @@
+{
+  "uid": "2012_mw_preview_12",
+  "name": "TOUR 2012 「M&W」preview #12",
+  "date": "2012-06-30",
+  "place": "滋賀県立芸術劇場_びわ湖ホール",
+  "setlist": [
+    "sid103",
+    "sid054",
+    "sid058",
+    "sid097",
+    "sid092",
+    "sid060",
+    "sid028",
+    "sid075",
+    "sid094",
+    "sid064",
+    "sid016",
+    "sid104",
+    "sid044",
+    "sid073",
+    "sid096",
+    "encore",
+    "sid015",
+    "sid035",
+    "sid055",
+    "sid046",
+    "sid050"
+  ],
+  "is_tour": true
+}

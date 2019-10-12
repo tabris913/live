@@ -1,0 +1,31 @@
+{
+  "uid": "2012_mw_12",
+  "name": "TOUR 2012 「M&W」 #12",
+  "date": "2012-10-05",
+  "place": "静岡市民文化会館　大ホール",
+  "setlist": [
+    "sid098",
+    "sid102",
+    "sid068",
+    "sid103",
+    "sid090",
+    "sid065",
+    "sid015",
+    "sid100",
+    "sid033",
+    "sid092",
+    "sid096",
+    "sid099",
+    "sid104",
+    "sid046",
+    "encore",
+    "sid101",
+    "sid095",
+    "sid020",
+    "sid044",
+    "sid073",
+    "sid026",
+    "sid094"
+  ],
+  "is_tour": true
+}

@@ -30,19 +30,12 @@ def convert(string: str) -> str:
 
 
 if __name__ == '__main__':
-    s = '''アリバイ
-夏恋
-SENSE
-私は雨
-hug
-ドレスコード
-ノイロヲゼパアティー
-ANNIVERSARY
-循環
+    s = '''コナゴナ
+Dear Tokyo
+硝子の瞳
+泣き出した女と虚無感
 眩暈
-吉開学17歳(無職)
-
-妄想日記
-Dear Tokyo'''
+one way
+ANNIVERSARY'''
 
     convert(s)
