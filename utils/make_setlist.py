@@ -9,6 +9,8 @@ def convert(string: str) -> str:
     for i in range(len(l)):
         if ';;' in l[i]:
             l[i] = l[i].split(';;')[0].replace(' ', '_')
+        if '@@' in l[i]:
+            l[i] = l[i].split('@@')[0].replace(' ', '_')
 
         if l[i] == '':
             l[i] = 'encore'
@@ -30,12 +32,18 @@ def convert(string: str) -> str:
 
 
 if __name__ == '__main__':
-    s = '''コナゴナ
+    s = '''アリバイ
+ANNIVERSARY
 Dear Tokyo
-硝子の瞳
-泣き出した女と虚無感
+君色の朝
+嘘
+合鍵
+サマラバ
+MUSIC
+VOICE
 眩暈
-one way
-ANNIVERSARY'''
+
+BiSH-星が瞬く夜に- (BiSH)
+夏恋'''
 
     convert(s)

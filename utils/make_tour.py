@@ -23,15 +23,13 @@ def make_tour(strings: str, tid: str, year: int):
 
 
 if __name__ == "__main__":
-    s = '''08.16
-シド 女限定ツアー2015“乙魂-otodama-” / 仙台Rensa
-08.26
-シド 女限定ツアー2015“乙魂-otodama-” / Zepp Nagoya
-09.05
-シド 女限定ツアー2015“乙魂-otodama-” / Zepp Namba
-09.12
-シド 女限定ツアー2015“乙魂-otodama-” / Zepp Fukuoka
-09.26
-シド 女限定ツアー2015“乙魂-otodama-” / 幕張メッセ イベントホール'''
+    s = '''06.17
+SID collaboration TOUR 2019 / Zepp Tokyo
+06.20
+SID collaboration TOUR 2019 / Zepp Nagoya
+06.21
+SID collaboration TOUR 2019 / Zepp Osaka Bayside
+06.27
+SID collaboration TOUR 2019 / Zepp DiverCity TOKYO'''
 
-    make_tour(s, 'otodama_women', 2015)
+    make_tour(s, 'collaboration', 2019)
