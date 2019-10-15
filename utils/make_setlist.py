@@ -22,6 +22,8 @@ def convert(string: str) -> str:
             l[i] = '落園'
         elif l[i] == 'Cafe de Bossa':
             l[i] = 'Café_de_Bossa'
+        elif l[i] == 'デアイ=キセキ':
+            l[i] = 'デアイ＝キセキ'
         elif ' ' in l[i]:
             l[i] = l[i].replace(' ', '_')
         elif l[i].startswith('///'):
@@ -32,18 +34,28 @@ def convert(string: str) -> str:
 
 
 if __name__ == '__main__':
-    s = '''アリバイ
+    s = '''承認欲求
+see through
 ANNIVERSARY
-Dear Tokyo
-君色の朝
-嘘
-合鍵
-サマラバ
 MUSIC
-VOICE
-眩暈
+2月
+手
+淡い足跡
+罠
+妄想日記
+Trick
+ポジティブの魔法
+ホソイコエ
+Blood Vessel
+プロポーズ
+敬礼ボウイ
+その未来へ
+涙雨
 
-BiSH-星が瞬く夜に- (BiSH)
-夏恋'''
+デアイ=キセキ
+循環
+Re:Dreamer
+one way
+君色の朝'''
 
     convert(s)

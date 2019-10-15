@@ -404,7 +404,8 @@
       "uid": "2012_new_song_shooting",
       "name": "新曲披露SHOOTING LIVE",
       "is_tour": false,
-      "number": 1
+      "number": 1,
+      "relatedWorks": ["sid_sg22", "sig_sg23"]
     },
     "2012_kioon_20_years_days": {
       "uid": "2012_kioon_20_years_days",
@@ -545,7 +546,8 @@
       "uid": "2017_glass_no_hitomi",
       "name": "硝子の瞳 発売記念プレミアムライブ",
       "is_tour": false,
-      "number": 1
+      "number": 1,
+      "relatedWorks": ["sid_sg32"]
     },
     "2017_yoake_to_ame_to": { "uid": "2017_yoake_to_ame_to", "name": "夜明けと雨と", "is_tour": false, "number": 1 },
     "2017_yoake_to_kimi_to": { "uid": "2017_yoake_to_kimi_to", "name": "夜明けと君と", "is_tour": false, "number": 1 },
@@ -631,7 +633,7 @@
       "uid": "2019_shounin_yokkyu",
       "name": "SID TOUR 2019 -承認欲求-",
       "is_tour": true,
-      "number": 4,
+      "number": 5,
       "relatedWorks": ["sid_al11"]
     }
   }
