@@ -20,7 +20,7 @@ const Top = (props: MainProps<Uid>) => {
               linkto: PageName.ARTIST,
               message: undefined,
               query: { id: curArtist.uid },
-              popOver: curArtist.uid === 'sid' ? undefined : 'まだ作ってない',
+              popOver: undefined,
             }),
           [] as Array<ITopButton<Uid>>
         )) ||
@@ -38,17 +38,15 @@ const Top = (props: MainProps<Uid>) => {
                 type="link"
                 style={{ fontSize: 30, height: '100%' }}
                 onClick={
-                  query!.id === 'sid'
-                    ? popOver
-                      ? undefined
-                      : () =>
-                          props.history.push(
-                            toPublicUrl(
-                              linkto || PageName.UNDEFINED,
-                              query && query.id ? [query.id as string] : undefined
-                            )
+                  popOver
+                    ? undefined
+                    : () =>
+                        props.history.push(
+                          toPublicUrl(
+                            linkto || PageName.UNDEFINED,
+                            query && query.id ? [query.id as string] : undefined
                           )
-                    : undefined
+                        )
                 }
               >
                 {label}
