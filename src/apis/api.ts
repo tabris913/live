@@ -1,5 +1,5 @@
 // API BASE URL
-export const API_BASE_URL = process.env.PUBLIC_URL;
+export const API_BASE_URL = 'https://api.github.com/repos/tabris913/live/contents/public'; // process.env.PUBLIC_URL;
 
 export const fetchWithErrorHandling = (url: RequestInfo, options?: RequestInit | undefined) =>
   fetch(url, options)
@@ -26,7 +26,13 @@ export const get = async <T, U>(url: string, data: T) => {
   // fr.readAsText(blob);
   // fr.onload = () => JSON.parse(fr.result as string);
   // return fr;
-  return fetchWithErrorHandling(url, { method: 'GET' }).then(res => {
+  return fetchWithErrorHandling(url, {
+    method: 'GET',
+    headers: {
+      Authorization: 'token XXX',
+      Accept: 'application/vnd.github.v3.raw',
+    },
+  }).then(res => {
     if (!res.ok) throw new Error(res.statusText);
     return res.json();
   });
