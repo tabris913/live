@@ -4,6 +4,8 @@ import json
 import os
 from typing import List
 
+import pyperclip
+
 ARTIST_UID = 'alicenine'
 SONGS_JSON = f'../public/json/{ARTIST_UID}/songs.json'
 LIVES_JSON = f'../public/json/{ARTIST_UID}/lives.json'
@@ -59,7 +61,10 @@ def add_live(
     )
 
     # add to lives.json
-    LIVES = json.load(open(LIVES_JSON, 'r', encoding='utf-8'))
+    if os.path.exists(LIVES_JSON):
+        LIVES = json.load(open(LIVES_JSON, 'r', encoding='utf-8'))
+    else:
+        LIVES = {}
     if year in LIVES:
         LIVES[year].update({
             title: {
@@ -190,6 +195,17 @@ def add_work(name: str, songs: List[str], _class: str, date: str = ''):
     json.dump(ex, open(WORKS_JSON, 'w', encoding='utf-8'), ensure_ascii=False)
 
 
+def convert_songs_to_id(songs: List[str]) -> List[str]:
+    if os.path.exists(SONGS_JSON):
+        SONGS = json.load(open(SONGS_JSON, 'r', encoding='utf-8'))
+    else:
+        SONGS = {}
+    CONVERTED_SONGS = {SONGS[uid]['name']: uid for uid in SONGS}
+
+    return [CONVERTED_SONGS[song] if song in CONVERTED_SONGS else 'encore' if song ==
+            '' else f'[unknown] {song}' for song in songs]
+
+
 if __name__ == "__main__":
     # print(add_live('sample', songs=['encore', '眩暈'], date='2019-10-01'))
     # add_song(['モノクロのキス', 'season'])
@@ -212,7 +228,7 @@ if __name__ == "__main__":
                 # print(list(songs))
 
     # add live
-    if False:
+    if True:
         with open('lives.txt', 'r', encoding='utf-8') as file:
             lives = map(str.strip, file.readlines())
             for live in lives:
@@ -227,3 +243,24 @@ if __name__ == "__main__":
                     list(map(lambda x: x.replace('_', ' '), songs)),
                     eval(is_tour)
                 )
+
+    if False:
+        cl = convert_songs_to_id('''闇ニ散ル桜
+-Dice-
+Le Grand Bleu
+百花繚乱
+www.
+造花の代償
+FIVE JOKER
+Scarlet
+ハイカラなる輪舞曲
+開戦前夜
+the Arc
+九龍 -NINE HEADS RODEO SHOW-
+荊棘
+
+革命開花 -Revolutionary Blooming-
+ヴェルヴェット
+DEAD SCHOOL SCREAMING
+RAINBOWS'''.split('\n'))
+        pyperclip.copy(str(cl))

@@ -23,13 +23,17 @@ def make_tour(strings: str, tid: str, year: int):
 
 
 if __name__ == "__main__":
-    s = '''06.17
-SID collaboration TOUR 2019 / Zepp Tokyo
-06.20
-SID collaboration TOUR 2019 / Zepp Nagoya
-06.21
-SID collaboration TOUR 2019 / Zepp Osaka Bayside
-06.27
-SID collaboration TOUR 2019 / Zepp DiverCity TOKYO'''
+    s = '''10.14
+ONEMAN TOUR 2019「革命開花 ep1. -絶対"黒"領域-」 / 札幌KRAPS HALL
+10.17
+ONEMAN TOUR 2019「革命開花 ep1. -絶対"黒"領域-」 / 福岡DRUM SON
+10.19
+ONEMAN TOUR 2019「革命開花 ep1. -絶対"黒"領域-」 / 大阪MUSE
+10.20
+ONEMAN TOUR 2019「革命開花 ep1. -絶対"黒"領域-」 / 名古屋ell.FITSALL
+10.25
+ONEMAN TOUR 2019「革命開花 ep1. -絶対"黒"領域-」 / 恵比寿LIQUIDROOM
+11.18
+ONEMAN TOUR 2019「革命開花 ep1. -絶対"黒"領域-」 / 仙台HooK'''
 
-    make_tour(s, 'collaboration', 2019)
+    make_tour(s, 'revol_bloom_ep1', 2019)

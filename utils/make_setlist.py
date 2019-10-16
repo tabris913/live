@@ -34,16 +34,23 @@ def convert(string: str) -> str:
 
 
 if __name__ == '__main__':
-    s = '''NUMBER SIX.
+    s = '''闇ニ散ル桜
 -Dice-
-虹彩
-RAINBOWS
-CROSS GAME
-the beautiful name
-Waterfall
 Le Grand Bleu
-GEMINI-0-eternal
-GEMINI-I-the void
-GEMINI-II-the luv'''
+百花繚乱
+www.
+造花の代償
+FIVE JOKER
+Scarlet
+ハイカラなる輪舞曲
+開戦前夜
+the Arc
+九龍 -NINE HEADS RODEO SHOW-
+荊棘
+
+革命開花 -Revolutionary Blooming-
+ヴェルヴェット
+DEAD SCHOOL SCREAMING
+RAINBOWS'''
 
     convert(s)
