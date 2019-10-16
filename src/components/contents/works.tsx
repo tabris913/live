@@ -69,11 +69,15 @@ const Works = (props: MainProps<WorkUid>) => {
     return (
       <Collapse style={{ overflowY: 'auto' }}>
         {props.content && props.content.works && props.content.songs ? (
-          Object.values(props.content.works).map(work => (
-            <Collapse.Panel header={work.name} key={work.uid as string}>
-              <Row>{work.songs.map(makeWorkCol)}</Row>
-            </Collapse.Panel>
-          ))
+          Object.values(props.content.works).map(work =>
+            Object.keys(work).length > 0 ? (
+              <Collapse.Panel header={work.name} key={work.uid as string}>
+                <Row>{work.songs.map(makeWorkCol)}</Row>
+              </Collapse.Panel>
+            ) : (
+              <></>
+            )
+          )
         ) : (
           <Spin />
         )}
