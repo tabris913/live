@@ -1,13 +1,18 @@
 # coding: utf-8
 
 import json
+import os
 from typing import List
 
-ARTIST_UID = 'sid'
+ARTIST_UID = 'alicenine'
 SONGS_JSON = f'../public/json/{ARTIST_UID}/songs.json'
 LIVES_JSON = f'../public/json/{ARTIST_UID}/lives.json'
 LIVE_JSON = f'../public/json/{ARTIST_UID}/lives/{{}}.json'
 WORKS_JSON = f'../public/json/{ARTIST_UID}/works.json'
+
+if os.path.exists(f'../public/json/{ARTIST_UID}') is False:
+    os.mkdir(f'../public/json/{ARTIST_UID}')
+    os.mkdir(f'../public/json/{ARTIST_UID}/lives')
 
 
 def add_live(
@@ -115,7 +120,10 @@ def add_live(
 
 
 def add_song(songs: List[str]):
-    SONGS = json.load(open(SONGS_JSON, 'r', encoding='utf-8'))
+    if os.path.exists(SONGS_JSON):
+        SONGS = json.load(open(SONGS_JSON, 'r', encoding='utf-8'))
+    else:
+        SONGS = {}
     CONVERTED_SONGS = {SONGS[uid]['name']: uid for uid in SONGS}
 
     size = len(SONGS)
@@ -140,17 +148,23 @@ def add_song(songs: List[str]):
 def class_order(_class: str):
     return {
         'sg': 0,
-        'al': 1,
-        'ba': 2,
-        'ca': 3,
-        'cv': 4,
-        'ra': 5,
-        'sv': 6
+        'ds': 1,  # dvd sg
+        'di': 2,  # distribution
+        'al': 3,
+        'ba': 4,  # best
+        'ca': 5,  # compilation
+        'cv': 6,  # cover
+        'ra': 7,  # remix
+        'sv': 8,  # self
+        'ot': 9,  # other
     }[_class.split('_')[1][:2]]
 
 
 def add_work(name: str, songs: List[str], _class: str, date: str = ''):
-    WORKS = json.load(open(WORKS_JSON, 'r', encoding='utf-8'))
+    if os.path.exists(WORKS_JSON):
+        WORKS = json.load(open(WORKS_JSON, 'r', encoding='utf-8'))
+    else:
+        WORKS = {}
     others = {} if 'others' not in WORKS else WORKS['others']
     ex = {key: val for key, val in WORKS.items() if key != 'others'}
     SONGS = json.load(open(SONGS_JSON, 'r', encoding='utf-8'))
@@ -198,7 +212,7 @@ if __name__ == "__main__":
                 # print(list(songs))
 
     # add live
-    if True:
+    if False:
         with open('lives.txt', 'r', encoding='utf-8') as file:
             lives = map(str.strip, file.readlines())
             for live in lives:

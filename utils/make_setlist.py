@@ -34,28 +34,16 @@ def convert(string: str) -> str:
 
 
 if __name__ == '__main__':
-    s = '''承認欲求
-see through
-ANNIVERSARY
-MUSIC
-2月
-手
-淡い足跡
-罠
-妄想日記
-Trick
-ポジティブの魔法
-ホソイコエ
-Blood Vessel
-プロポーズ
-敬礼ボウイ
-その未来へ
-涙雨
-
-デアイ=キセキ
-循環
-Re:Dreamer
-one way
-君色の朝'''
+    s = '''NUMBER SIX.
+-Dice-
+虹彩
+RAINBOWS
+CROSS GAME
+the beautiful name
+Waterfall
+Le Grand Bleu
+GEMINI-0-eternal
+GEMINI-I-the void
+GEMINI-II-the luv'''
 
     convert(s)

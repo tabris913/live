@@ -1,0 +1,506 @@
+{
+  "alicenine_sg01": {
+    "uid": "alicenine_sg01",
+    "name": "「名前は、未だ無ひ。」",
+    "date": "2004-07-05",
+    "songs": ["alicenine001", "alicenine002"]
+  },
+  "alicenine_sg01_b": {
+    "uid": "alicenine_sg01_b",
+    "name": "「名前は、未だ無ひ。」 2nd press",
+    "date": "2004-08-11",
+    "songs": ["alicenine001", "alicenine003", "alicenine002"]
+  },
+  "alicenine_al01": {
+    "uid": "alicenine_al01",
+    "name": "祇園盛者の鐘が鳴る",
+    "date": "2004-11-17",
+    "songs": ["alicenine004", "alicenine005", "alicenine006", "alicenine007", "alicenine008"]
+  },
+  "alicenine_sg02": {
+    "uid": "alicenine_sg02",
+    "name": "銀の月 黒い星",
+    "date": "2005-03-30",
+    "songs": ["alicenine009", "alicenine010"]
+  },
+  "alicenine_sg03": {
+    "uid": "alicenine_sg03",
+    "name": "闇ニ散ル桜",
+    "date": "2005-04-27",
+    "songs": ["alicenine011", "alicenine012"]
+  },
+  "alicenine_sg04": {
+    "uid": "alicenine_sg04",
+    "name": "百合は蒼く咲いて",
+    "date": "2005-05-25",
+    "songs": ["alicenine013", "alicenine014"]
+  },
+  "alicenine_al02": {
+    "uid": "alicenine_al02",
+    "name": "ALICE IN WONDEЯ LAND",
+    "date": "2005-07-27",
+    "songs": ["alicenine015", "alicenine016", "alicenine017", "alicenine018", "alicenine019"]
+  },
+  "alicenine_al03": {
+    "uid": "alicenine_al03",
+    "name": "華想夢想紙",
+    "date": "2005-11-23",
+    "songs": [
+      "alicenine014",
+      "alicenine009",
+      "alicenine011",
+      "alicenine012",
+      "alicenine013",
+      "alicenine010",
+      "alicenine020"
+    ]
+  },
+  "alicenine_sg05": {
+    "uid": "alicenine_sg05",
+    "name": "九龍 -NINE HEADS RODEO SHOW-",
+    "date": "2006-01-25",
+    "songs": ["alicenine023", "alicenine024", "alicenine025"]
+  },
+  "alicenine_sg06": {
+    "uid": "alicenine_sg06",
+    "name": "FANTASY",
+    "date": "2006-02-22",
+    "songs": ["alicenine026", "alicenine027", "alicenine028"]
+  },
+  "alicenine_sg07": {
+    "uid": "alicenine_sg07",
+    "name": "暁／幾億のシャンデリア",
+    "date": "2006-02-22",
+    "songs": ["alicenine029", "alicenine030"]
+  },
+  "alicenine_al04": {
+    "uid": "alicenine_al04",
+    "name": "絶景色",
+    "date": "2006-04-26",
+    "songs": [
+      "alicenine031",
+      "alicenine032",
+      "alicenine026",
+      "alicenine033",
+      "alicenine034",
+      "alicenine035",
+      "alicenine036",
+      "alicenine037",
+      "alicenine038",
+      "alicenine039",
+      "alicenine023",
+      "alicenine040"
+    ]
+  },
+  "alicenine_ds01": { "uid": "alicenine_ds01", "name": "NUMBER SIX.", "date": "2006-10-04", "songs": ["alicenine042"] },
+  "alicenine_di01": {
+    "uid": "alicenine_di01",
+    "name": "ブループラネット",
+    "date": "2006-10-04",
+    "songs": ["alicenine041"]
+  },
+  "alicenine_sg08": {
+    "uid": "alicenine_sg08",
+    "name": "JEWELS",
+    "date": "2007-03-21",
+    "songs": ["alicenine043", "alicenine044", "alicenine045"]
+  },
+  "alicenine_ot01": {
+    "uid": "alicenine_ot01",
+    "name": "DIVE INTO THE SUN",
+    "date": "2007-04-28",
+    "songs": ["alicenine046"]
+  },
+  "alicenine_sg09": {
+    "uid": "alicenine_sg09",
+    "name": "WHITE PRAYER",
+    "date": "2007-06-06",
+    "songs": ["alicenine047", "alicenine048", "alicenine049"]
+  },
+  "alicenine_sg10": {
+    "uid": "alicenine_sg10",
+    "name": "TSUBASA.",
+    "date": "2007-10-24",
+    "songs": ["alicenine050", "alicenine051", "alicenine052"]
+  },
+  "alicenine_al05": {
+    "uid": "alicenine_al05",
+    "name": "Alpha",
+    "date": "2007-11-28",
+    "songs": [
+      "alicenine053",
+      "alicenine054",
+      "alicenine055",
+      "alicenine043",
+      "alicenine056",
+      "alicenine057",
+      "alicenine042",
+      "alicenine058",
+      "alicenine047",
+      "alicenine059",
+      "alicenine041",
+      "alicenine060"
+    ]
+  },
+  "alicenine_sg11": {
+    "uid": "alicenine_sg11",
+    "name": "MIRROR BALL",
+    "date": "2008-03-26",
+    "songs": ["alicenine061", "alicenine062", "alicenine059"]
+  },
+  "alicenine_sg12": {
+    "uid": "alicenine_sg12",
+    "name": "RAINBOWS",
+    "date": "2008-08-06",
+    "songs": ["alicenine063", "alicenine064", "alicenine065"]
+  },
+  "alicenine_sg13": {
+    "uid": "alicenine_sg13",
+    "name": "CROSS GAME",
+    "date": "2008-12-10",
+    "songs": ["alicenine066", "alicenine067", "alicenine068"]
+  },
+  "alicenine_al06": {
+    "uid": "alicenine_al06",
+    "name": "VANDALIZE",
+    "date": "2009-01-14",
+    "songs": [
+      "alicenine069",
+      "alicenine070",
+      "alicenine063",
+      "alicenine071",
+      "alicenine066",
+      "alicenine072",
+      "alicenine073",
+      "alicenine074",
+      "alicenine061",
+      "alicenine075",
+      "alicenine076"
+    ]
+  },
+  "alicenine_sg14": {
+    "uid": "alicenine_sg14",
+    "name": "華",
+    "date": "2009-08-05",
+    "songs": ["alicenine077", "alicenine078", "alicenine079"]
+  },
+  "alicenine_ba01": {
+    "uid": "alicenine_ba01",
+    "name": "Alice Nine Complete Collection 2006-2009",
+    "date": "2010-03-24",
+    "songs": [
+      "alicenine023",
+      "alicenine026",
+      "alicenine032",
+      "alicenine042",
+      "alicenine043",
+      "alicenine047",
+      "alicenine050",
+      "alicenine054",
+      "alicenine041",
+      "alicenine061",
+      "alicenine063",
+      "alicenine069",
+      "alicenine077"
+    ]
+  },
+  "alicenine_sg15": {
+    "uid": "alicenine_sg15",
+    "name": "閃光",
+    "date": "2010-08-25",
+    "songs": ["alicenine080", "alicenine081", "alicenine082", "alicenine083", "alicenine063", "alicenine041"]
+  },
+  "alicenine_sg16": {
+    "uid": "alicenine_sg16",
+    "name": "Stargazer:",
+    "date": "2010-11-10",
+    "songs": ["alicenine084", "alicenine085", "alicenine086"]
+  },
+  "alicenine_al07": {
+    "uid": "alicenine_al07",
+    "name": "GEMINI",
+    "date": "2011-02-09",
+    "songs": [
+      "alicenine087",
+      "alicenine088",
+      "alicenine084",
+      "alicenine089",
+      "alicenine085",
+      "alicenine090",
+      "alicenine080",
+      "alicenine091",
+      "alicenine092",
+      "alicenine093",
+      "alicenine094",
+      "alicenine095",
+      "alicenine096",
+      "alicenine097"
+    ]
+  },
+  "alicenine_sg17": {
+    "uid": "alicenine_sg17",
+    "name": "BLUE FLAME",
+    "date": "2011-06-08",
+    "songs": ["alicenine098", "alicenine099", "alicenine005"]
+  },
+  "alicenine_sg18": {
+    "uid": "alicenine_sg18",
+    "name": "Heart of Gold",
+    "date": "2011-09-07",
+    "songs": ["alicenine100", "alicenine101", "alicenine018"]
+  },
+  "alicenine_sg19": {
+    "uid": "alicenine_sg19",
+    "name": "虹の雪",
+    "date": "2011-12-21",
+    "songs": ["alicenine102", "alicenine103", "alicenine011"]
+  },
+  "alicenine_al08": {
+    "uid": "alicenine_al08",
+    "name": "\"9\"",
+    "date": "2012-02-22",
+    "songs": [
+      "alicenine104",
+      "alicenine105",
+      "alicenine106",
+      "alicenine107",
+      "alicenine098",
+      "alicenine108",
+      "alicenine102",
+      "alicenine109",
+      "alicenine110",
+      "alicenine100",
+      "alicenine111"
+    ]
+  },
+  "alicenine_sg20": {
+    "uid": "alicenine_sg20",
+    "name": "Daybreak",
+    "date": "2013-03-20",
+    "songs": [
+      "alicenine112",
+      "alicenine113",
+      "alicenine104",
+      "alicenine029",
+      "alicenine024",
+      "alicenine080",
+      "alicenine039",
+      "alicenine098"
+    ]
+  },
+  "alicenine_sg21": {
+    "uid": "alicenine_sg21",
+    "name": "SHADOWPLAY",
+    "date": "2013-04-17",
+    "songs": ["alicenine114", "alicenine115"]
+  },
+  "alicenine_sg22": {
+    "uid": "alicenine_sg22",
+    "name": "shooting star",
+    "date": "2013-05-29",
+    "songs": ["alicenine116", "alicenine117"]
+  },
+  "alicenine_ba02": {
+    "uid": "alicenine_ba02",
+    "name": "Alice Nine Complete Collection II 2010-2012",
+    "date": "2013-08-21",
+    "songs": [
+      "alicenine080",
+      "alicenine081",
+      "alicenine084",
+      "alicenine085",
+      "alicenine086",
+      "alicenine093",
+      "alicenine094",
+      "alicenine095",
+      "alicenine098",
+      "alicenine099",
+      "alicenine100",
+      "alicenine101",
+      "alicenine102",
+      "alicenine103",
+      "alicenine111"
+    ]
+  },
+  "alicenine_di02": {
+    "uid": "alicenine_di02",
+    "name": "開戦前夜／Exist",
+    "date": "2013-12-04",
+    "songs": ["alicenine118", "alicenine119"]
+  },
+  "alicenine_sg23": {
+    "uid": "alicenine_sg23",
+    "name": "SHINING",
+    "date": "2014-02-26",
+    "songs": ["alicenine121", "alicenine122", "alicenine050", "alicenine037"]
+  },
+  "alicenine_al09": {
+    "uid": "alicenine_al09",
+    "name": "Supernova",
+    "date": "2014-03-19",
+    "songs": [
+      "alicenine121",
+      "alicenine123",
+      "alicenine124",
+      "alicenine125",
+      "alicenine112",
+      "alicenine116",
+      "alicenine119",
+      "alicenine126",
+      "alicenine127",
+      "alicenine114",
+      "alicenine118",
+      "alicenine128"
+    ]
+  },
+  "alicenine_al10": {
+    "uid": "alicenine_al10",
+    "name": "銀河ノヲト",
+    "date": "2015-08-23",
+    "songs": [
+      "alicenine129",
+      "alicenine130",
+      "alicenine131",
+      "alicenine132",
+      "alicenine133",
+      "alicenine134",
+      "alicenine135"
+    ]
+  },
+  "alicenine_al11": {
+    "uid": "alicenine_al11",
+    "name": "LIGHT AND DARKNESS",
+    "date": "2016-04-13",
+    "songs": [
+      "alicenine136",
+      "alicenine137",
+      "alicenine138",
+      "alicenine139",
+      "alicenine140",
+      "alicenine141",
+      "alicenine142"
+    ]
+  },
+  "alicenine_ca01": {
+    "uid": "alicenine_ca01",
+    "name": "Grace",
+    "date": "2016-08-17",
+    "songs": [
+      "alicenine129",
+      "alicenine130",
+      "alicenine131",
+      "alicenine132",
+      "alicenine133",
+      "alicenine134",
+      "alicenine135",
+      "alicenine136",
+      "alicenine137",
+      "alicenine138",
+      "alicenine139",
+      "alicenine140",
+      "alicenine141",
+      "alicenine142"
+    ]
+  },
+  "alicenine_sg24": {
+    "uid": "alicenine_sg24",
+    "name": "MEMENTO",
+    "date": "2017-02-28",
+    "songs": ["alicenine143", "alicenine144"]
+  },
+  "alicenine_al12": {
+    "uid": "alicenine_al12",
+    "name": "IDEAL",
+    "date": "2017-04-12",
+    "songs": [
+      "alicenine145",
+      "alicenine146",
+      "alicenine143",
+      "alicenine147",
+      "alicenine148",
+      "alicenine149",
+      "alicenine144",
+      "alicenine150",
+      "alicenine151",
+      "alicenine152"
+    ]
+  },
+  "alicenine_sg25": {
+    "uid": "alicenine_sg25",
+    "name": "Re:Born",
+    "date": "2017-08-02",
+    "songs": ["alicenine153", "alicenine148", "alicenine154"]
+  },
+  "alicenine_sg26": {
+    "uid": "alicenine_sg26",
+    "name": "PENDULUM",
+    "date": "2017-09-20",
+    "songs": ["alicenine155", "alicenine156"]
+  },
+  "alicenine_sg27": {
+    "uid": "alicenine_sg27",
+    "name": "F+IX=YOU",
+    "date": "2018-01-17",
+    "songs": ["alicenine157", "alicenine158", "alicenine009"]
+  },
+  "alicenine_al13": {
+    "uid": "alicenine_al13",
+    "name": "PLANET NINE",
+    "date": "2018-04-25",
+    "songs": [
+      "alicenine159",
+      "alicenine157",
+      "alicenine160",
+      "alicenine161",
+      "alicenine162",
+      "alicenine155",
+      "alicenine163",
+      "alicenine158",
+      "alicenine164",
+      "alicenine165",
+      "alicenine153"
+    ]
+  },
+  "alicenine_sv01": {
+    "uid": "alicenine_sv01",
+    "name": "花鳥ノ調",
+    "date": "2019-04-24",
+    "songs": [
+      "alicenine001",
+      "alicenine002",
+      "alicenine004",
+      "alicenine008",
+      "alicenine009",
+      "alicenine020",
+      "alicenine019",
+      "alicenine031",
+      "alicenine032",
+      "alicenine026"
+    ]
+  },
+  "alicenine_sv02": {
+    "uid": "alicenine_sv02",
+    "name": "風月ノ詩",
+    "date": "2019-04-24",
+    "songs": [
+      "alicenine042",
+      "alicenine057",
+      "alicenine058",
+      "alicenine063",
+      "alicenine066",
+      "alicenine069",
+      "alicenine076",
+      "alicenine081",
+      "alicenine093",
+      "alicenine094",
+      "alicenine095"
+    ]
+  },
+  "alicenine_sg28": {
+    "uid": "alicenine_sg28",
+    "name": "革命開花 -Revolutionary Blooming-",
+    "date": "2019-10-23",
+    "songs": ["alicenine166", "alicenine167", "alicenine021"]
+  },
+  "others": {}
+}
