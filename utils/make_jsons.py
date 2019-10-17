@@ -248,19 +248,19 @@ if __name__ == "__main__":
         cl = convert_songs_to_id('''闇ニ散ル桜
 -Dice-
 Le Grand Bleu
-百花繚乱
-www.
+Phoenix
+RUMWOLF
 造花の代償
-FIVE JOKER
+秘密
 Scarlet
 ハイカラなる輪舞曲
 開戦前夜
-the Arc
+道化師
 九龍 -NINE HEADS RODEO SHOW-
 荊棘
 
 革命開花 -Revolutionary Blooming-
-ヴェルヴェット
+ZERO
 DEAD SCHOOL SCREAMING
 RAINBOWS'''.split('\n'))
         pyperclip.copy(str(cl))
