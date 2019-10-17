@@ -2,6 +2,7 @@ import { Button, Divider, List, Typography } from 'antd';
 import React from 'react';
 import { MainProps, SongUid } from '../../models/Main';
 import { toSong } from '../../utils/SongUtils';
+import { toTour } from '../../utils/LiveUtils';
 
 interface State {
   timesEachTour: {
@@ -83,7 +84,11 @@ const SongSummary = (props: MainProps<SongUid>) => {
               const year = key.split('_')[0];
               return (
                 <List.Item>
-                  <Button type="link" style={{ whiteSpace: 'unset', textAlign: 'left' }}>
+                  <Button
+                    type="link"
+                    style={{ whiteSpace: 'unset', textAlign: 'left' }}
+                    onClick={() => toTour(props.match.params.id, key, props.history)}
+                  >
                     {props.content!.lives![year][key].name}
                   </Button>
                   ({times})

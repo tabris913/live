@@ -224,7 +224,9 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       if (result.works) {
         result.works = Object.entries(result.works).reduce(
           (prev, [curKey, curVal]) =>
-            (curVal as IWork).songs.includes(req.songUid as string) ? { ...prev, [curKey]: curVal } : { ...prev },
+            Object.keys(curVal as IWork).length > 0 && (curVal as IWork).songs.includes(req.songUid as string)
+              ? { ...prev, [curKey]: curVal }
+              : { ...prev },
           {}
         );
       }
