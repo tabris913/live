@@ -24,6 +24,12 @@ def convert(string: str) -> str:
             l[i] = 'Café_de_Bossa'
         elif l[i] == 'デアイ=キセキ':
             l[i] = 'デアイ＝キセキ'
+        elif l[i] == '九龍':
+            l[i] = '九龍_-NINE_HEADS_RODEO_SHOW-'
+        elif l[i] == '革命開花':
+            l[i] = '革命開花_-Revolutionary_Blooming-'
+        elif l[i] == 'G3':
+            l[i] = '極彩極色極道歌_<G3>'
         elif ' ' in l[i]:
             l[i] = l[i].replace(' ', '_')
         elif l[i].startswith('///'):
@@ -34,23 +40,17 @@ def convert(string: str) -> str:
 
 
 if __name__ == '__main__':
-    s = '''闇ニ散ル桜
--Dice-
-Le Grand Bleu
-百花繚乱
-www.
-造花の代償
-FIVE JOKER
-Scarlet
-ハイカラなる輪舞曲
-開戦前夜
-the Arc
-九龍 -NINE HEADS RODEO SHOW-
-荊棘
-
-革命開花 -Revolutionary Blooming-
+    s = '''the beautiful name
+RAINBOWS
 ヴェルヴェット
-DEAD SCHOOL SCREAMING
-RAINBOWS'''
+華一匁
+RED CARPET GOING ON
+革命開花
+ハイカラなる輪舞曲
+九龍
+闇ニ散ル桜
+すべてへ
+
+春夏秋冬;;(with maya&マモ)'''
 
     convert(s)
