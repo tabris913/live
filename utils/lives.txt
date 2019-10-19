@@ -1,2 +1,12 @@
-beautiful_beast_fest_01 Beautiful_Beast_Fest._～美しき漢の集い～_(A9) 2019-08-24 新木場STUDIO_COAST False Phoenix UNREAL F+IX=YOU CASTLE_OF_THE_NINE UNDEAD_PARTY MEMENTO
-beautiful_beast_fest_02 Beautiful_Beast_Fest._～美しき漢の集い～_(アリス九號.) 2019-08-24 新木場STUDIO_COAST False the_beautiful_name RAINBOWS ヴェルヴェット 華一匁 RED_CARPET_GOING_ON 革命開花_-Revolutionary_Blooming- ハイカラなる輪舞曲 九龍_-NINE_HEADS_RODEO_SHOW- 闇ニ散ル桜 すべてへ encore 春夏秋冬
+shounin_yokkyu_05 SID_TOUR_2019_-承認欲求-_#05 2019-10-19 大阪国際会議場_メインホール True 承認欲求 see_through V.I.P MUSIC スノウ 手 淡い足跡 罠 妄想日記 Trick ポジティブの魔法 ホソイコエ Blood_Vessel プロポーズ 敬礼ボウイ その未来へ 涙雨 encore デアイ＝キセキ 循環 smile エール 君色の朝
+shounin_yokkyu_06 SID_TOUR_2019_-承認欲求-_#06 2019-10-20 大阪国際会議場_メインホール True 
+shounin_yokkyu_07 SID_TOUR_2019_-承認欲求-_#07 2019-10-22 久留米シティプラザ True 
+shounin_yokkyu_08 SID_TOUR_2019_-承認欲求-_#08 2019-11-02 日本特殊陶業市民会館 True 
+shounin_yokkyu_09 SID_TOUR_2019_-承認欲求-_#09 2019-11-03 日本特殊陶業市民会館 True 
+shounin_yokkyu_10 SID_TOUR_2019_-承認欲求-_#10 2019-11-05 中野サンプラザ True 
+shounin_yokkyu_11 SID_TOUR_2019_-承認欲求-_#11 2019-11-06 中野サンプラザ True 
+shounin_yokkyu_12 SID_TOUR_2019_-承認欲求-_#12 2019-11-09 新潟テルサ True 
+shounin_yokkyu_13 SID_TOUR_2019_-承認欲求-_#13 2019-11-13 カナモトホール True 
+shounin_yokkyu_14 SID_TOUR_2019_-承認欲求-_#14 2019-11-21 東京国際フォーラム True 
+shounin_yokkyu_15 SID_TOUR_2019_-承認欲求-_#15 2019-12-29 大宮ソニックシティ True 
+shounin_yokkyu_16 SID_TOUR_2019_-承認欲求-_#16 2019-12-30 東京エレクトロンホール宮城 True 

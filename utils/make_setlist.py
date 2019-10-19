@@ -40,17 +40,28 @@ def convert(string: str) -> str:
 
 
 if __name__ == '__main__':
-    s = '''the beautiful name
-RAINBOWS
-ヴェルヴェット
-華一匁
-RED CARPET GOING ON
-革命開花
-ハイカラなる輪舞曲
-九龍
-闇ニ散ル桜
-すべてへ
+    s = '''承認欲求
+see through
+V.I.P
+MUSIC
+スノウ
+手
+淡い足跡
+罠
+妄想日記
+Trick
+ポジティブの魔法
+ホソイコエ
+Blood Vessel
+プロポーズ
+敬礼ボウイ
+その未来へ
+涙雨
 
-春夏秋冬;;(with maya&マモ)'''
+デアイ=キセキ
+循環
+smile
+エール
+君色の朝'''
 
     convert(s)

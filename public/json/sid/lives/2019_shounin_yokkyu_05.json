@@ -1,1 +1,32 @@
-{"uid": "2019_shounin_yokkyu_05", "name": "SID TOUR 2019 -承認欲求- #05", "date": "2019-10-14", "place": "岡山市民会館", "setlist": ["sid145", "sid149", "sid113", "sid119", "sid087", "sid147", "sid151", "sid041", "sid013", "sid152", "sid150", "sid029", "sid146", "sid047", "sid051", "sid142", "sid153", "encore", "sid148", "sid002", "sid018", "sid073", "sid154"], "is_tour": true}
+{
+  "uid": "2019_shounin_yokkyu_05",
+  "name": "SID TOUR 2019 -承認欲求- #05",
+  "date": "2019-10-19",
+  "place": "大阪国際会議場_メインホール",
+  "setlist": [
+    "sid145",
+    "sid149",
+    "sid105",
+    "sid119",
+    "sid134",
+    "sid147",
+    "sid151",
+    "sid041",
+    "sid013",
+    "sid152",
+    "sid150",
+    "sid029",
+    "sid146",
+    "sid047",
+    "sid051",
+    "sid142",
+    "sid153",
+    "encore",
+    "sid148",
+    "sid002",
+    "sid044",
+    "sid026",
+    "sid154"
+  ],
+  "is_tour": true
+}

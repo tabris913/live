@@ -228,7 +228,7 @@ if __name__ == "__main__":
                 # print(list(songs))
 
     # add live
-    if True:
+    if False:
         with open('lives.txt', 'r', encoding='utf-8') as file:
             lives = map(str.strip, file.readlines())
             for live in lives:
@@ -244,15 +244,15 @@ if __name__ == "__main__":
                     eval(is_tour)
                 )
 
-    if False:
+    if True:
         cl = convert_songs_to_id('''闇ニ散ル桜
 -Dice-
 Le Grand Bleu
-百花繚乱
-www.
+PENDULUM
+SHADOWPLAY
 造花の代償
-FIVE JOKER
-Scarlet
+秘密
+9th Revolver
 ハイカラなる輪舞曲
 開戦前夜
 the Arc
@@ -260,7 +260,7 @@ the Arc
 荊棘
 
 革命開花 -Revolutionary Blooming-
-ヴェルヴェット
+ZERO
 DEAD SCHOOL SCREAMING
 RAINBOWS'''.split('\n'))
         pyperclip.copy(str(cl))

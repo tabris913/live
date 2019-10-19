@@ -1,1 +1,34 @@
-{"2019": {"2019_beautiful_beast_fest_01": {"uid": "2019_beautiful_beast_fest_01", "name": "Beautiful Beast Fest. ～美しき漢の集い～ (A9)", "is_tour": false, "number": 1}, "2019_beautiful_beast_fest_02": {"uid": "2019_beautiful_beast_fest_02", "name": "Beautiful Beast Fest. ～美しき漢の集い～ (アリス九號.)", "is_tour": false, "number": 1}, "2019_tora_birthday_01": {"uid": "2019_tora_birthday_01", "name": "TORA BIRTHDAY ONEMAN「虎祭2019～TORAMATSURI～」(第1部)", "is_tour": false, "number": 1}, "2019_tora_birthday_02": {"uid": "2019_tora_birthday_02", "name": "TORA BIRTHDAY ONEMAN「虎祭2019～TORAMATSURI～」(第2部)", "is_tour": false, "number": 1}, "2019_revol_bloom_ep1": {"uid": "2019_revol_bloom_ep1", "name": "ONEMAN TOUR 2019「革命開花 ep1. -絶対\"黒\"領域-」", "is_tour": true, "number": 6}}}
+{
+  "2019": {
+    "2019_beautiful_beast_fest_01": {
+      "uid": "2019_beautiful_beast_fest_01",
+      "name": "Beautiful Beast Fest. ～美しき漢の集い～ (A9)",
+      "is_tour": false,
+      "number": 1
+    },
+    "2019_beautiful_beast_fest_02": {
+      "uid": "2019_beautiful_beast_fest_02",
+      "name": "Beautiful Beast Fest. ～美しき漢の集い～ (アリス九號.)",
+      "is_tour": false,
+      "number": 1
+    },
+    "2019_tora_birthday_01": {
+      "uid": "2019_tora_birthday_01",
+      "name": "TORA BIRTHDAY ONEMAN「虎祭2019～TORAMATSURI～」(第1部)",
+      "is_tour": false,
+      "number": 1
+    },
+    "2019_tora_birthday_02": {
+      "uid": "2019_tora_birthday_02",
+      "name": "TORA BIRTHDAY ONEMAN「虎祭2019～TORAMATSURI～」(第2部)",
+      "is_tour": false,
+      "number": 1
+    },
+    "2019_revol_bloom_ep1": {
+      "uid": "2019_revol_bloom_ep1",
+      "name": "ONEMAN TOUR 2019「革命開花 ep1. -絶対\"黒\"領域-」",
+      "is_tour": true,
+      "number": 6
+    }
+  }
+}
