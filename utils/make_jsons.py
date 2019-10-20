@@ -6,7 +6,7 @@ from typing import List
 
 import pyperclip
 
-ARTIST_UID = 'alicenine'
+ARTIST_UID = 'sid'
 SONGS_JSON = f'../public/json/{ARTIST_UID}/songs.json'
 LIVES_JSON = f'../public/json/{ARTIST_UID}/lives.json'
 LIVE_JSON = f'../public/json/{ARTIST_UID}/lives/{{}}.json'
@@ -245,22 +245,27 @@ if __name__ == "__main__":
                 )
 
     if True:
-        cl = convert_songs_to_id('''闇ニ散ル桜
--Dice-
-Le Grand Bleu
-PENDULUM
-SHADOWPLAY
-造花の代償
-秘密
-9th Revolver
-ハイカラなる輪舞曲
-開戦前夜
-道化師
-九龍 -NINE HEADS RODEO SHOW-
-荊棘
+        cl = convert_songs_to_id('''承認欲求
+see through
+ANNIVERSARY
+MUSIC
+hug
+手
+淡い足跡
+罠
+妄想日記
+Trick
+ポジティブの魔法
+刺と猫
+Blood Vessel
+プロポーズ
+dummy
+その未来へ
+涙雨
 
-革命開花 -Revolutionary Blooming-
-ZERO
-DEAD SCHOOL SCREAMING
-RAINBOWS'''.split('\n'))
+デアイ＝キセキ
+Sweet?
+循環
+one way
+君色の朝'''.split('\n'))
         pyperclip.copy(str(cl))
