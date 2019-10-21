@@ -1,20 +1,11 @@
 # coding: utf-8
 
+import argparse
 import json
 import os
-from typing import List
+from typing import List, Sequence
 
 import pyperclip
-
-ARTIST_UID = 'alicenine'
-SONGS_JSON = f'../public/json/{ARTIST_UID}/songs.json'
-LIVES_JSON = f'../public/json/{ARTIST_UID}/lives.json'
-LIVE_JSON = f'../public/json/{ARTIST_UID}/lives/{{}}.json'
-WORKS_JSON = f'../public/json/{ARTIST_UID}/works.json'
-
-if os.path.exists(f'../public/json/{ARTIST_UID}') is False:
-    os.mkdir(f'../public/json/{ARTIST_UID}')
-    os.mkdir(f'../public/json/{ARTIST_UID}/lives')
 
 
 def add_live(
@@ -22,14 +13,14 @@ def add_live(
         name: str = '',
         date: str = '',
         place: str = '',
-        songs: List[str] = [],
+        songs: Sequence[str] = [],
         is_tour: bool = False
 ):
     SONGS = json.load(open(SONGS_JSON, 'r', encoding='utf-8'))
     CONVERTED_SONGS = {SONGS[uid]['name']: uid for uid in SONGS}
 
     year = date.split('-')[0]
-    uid = f'{year}_{live_uid}'
+    uid = live_uid if is_tour else f'{year}_{live_uid}'
     title = '_'.join(uid.split('_')[:-1]) if is_tour else uid
 
     # make {live_uid}.json
@@ -124,7 +115,7 @@ def add_live(
     return obj
 
 
-def add_song(songs: List[str]):
+def add_song(songs: Sequence[str]):
     if os.path.exists(SONGS_JSON):
         SONGS = json.load(open(SONGS_JSON, 'r', encoding='utf-8'))
     else:
@@ -165,7 +156,7 @@ def class_order(_class: str):
     }[_class.split('_')[1][:2]]
 
 
-def add_work(name: str, songs: List[str], _class: str, date: str = ''):
+def add_work(name: str, songs: Sequence[str], _class: str, date: str = ''):
     if os.path.exists(WORKS_JSON):
         WORKS = json.load(open(WORKS_JSON, 'r', encoding='utf-8'))
     else:
@@ -195,7 +186,7 @@ def add_work(name: str, songs: List[str], _class: str, date: str = ''):
     json.dump(ex, open(WORKS_JSON, 'w', encoding='utf-8'), ensure_ascii=False)
 
 
-def convert_songs_to_id(songs: List[str]) -> List[str]:
+def convert_songs_to_id(songs: Sequence[str]) -> List[str]:
     if os.path.exists(SONGS_JSON):
         SONGS = json.load(open(SONGS_JSON, 'r', encoding='utf-8'))
     else:
@@ -206,84 +197,138 @@ def convert_songs_to_id(songs: List[str]) -> List[str]:
             '' else f'[unknown] {song}' for song in songs]
 
 
+def convert(string: str) -> str:
+    l = string.split('\n')
+    remove = []
+    for i in range(len(l)):
+        if ';;' in l[i]:
+            l[i] = l[i].split(';;')[0].replace(' ', '_')
+        if '@@' in l[i]:
+            l[i] = l[i].split('@@')[0].replace(' ', '_')
+
+        if l[i] == '':
+            l[i] = 'encore'
+        elif l[i] == '蜜指～ミツユビ～':
+            l[i] = '蜜指_～ミツユビ～'
+        elif l[i] == '吉開学17歳(無職)':
+            l[i] = '吉開学17歳_(無職)'
+        elif l[i] == '楽園':
+            l[i] = '落園'
+        elif l[i] == 'Cafe de Bossa':
+            l[i] = 'Café_de_Bossa'
+        elif l[i] == 'デアイ=キセキ':
+            l[i] = 'デアイ＝キセキ'
+        elif l[i] == '九龍':
+            l[i] = '九龍_-NINE_HEADS_RODEO_SHOW-'
+        elif l[i] == '革命開花':
+            l[i] = '革命開花_-Revolutionary_Blooming-'
+        elif l[i] == 'G3':
+            l[i] = '極彩極色極道歌_<G3>'
+        elif ' ' in l[i]:
+            l[i] = l[i].replace(' ', '_')
+        elif l[i].startswith('///'):
+            remove.insert(0, i)
+    for i in remove:
+        del l[i]
+    return ' '.join(l)
+
+
+def make_tour(strings: str, tid: str, year: int):
+    l = list(map(lambda x: x.split(' / '), strings.split('\n')))
+    i, count = 0, 1
+
+    l2 = []
+    while i < len(l):
+        date = l[i][0].replace('.', '-')
+        i += 1
+
+        name, place = map(lambda x: x.replace(' ', '_'), l[i])
+        i += 1
+        l2.append(
+            f'{year}_{tid}_{count:02d} {name}_#{count:02d} {year}-{date} {place} True '
+        )
+        count += 1
+
+    return '\n'.join(l2)
+
+
+def convert_strings(string: str) -> str:
+    return string.replace('_', ' ')
+
+
+def start_adding_songs(args: argparse.Namespace):
+    if args.fill_space:
+        with open(f'setlist_{args.artist}.txt', 'r', encoding='utf-8') as file:
+            converted = convert(file.read())
+        pyperclip.copy(converted)
+    elif args.uid:
+        with open(f'setlist_{args.artist}.txt', 'r', encoding='utf-8') as file:
+            ids = convert_songs_to_id(file.read())
+        pyperclip.copy(str(ids))
+    else:
+        with open(f'songs.txt', 'r', encoding='utf-8') as file:
+            songs = map(str.strip, file.readlines())
+            add_song(songs)
+
+
+def start_adding_works(args: argparse.Namespace):
+    with open('works.txt', 'r', encoding='utf-8') as file:
+        works = map(str.strip, file.readlines())
+        for work in works:
+            name, _class, date, *songs = work.split('')
+            songs = map(lambda s: s.replace('_', ' '), songs)
+            add_work(name.replace('_', ' '), songs, _class, date)
+
+
+def start_adding_lives(args: argparse.Namespace):
+    with open('lives.txt', 'r', encoding='utf-8') as file:
+        lives = map(str.strip, file.readlines())
+        for live in lives:
+            uid, name, date, place, is_tour, *songs = live.split(' ')
+            add_live(uid, convert_strings(name), date, convert_strings(
+                place), list(map(convert_strings, songs)), eval(is_tour))
+
+
+def start_adding_tour(args: argparse.Namespace):
+    with open('tour.txt', 'r', encoding='utf-8') as file:
+        tour = make_tour(file.read(), args.id, args.year)
+    pyperclip.copy(tour)
+
+
 if __name__ == "__main__":
     # print(add_live('sample', songs=['encore', '眩暈'], date='2019-10-01'))
     # add_song(['モノクロのキス', 'season'])
     # add_work('sample', ['眩暈'], 'cv', '2008-08-13')
 
-    # add songs
-    if False:
-        with open('songs.txt', 'r', encoding='utf-8') as file:
-            songs = map(str.strip, file.readlines())
-            add_song(songs)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('artist', choices=['alicenine', 'sid'])
+    subparsers = parser.add_subparsers()
 
-    # add work
-    if False:
-        with open('works.txt', 'r', encoding='utf-8') as file:
-            works = map(str.strip, file.readlines())
-            for work in works:
-                name, _class, date, *songs = work.split(' ')
-                songs = map(lambda s: s.replace('_', ' '), songs)
-                add_work(name.replace('_', ' '), songs, _class, date)
-                # print(list(songs))
+    song = subparsers.add_parser('song')
+    song.add_argument('-u', '--uid', action='store_true')
+    song.add_argument('-f', '--fill-space', action='store_true')
+    song.set_defaults(start=start_adding_songs)
 
-    # add live
-    if False:
-        with open('lives.txt', 'r', encoding='utf-8') as file:
-            lives = map(str.strip, file.readlines())
-            for live in lives:
-                uid, name, date, place, is_tour, *songs = live.split(' ')
-                add_live(
-                    uid,
-                    name.replace(
-                        '_',
-                        ' '),
-                    date,
-                    place,
-                    list(map(lambda x: x.replace('_', ' '), songs)),
-                    eval(is_tour)
-                )
+    work = subparsers.add_parser('work')
+    work.set_defaults(start=start_adding_works)
 
-    if True:
-        #         cl = convert_songs_to_id('''承認欲求
-        # see through
-        # ANNIVERSARY
-        # MUSIC
-        # hug
-        # 手
-        # 淡い足跡
-        # 罠
-        # 妄想日記
-        # Trick
-        # ポジティブの魔法
-        # 刺と猫
-        # Blood Vessel
-        # プロポーズ
-        # dummy
-        # その未来へ
-        # 涙雨
+    live = subparsers.add_parser('live')
+    live.set_defaults(start=start_adding_lives)
 
-        # デアイ＝キセキ
-        # Sweet?
-        # 循環
-        # one way
-        # 君色の朝'''.split('\n'))
-        cl = convert_songs_to_id('''闇ニ散ル桜
--Dice-
-Le Grand Bleu
-Phoenix
-RUMWOLF
-造花の代償
-FIVE JOKER
-Scarlet
-ハイカラなる輪舞曲
-開戦前夜
-道化師
-九龍 -NINE HEADS RODEO SHOW-
-荊棘
+    tour = subparsers.add_parser('tour')
+    tour.add_argument('id')
+    tour.add_argument('year', type=int)
+    tour.set_defaults(start=start_adding_tour)
 
-革命開花 -Revolutionary Blooming-
-ヴェルヴェット
-DEAD SCHOOL SCREAMING
-RAINBOWS'''.split('\n'))
-        pyperclip.copy(str(cl))
+    args = parser.parse_args()
+    ARTIST_UID = args.artist
+    SONGS_JSON = f'../public/json/{ARTIST_UID}/songs.json'
+    LIVES_JSON = f'../public/json/{ARTIST_UID}/lives.json'
+    LIVE_JSON = f'../public/json/{ARTIST_UID}/lives/{{}}.json'
+    WORKS_JSON = f'../public/json/{ARTIST_UID}/works.json'
+
+    if os.path.exists(f'../public/json/{ARTIST_UID}') is False:
+        os.mkdir(f'../public/json/{ARTIST_UID}')
+        os.mkdir(f'../public/json/{ARTIST_UID}/lives')
+
+    args.start(args)
