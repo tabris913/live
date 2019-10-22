@@ -263,7 +263,7 @@ def start_adding_songs(args: argparse.Namespace):
         pyperclip.copy(converted)
     elif args.uid:
         with open(f'setlist_{args.artist}.txt', 'r', encoding='utf-8') as file:
-            ids = convert_songs_to_id(file.read())
+            ids = convert_songs_to_id(file.read().split('\n'))
         pyperclip.copy(str(ids))
     else:
         with open(f'songs.txt', 'r', encoding='utf-8') as file:
