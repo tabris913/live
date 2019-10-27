@@ -1,6 +1,5 @@
 import { IArtists } from '../models/contents/artist';
 import ILive, { ILives } from '../models/contents/live';
-import { ISongs } from '../models/contents/song';
 import IArtistRequest from '../models/request/ArtistRequest';
 import ILiveRequest from '../models/request/LiveRequest';
 import ILivesRequest from '../models/request/LivesRequest';
@@ -60,13 +59,15 @@ export const contentApisBuilder = () => {
       );
     },
     getSong: (req: ISongRequest): Promise<any> => {
-      return new Promise(resolve =>
-        resolve(
-          getSongs(req).then((songs: ISongs) =>
-            Object.keys(songs).includes(req.songUid as string) ? songs[req.songUid as string] : undefined
-          )
-        )
-      );
+      // return new Promise(resolve =>
+      //   resolve(
+      //     getSongs(req).then((songs: ISongs) =>
+      //       Object.keys(songs).includes(req.songUid as string) ? songs[req.songUid as string] : undefined
+      //     )
+      //   )
+      // );
+      const url = `${baseUrl}/json/${req.artistUid}/songs/${req.songUid}.json`;
+      return get<ISongRequest, any>(url, req);
     },
     getLiveInfo: (req: ILiveRequest): Promise<any> => {
       const year = req.liveUid.split('_')[0];

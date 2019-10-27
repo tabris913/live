@@ -35,7 +35,16 @@ def add_live(
     for idx, song in enumerate(songs):
         if song != 'encore':
             if (song in CONVERTED_SONGS):
-                obj['setlist'][idx] = CONVERTED_SONGS[song]
+                song_uid = CONVERTED_SONGS[song]
+                obj['setlist'][idx] = song_uid
+
+                SONG_FILE_NAME = SONG_JSON.format(song_uid)
+                with open(SONG_FILE_NAME, encoding='utf-8') as file:
+                    song_json = json.load(file)
+                if uid not in song_json['lives']:
+                    song_json['lives'].append(uid)
+                with open(SONG_FILE_NAME, 'w', encoding='utf-8') as file:
+                    json.dump(song_json, file, ensure_ascii=False)
             else:
                 print(f'{song} is unknown')
                 obj['setlist'][idx] = f'[unknown] {song}'
@@ -127,6 +136,10 @@ def add_song(songs: Sequence[str]):
         if song not in CONVERTED_SONGS:
             uid = f'{ARTIST_UID}{size+idx:03d}'
             SONGS.update({uid: {'uid': uid, 'name': song}})
+            JSON_FILE_NAME = SONG_JSON.format(uid)
+            json.dump({'uid': uid, 'lives': []}, open(
+                f'{JSON_FILE_NAME}', 'w', encoding='utf-8'), ensure_ascii=False)
+
     # sort
     SONGS = dict(sorted(SONGS.items(),
                         key=lambda key_val: int(key_val[0][-3:])))
@@ -323,6 +336,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     ARTIST_UID = args.artist
     SONGS_JSON = f'../public/json/{ARTIST_UID}/songs.json'
+    SONG_JSON = f'../public/json/{ARTIST_UID}/songs/{{}}.json'
     LIVES_JSON = f'../public/json/{ARTIST_UID}/lives.json'
     LIVE_JSON = f'../public/json/{ARTIST_UID}/lives/{{}}.json'
     WORKS_JSON = f'../public/json/{ARTIST_UID}/works.json'
@@ -330,5 +344,6 @@ if __name__ == "__main__":
     if os.path.exists(f'../public/json/{ARTIST_UID}') is False:
         os.mkdir(f'../public/json/{ARTIST_UID}')
         os.mkdir(f'../public/json/{ARTIST_UID}/lives')
+        os.mkdir(f'../public/json/{ARTIST_UID}/songs')
 
     args.start(args)

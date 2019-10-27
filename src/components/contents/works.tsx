@@ -13,6 +13,7 @@ interface IState {
 const Works = (props: MainProps<WorkUid>) => {
   const [localState, setLocalState] = React.useState<IState>({ searchWord: '', results: [] });
 
+  // @ts-ignore
   const SearchArea = () => {
     const onSearch = () =>
       setLocalState({
@@ -24,7 +25,7 @@ const Works = (props: MainProps<WorkUid>) => {
       });
 
     return (
-      <Row type="flex" style={{ marginBottom: 5 }}>
+      <Row type="flex" style={{ marginBottom: 25 }}>
         <Col>
           <Input
             defaultValue={localState.searchWord}
@@ -87,7 +88,7 @@ const Works = (props: MainProps<WorkUid>) => {
 
   return (
     <>
-      <SearchArea />
+      {/* <SearchArea /> */}
       {localState.results.length > 0 ? <SearchResultArea /> : <WorksArea />}
       <Divider />
       <Button type="primary" onClick={() => toArtist(props.match.params.id, props.history)} style={{ width: 200 }}>

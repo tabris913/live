@@ -1,5 +1,5 @@
 import { IContent } from '../content';
-import { SongUid } from '../Main';
+import { LiveUid, SongUid } from '../Main';
 
 export interface ISongs {
   [uid: string]: ISong;
@@ -7,6 +7,7 @@ export interface ISongs {
 
 export default interface ISong extends IContent<SongUid> {
   track_no?: number;
+  lives?: LiveUid[];
   misc?: {
     [x: string]: any;
   };

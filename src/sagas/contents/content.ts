@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { call, put } from 'redux-saga/effects';
+import { all, call, put } from 'redux-saga/effects';
 import { Action } from 'typescript-fsa';
 import { ContentActions } from '../../actions/content';
 import { ContentApis } from '../../apis/content';
@@ -190,32 +190,45 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       if (!result.song || !result.lives) throw {};
 
       const newLives: ILives = {};
-      for (const year of Object.keys(result.lives)) {
-        for (const liveUid of Object.keys(result.lives[year])) {
-          if (result.lives[year][liveUid].is_tour) {
-            for (let i = 1; i <= result.lives[year][liveUid].number; i = i + 1) {
-              const uid = `${liveUid}_${i > 9 ? i : `0${i}`}`;
-              const resLive: ReturnedType<typeof apis.getLive> = yield call(apis.getLive, {
-                artistUid: req.artistUid,
-                liveUid: uid,
-              });
-              if (resLive && resLive.setlist.includes(req.songUid)) {
-                newLives[year] = Object.keys(newLives).includes(year)
-                  ? { ...newLives[year], [resLive.uid]: resLive }
-                  : { [resLive.uid]: resLive };
-              }
-            }
-          } else {
-            const resLive: ReturnedType<typeof apis.getLive> = yield call(apis.getLive, {
-              artistUid: req.artistUid,
-              liveUid: liveUid,
-            });
-            if (resLive && resLive.setlist.includes(req.songUid)) {
-              newLives[year] = Object.keys(newLives).includes(year)
-                ? { ...newLives[year], [resLive.uid]: resLive }
-                : { [resLive.uid]: resLive };
-            }
-          }
+      // for (const year of Object.keys(result.lives)) {
+      //   for (const liveUid of Object.keys(result.lives[year])) {
+      //     if (result.lives[year][liveUid].is_tour) {
+      //       for (let i = 1; i <= result.lives[year][liveUid].number; i = i + 1) {
+      //         const uid = `${liveUid}_${i > 9 ? i : `0${i}`}`;
+      //         console.log(uid);
+      //         const resLive: ReturnedType<typeof apis.getLive> = yield call(apis.getLive, {
+      //           artistUid: req.artistUid,
+      //           liveUid: uid,
+      //         });
+      //         if (resLive && resLive.setlist.includes(req.songUid)) {
+      //           newLives[year] = Object.keys(newLives).includes(year)
+      //             ? { ...newLives[year], [resLive.uid]: resLive }
+      //             : { [resLive.uid]: resLive };
+      //         }
+      //       }
+      //     } else {
+      //       const resLive: ReturnedType<typeof apis.getLive> = yield call(apis.getLive, {
+      //         artistUid: req.artistUid,
+      //         liveUid: liveUid,
+      //       });
+      //       if (resLive && resLive.setlist.includes(req.songUid)) {
+      //         newLives[year] = Object.keys(newLives).includes(year)
+      //           ? { ...newLives[year], [resLive.uid]: resLive }
+      //           : { [resLive.uid]: resLive };
+      //       }
+      //     }
+      //   }
+      // }
+      if (result.song.lives) {
+        const lives: ReturnedType<typeof apis.getLive> = yield all(
+          result.song.lives.map(liveUid => call(apis.getLive, { artistUid: req.artistUid, liveUid: liveUid }))
+        );
+        for (const live of lives) {
+          if (!live) throw {};
+          const year = (live.date as string).split('-')[0];
+          newLives[year] = Object.keys(newLives).includes(year)
+            ? { ...newLives[year], [live.uid]: live }
+            : { [live.uid]: live };
         }
       }
       result.lives = newLives;
@@ -235,7 +248,6 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
         if (req.target.artist) result.artist = yield call(apis.getArtist, { artistUid: req.artistUid });
         if (req.target.songs) result.songs = yield call(apis.getSongs, req);
       }
-
       yield put(actions.prepareSongPage.done({ params: req, result: result }));
     },
   prepareLivePage: () =>
