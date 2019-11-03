@@ -1,1 +1,27 @@
-{"uid": "2019_revol_bloom_ep1_05", "name": "ONEMAN TOUR 2019「革命開花 ep1. -絶対\"黒\"領域-」 #05", "date": "2019-10-25", "place": "恵比寿LIQUIDROOM", "setlist": [], "is_tour": true}
+{
+  "uid": "2019_revol_bloom_ep1_05",
+  "name": "ONEMAN TOUR 2019「革命開花 ep1. -絶対\"黒\"領域-」 #05",
+  "date": "2019-10-25",
+  "place": "恵比寿LIQUIDROOM",
+  "setlist": [
+    "alicenine011",
+    "alicenine057",
+    "alicenine081",
+    "alicenine129",
+    "alicenine073",
+    "alicenine147",
+    "alicenine113",
+    "alicenine115",
+    "alicenine018",
+    "alicenine118",
+    "alicenine131",
+    "alicenine023",
+    "alicenine144",
+    "encore",
+    "alicenine166",
+    "alicenine053",
+    "alicenine035",
+    "alicenine063"
+  ],
+  "is_tour": true
+}
