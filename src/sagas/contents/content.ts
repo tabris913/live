@@ -380,7 +380,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
         if (songUid.startsWith('[unknown]')) {
           if (['[unknown] ?', '[unknown] ...'].includes(songUid as string)) continue;
           result.songList.push({ uid: songUid, name: songUid.slice(10), misc: { times: songPlayed[songUid] } });
-        } else {
+        } else if (songUid !== 'encore') {
           const resSong: ReturnedType<typeof apis.getSong> = yield call(apis.getSong, {
             artistUid: req.artistUid,
             songUid: songUid,
