@@ -1,5 +1,6 @@
 // API BASE URL
-export const API_BASE_URL = 'https://api.github.com/repos/tabris913/live/contents/public'; // process.env.PUBLIC_URL;
+export const API_BASE_URL = 'https://api.github.com/repos/tabris913/live/contents/public';
+// export const API_BASE_URL = process.env.PUBLIC_URL;
 
 export const fetchWithErrorHandling = (url: RequestInfo, options?: RequestInit | undefined) =>
   fetch(url, options)

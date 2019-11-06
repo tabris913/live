@@ -210,6 +210,26 @@ def convert_songs_to_id(songs: Sequence[str]) -> List[str]:
             '' else f'[unknown] {song}' for song in songs]
 
 
+def normalize(song: str) -> str:
+    if song == '蜜指～ミツユビ～':
+        return '蜜指 ～ミツユビ～'
+    if song == '吉開学17歳(無職)':
+        return '吉開学17歳 (無職)'
+    if song == '楽園':
+        return '落園'
+    if song == 'Cafe de Bossa':
+        return 'Café de Bossa'
+    if song == 'デアイ=キセキ':
+        return 'デアイ＝キセキ'
+    if song == '九龍':
+        return '九龍 -NINE HEADS RODEO SHOW-'
+    if song == '革命開花':
+        return '革命開花 -Revolutionary Blooming-'
+    if song == 'G3':
+        return '極彩極色極道歌 <G3>'
+    return song
+
+
 def convert(string: str) -> str:
     l = string.split('\n')
     remove = []
@@ -219,25 +239,9 @@ def convert(string: str) -> str:
         if '@@' in l[i]:
             l[i] = l[i].split('@@')[0].replace(' ', '_')
 
-        if l[i] == '':
-            l[i] = 'encore'
-        elif l[i] == '蜜指～ミツユビ～':
-            l[i] = '蜜指_～ミツユビ～'
-        elif l[i] == '吉開学17歳(無職)':
-            l[i] = '吉開学17歳_(無職)'
-        elif l[i] == '楽園':
-            l[i] = '落園'
-        elif l[i] == 'Cafe de Bossa':
-            l[i] = 'Café_de_Bossa'
-        elif l[i] == 'デアイ=キセキ':
-            l[i] = 'デアイ＝キセキ'
-        elif l[i] == '九龍':
-            l[i] = '九龍_-NINE_HEADS_RODEO_SHOW-'
-        elif l[i] == '革命開花':
-            l[i] = '革命開花_-Revolutionary_Blooming-'
-        elif l[i] == 'G3':
-            l[i] = '極彩極色極道歌_<G3>'
-        elif ' ' in l[i]:
+        l[i] = normalize(l[i])
+
+        if ' ' in l[i]:
             l[i] = l[i].replace(' ', '_')
         elif l[i].startswith('///'):
             remove.insert(0, i)
@@ -276,7 +280,7 @@ def start_adding_songs(args: argparse.Namespace):
         pyperclip.copy(converted)
     elif args.uid:
         with open(f'setlist_{args.artist}.txt', 'r', encoding='utf-8') as file:
-            ids = convert_songs_to_id(file.read().split('\n'))
+            ids = convert_songs_to_id(map(normalize, file.read().split('\n')))
         pyperclip.copy(str(ids))
     else:
         with open(f'songs.txt', 'r', encoding='utf-8') as file:
