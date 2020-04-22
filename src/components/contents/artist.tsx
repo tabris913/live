@@ -20,6 +20,15 @@ const Artist = (props: MainProps<ArtistUid>) =>
           Songs
         </Button>
       </Col>
+      <Col style={colStyle}>
+        <Button
+          type="primary"
+          style={buttonStyle}
+          onClick={() => props.history.push(`/choice/${props.match.params.id}`)}
+        >
+          Choice
+        </Button>
+      </Col>
       {/* <Col style={colStyle}>
         <Button type="primary" style={buttonStyle}>
           Add Setlist

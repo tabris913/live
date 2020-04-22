@@ -7,6 +7,7 @@ import { IWorks } from '../models/contents/work';
 import { IContentState } from '../models/ContentState';
 import { Uid } from '../models/Main';
 import IArtistRequest from '../models/request/ArtistRequest';
+import IChoiceRequest from '../models/request/ChoiceRequest';
 import ILiveRequest from '../models/request/LiveRequest';
 import ILivesRequest, { ITourRequest, ITourSummaryRequest } from '../models/request/LivesRequest';
 import IPRequest from '../models/request/PRequest';
@@ -32,39 +33,35 @@ export interface ContentActions {
   prepareLivePage: AsyncActionCreators<ILiveRequest, IContentState, any>;
   prepareSongSummaryPage: AsyncActionCreators<ISongSummaryRequest, IContentState, any>;
   prepareTourSummaryPage: AsyncActionCreators<ITourSummaryRequest, IContentState, any>;
+  prepareChoicePage: AsyncActionCreators<IChoiceRequest, IContentState, any>;
 
   postLive: AsyncActionCreators<IPRequest<IContent<Uid>>, void, any>;
 }
 
+const AAC = actionCreatorFactory().async;
+
 export const contentActionsBuilder = (actionTypeMap: { [P in keyof ContentActions]: string }): ContentActions => {
   const body: ContentActions = {
-    getArtist: actionCreatorFactory().async<IArtistRequest, IArtist, any>(actionTypeMap.getArtist),
-    getArtists: actionCreatorFactory().async<void, IArtists, any>(actionTypeMap.getArtists),
-    getWorks: actionCreatorFactory().async<IWorksRequest, IWorks, any>(actionTypeMap.getWorks),
-    getSong: actionCreatorFactory().async<ISongRequest, ISong, any>(actionTypeMap.getSong),
-    getSongs: actionCreatorFactory().async<ISongsRequest, ISongs, any>(actionTypeMap.getSongs),
-    getLives: actionCreatorFactory().async<ILivesRequest, ILives, any>(actionTypeMap.getLives),
-    getLive: actionCreatorFactory().async<ILiveRequest, ILive, any>(actionTypeMap.getLives),
+    getArtist: AAC<IArtistRequest, IArtist, any>(actionTypeMap.getArtist),
+    getArtists: AAC<void, IArtists, any>(actionTypeMap.getArtists),
+    getWorks: AAC<IWorksRequest, IWorks, any>(actionTypeMap.getWorks),
+    getSong: AAC<ISongRequest, ISong, any>(actionTypeMap.getSong),
+    getSongs: AAC<ISongsRequest, ISongs, any>(actionTypeMap.getSongs),
+    getLives: AAC<ILivesRequest, ILives, any>(actionTypeMap.getLives),
+    getLive: AAC<ILiveRequest, ILive, any>(actionTypeMap.getLive),
 
-    prepareTopPage: actionCreatorFactory().async<void, IContentState, any>(actionTypeMap.prepareTopPage),
-    prepareArtistPage: actionCreatorFactory().async<IArtistRequest, IContentState, any>(
-      actionTypeMap.prepareArtistPage
-    ),
-    prepareWorksPage: actionCreatorFactory().async<IWorksRequest, IContentState, any>(actionTypeMap.prepareWorksPage),
-    prepareLiveListPage: actionCreatorFactory().async<ILivesRequest, IContentState, any>(
-      actionTypeMap.prepareLiveListPage
-    ),
-    prepareTourPage: actionCreatorFactory().async<ITourRequest, IContentState, any>(actionTypeMap.prepareTourPage),
-    prepareSongPage: actionCreatorFactory().async<ISongRequest, IContentState, any>(actionTypeMap.prepareSongPage),
-    prepareLivePage: actionCreatorFactory().async<ILiveRequest, IContentState, any>(actionTypeMap.prepareLivePage),
-    prepareSongSummaryPage: actionCreatorFactory().async<ISongSummaryRequest, IContentState, any>(
-      actionTypeMap.prepareSongSummaryPage
-    ),
-    prepareTourSummaryPage: actionCreatorFactory().async<ITourSummaryRequest, IContentState, any>(
-      actionTypeMap.prepareTourSummaryPage
-    ),
+    prepareTopPage: AAC<void, IContentState, any>(actionTypeMap.prepareTopPage),
+    prepareArtistPage: AAC<IArtistRequest, IContentState, any>(actionTypeMap.prepareArtistPage),
+    prepareWorksPage: AAC<IWorksRequest, IContentState, any>(actionTypeMap.prepareWorksPage),
+    prepareLiveListPage: AAC<ILivesRequest, IContentState, any>(actionTypeMap.prepareLiveListPage),
+    prepareTourPage: AAC<ITourRequest, IContentState, any>(actionTypeMap.prepareTourPage),
+    prepareSongPage: AAC<ISongRequest, IContentState, any>(actionTypeMap.prepareSongPage),
+    prepareLivePage: AAC<ILiveRequest, IContentState, any>(actionTypeMap.prepareLivePage),
+    prepareSongSummaryPage: AAC<ISongSummaryRequest, IContentState, any>(actionTypeMap.prepareSongSummaryPage),
+    prepareTourSummaryPage: AAC<ITourSummaryRequest, IContentState, any>(actionTypeMap.prepareTourSummaryPage),
+    prepareChoicePage: AAC<IChoiceRequest, IContentState, any>(actionTypeMap.prepareChoicePage),
 
-    postLive: actionCreatorFactory().async<IPRequest<IContent<Uid>>, void, any>(actionTypeMap.postLive),
+    postLive: AAC<IPRequest<IContent<Uid>>, void, any>(actionTypeMap.postLive),
   };
 
   // if (actionTypeMap.getHistory) {
@@ -92,6 +89,7 @@ export const liveActions = contentActionsBuilder({
   prepareLivePage: ActionTypes.PREPARE_LIVE_PAGE,
   prepareSongSummaryPage: ActionTypes.PREPARE_SONG_SUMMARY_PAGE,
   prepareTourSummaryPage: ActionTypes.PREPARE_TOUR_SUMMERY_PAGE,
+  prepareChoicePage: ActionTypes.PREPARE_CHOICE_PAGE,
 
   postLive: ActionTypes.POST_LIVE,
 });

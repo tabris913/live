@@ -35,6 +35,7 @@ const Application = () => (
             [PageName.LIVE, Page.LivePage, true],
             [PageName.TOUR_SUMMARY, Page.TourSummaryPage, true],
             [PageName.SONG_SUMMARY, Page.SongSummaryPage, true],
+            ['/choice', Page.ChoicePage, true],
           ]
             .map(e => e as MakeRoute)
             .map(e => makeRoute(e))}

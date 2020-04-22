@@ -9,6 +9,7 @@ import ISong, { ISongs } from '../../models/contents/song';
 import IWork from '../../models/contents/work';
 import { IContentState } from '../../models/ContentState';
 import IArtistRequest from '../../models/request/ArtistRequest';
+import IChoiceRequest from '../../models/request/ChoiceRequest';
 import ILiveRequest from '../../models/request/LiveRequest';
 import ILivesRequest, { ITourRequest, ITourSummaryRequest } from '../../models/request/LivesRequest';
 import IPRequest from '../../models/request/PRequest';
@@ -35,6 +36,7 @@ export interface ContentSaga {
   prepareLivePage: (action: Action<ILiveRequest>) => IterableIterator<any>;
   prepareSongSummaryPage: (action: Action<ISongSummaryRequest>) => IterableIterator<any>;
   prepareTourSummaryPage: (action: Action<ITourSummaryRequest>) => IterableIterator<any>;
+  prepareChoicePage: (action: Action<IChoiceRequest>) => IterableIterator<any>;
 
   postLive: (action: Action<IPRequest<ILive>>) => IterableIterator<any>;
 }
@@ -393,6 +395,21 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
       if (req.target.lives) result.lives = yield call(apis.getLives, req);
 
       yield put(actions.prepareTourSummaryPage.done({ params: req, result: result }));
+    },
+
+  prepareChoicePage: () =>
+    function*(action: Action<IChoiceRequest>): IterableIterator<any> {
+      console.log('prepare choice page');
+      const req = action.payload;
+      console.log(req.artistUid, req.target);
+      const result: IContentState = {
+        ...(req.target && req.target.artist
+          ? { artist: yield call(apis.getArtist, { artistUid: req.artistUid }) }
+          : {}),
+        songs: yield call(apis.getSongs, { artistUid: req.artistUid }),
+      };
+
+      yield put(actions.prepareChoicePage.done({ params: req, result: result }));
     },
 
   postLive: () =>

@@ -32,10 +32,13 @@ export const contentReducerBuilder = (actions: ContentActions) => {
       [actions.prepareTourPage.done, actions.prepareSongPage.done, actions.prepareLivePage.done],
       (state, action) => ({ ...state, ...action.payload.result })
     )
-    .casesWithAction([actions.prepareSongSummaryPage.done, actions.prepareTourSummaryPage.done], (state, action) => ({
-      ...state,
-      ...action.payload.result,
-    }));
+    .casesWithAction(
+      [actions.prepareSongSummaryPage.done, actions.prepareTourSummaryPage.done, actions.prepareChoicePage.done],
+      (state, action) => ({
+        ...state,
+        ...action.payload.result,
+      })
+    );
 
   return reducer;
 };
