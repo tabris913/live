@@ -51,7 +51,10 @@ const ChoicePage = (props: Props) => {
     });
   });
 
-  return props.content.artist && props.content.artist.uid === props.match.params.id && props.content.songs ? (
+  return props.content.artist &&
+    props.content.artist.uid === props.match.params.id &&
+    props.content.songs &&
+    props.content.works ? (
     <Wireframe title={props.content.artist.name} breadcrump={[{ label: props.content.artist.name }]}>
       <Choice {...props} />
     </Wireframe>

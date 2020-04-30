@@ -1,8 +1,8 @@
 import { Button, Divider, List, Typography } from 'antd';
 import React from 'react';
 import { MainProps, SongUid } from '../../models/Main';
-import { toSong } from '../../utils/SongUtils';
 import { toTour } from '../../utils/LiveUtils';
+import { toSong } from '../../utils/SongUtils';
 
 interface State {
   timesEachTour: {

@@ -3,14 +3,22 @@
     "uid": "sid_sg01",
     "name": "吉開学17歳 (無職)",
     "songs": ["sid001", "sid002", "sid003"],
-    "date": "2003-08"
+    "date": "2003-08",
+    "kind": "sg"
   },
-  "sid_sg02": { "uid": "sid_sg02", "name": "会場盤 / 通販盤", "songs": ["sid003", "sid004"], "date": "2004-03-28" },
+  "sid_sg02": {
+    "uid": "sid_sg02",
+    "name": "会場盤 / 通販盤",
+    "songs": ["sid003", "sid004"],
+    "date": "2004-03-28",
+    "kind": "sg"
+  },
   "sid_sg02_b": {
     "uid": "sid_sg02_b",
     "name": "流通盤",
     "songs": ["sid003", "sid004", "sid005"],
-    "date": "2004-06-06"
+    "date": "2004-06-06",
+    "kind": "sg"
   },
   "sid_al01": {
     "uid": "sid_al01",
@@ -28,15 +36,23 @@
       "sid014",
       "sid015"
     ],
-    "date": "2004-12-22"
+    "date": "2004-12-22",
+    "kind": "al"
   },
   "sid_sg03": {
     "uid": "sid_sg03",
     "name": "paint pops",
     "songs": ["sid016", "sid017", "sid018", "sid019"],
-    "date": "2005-07-20"
+    "date": "2005-07-20",
+    "kind": "sg"
   },
-  "sid_sg04": { "uid": "sid_sg04", "name": "Sweet?", "songs": ["sid020", "sid021"], "date": "2005-10-12" },
+  "sid_sg04": {
+    "uid": "sid_sg04",
+    "name": "Sweet?",
+    "songs": ["sid020", "sid021"],
+    "date": "2005-10-12",
+    "kind": "sg"
+  },
   "sid_al02": {
     "uid": "sid_al02",
     "name": "星の都",
@@ -53,11 +69,30 @@
       "sid028",
       "sid017"
     ],
-    "date": "2005-11-16"
+    "date": "2005-11-16",
+    "kind": "al"
   },
-  "sid_sg05": { "uid": "sid_sg05", "name": "ホソイコエ", "songs": ["sid029", "sid030"], "date": "2006-02-08" },
-  "sid_sg06": { "uid": "sid_sg06", "name": "chapter 1", "songs": ["sid031", "sid032"], "date": "2006-06-14" },
-  "sid_sg07": { "uid": "sid_sg07", "name": "御手紙", "songs": ["sid033", "sid034"], "date": "2006-08-16" },
+  "sid_sg05": {
+    "uid": "sid_sg05",
+    "name": "ホソイコエ",
+    "songs": ["sid029", "sid030"],
+    "date": "2006-02-08",
+    "kind": "sg"
+  },
+  "sid_sg06": {
+    "uid": "sid_sg06",
+    "name": "chapter 1",
+    "songs": ["sid031", "sid032"],
+    "date": "2006-06-14",
+    "kind": "sg"
+  },
+  "sid_sg07": {
+    "uid": "sid_sg07",
+    "name": "御手紙",
+    "songs": ["sid033", "sid034"],
+    "date": "2006-08-16",
+    "kind": "sg"
+  },
   "sid_al03": {
     "uid": "sid_al03",
     "name": "play",
@@ -75,12 +110,25 @@
       "sid042",
       "sid043"
     ],
-    "date": "2006-11-08"
+    "date": "2006-11-08",
+    "kind": "al"
   },
-  "sid_sg08": { "uid": "sid_sg08", "name": "smile", "songs": ["sid044", "sid045"], "date": "2007-04-04" },
-  "sid_sg09": { "uid": "sid_sg09", "name": "夏恋", "songs": ["sid046", "sid047"], "date": "2007-07-11" },
-  "sid_sg10": { "uid": "sid_sg10", "name": "蜜指 ～ミツユビ～", "songs": ["sid048", "sid049"], "date": "2007-09-26" },
-  "sid_sg11": { "uid": "sid_sg11", "name": "涙の温度", "songs": ["sid050", "sid051"], "date": "2007-12-05" },
+  "sid_sg08": { "uid": "sid_sg08", "name": "smile", "songs": ["sid044", "sid045"], "date": "2007-04-04", "kind": "sg" },
+  "sid_sg09": { "uid": "sid_sg09", "name": "夏恋", "songs": ["sid046", "sid047"], "date": "2007-07-11", "kind": "sg" },
+  "sid_sg10": {
+    "uid": "sid_sg10",
+    "name": "蜜指 ～ミツユビ～",
+    "songs": ["sid048", "sid049"],
+    "date": "2007-09-26",
+    "kind": "sg"
+  },
+  "sid_sg11": {
+    "uid": "sid_sg11",
+    "name": "涙の温度",
+    "songs": ["sid050", "sid051"],
+    "date": "2007-12-05",
+    "kind": "sg"
+  },
   "sid_al04": {
     "uid": "sid_al04",
     "name": "センチメンタルマキアート",
@@ -97,27 +145,37 @@
       "sid058",
       "sid050"
     ],
-    "date": "2008-02-20"
+    "date": "2008-02-20",
+    "kind": "al"
   },
   "sid_ca01": {
     "uid": "sid_ca01",
     "name": "Side B complete collection ～e.B～",
     "songs": ["sid018", "sid021", "sid030", "sid032", "sid034", "sid045", "sid047", "sid049", "sid051", "sid059"],
-    "date": "2008-08-13"
+    "date": "2008-08-13",
+    "kind": "ca"
   },
   "sid_sg12": {
     "uid": "sid_sg12",
     "name": "モノクロのキス",
     "date": "2008-10-29",
-    "songs": ["sid060", "sid061", "sid055"]
+    "songs": ["sid060", "sid061", "sid055"],
+    "kind": "sg"
   },
   "sid_sg13": {
     "uid": "sid_sg13",
     "name": "2℃目の彼女",
     "date": "2009-01-14",
-    "songs": ["sid062", "sid063", "sid014"]
+    "songs": ["sid062", "sid063", "sid014"],
+    "kind": "sg"
   },
-  "sid_sg14": { "uid": "sid_sg14", "name": "嘘", "date": "2009-04-29", "songs": ["sid064", "sid065", "sid054"] },
+  "sid_sg14": {
+    "uid": "sid_sg14",
+    "name": "嘘",
+    "date": "2009-04-29",
+    "songs": ["sid064", "sid065", "sid054"],
+    "kind": "sg"
+  },
   "sid_al05": {
     "uid": "sid_al05",
     "name": "hikari",
@@ -134,17 +192,43 @@
       "sid070",
       "sid071",
       "sid072"
-    ]
+    ],
+    "kind": "al"
   },
-  "sid_sg15": { "uid": "sid_sg15", "name": "one way", "date": "2009-11-11", "songs": ["sid073", "sid074", "sid010"] },
-  "sid_sg16": { "uid": "sid_sg16", "name": "sleep", "date": "2010-03-03", "songs": ["sid075", "sid076", "sid019"] },
-  "sid_sg17": { "uid": "sid_sg17", "name": "レイン", "date": "2010-06-02", "songs": ["sid077", "sid078", "sid031"] },
-  "sid_sg18": { "uid": "sid_sg18", "name": "cosmetic", "date": "2010-09-29", "songs": ["sid079", "sid080", "sid059"] },
+  "sid_sg15": {
+    "uid": "sid_sg15",
+    "name": "one way",
+    "date": "2009-11-11",
+    "songs": ["sid073", "sid074", "sid010"],
+    "kind": "sg"
+  },
+  "sid_sg16": {
+    "uid": "sid_sg16",
+    "name": "sleep",
+    "date": "2010-03-03",
+    "songs": ["sid075", "sid076", "sid019"],
+    "kind": "sg"
+  },
+  "sid_sg17": {
+    "uid": "sid_sg17",
+    "name": "レイン",
+    "date": "2010-06-02",
+    "songs": ["sid077", "sid078", "sid031"],
+    "kind": "sg"
+  },
+  "sid_sg18": {
+    "uid": "sid_sg18",
+    "name": "cosmetic",
+    "date": "2010-09-29",
+    "songs": ["sid079", "sid080", "sid059"],
+    "kind": "sg"
+  },
   "sid_sg19": {
     "uid": "sid_sg19",
     "name": "乱舞のメロディ",
     "date": "2010-12-01",
-    "songs": ["sid081", "sid082", "sid029"]
+    "songs": ["sid081", "sid082", "sid029"],
+    "kind": "sg"
   },
   "sid_al06": {
     "uid": "sid_al06",
@@ -163,17 +247,37 @@
       "sid088",
       "sid075",
       "sid089"
-    ]
+    ],
+    "kind": "al"
   },
-  "sid_sg20": { "uid": "sid_sg20", "name": "いつか", "date": "2011-09-28", "songs": ["sid090", "sid091", "sid083"] },
+  "sid_sg20": {
+    "uid": "sid_sg20",
+    "name": "いつか",
+    "date": "2011-09-28",
+    "songs": ["sid090", "sid091", "sid083"],
+    "kind": "sg"
+  },
   "sid_sg21": {
     "uid": "sid_sg21",
     "name": "冬のベンチ",
     "date": "2011-12-28",
-    "songs": ["sid092", "sid093", "sid016"]
+    "songs": ["sid092", "sid093", "sid016"],
+    "kind": "sg"
   },
-  "sid_sg22": { "uid": "sid_sg22", "name": "残り香", "date": "2012-05-02", "songs": ["sid094", "sid095", "sid065"] },
-  "sid_sg23": { "uid": "sid_sg23", "name": "S", "date": "2012-05-09", "songs": ["sid096", "sid097", "sid076"] },
+  "sid_sg22": {
+    "uid": "sid_sg22",
+    "name": "残り香",
+    "date": "2012-05-02",
+    "songs": ["sid094", "sid095", "sid065"],
+    "kind": "sg"
+  },
+  "sid_sg23": {
+    "uid": "sid_sg23",
+    "name": "sg",
+    "date": "2012-05-09",
+    "songs": ["sid096", "sid097", "sid076"],
+    "kind": "sg"
+  },
   "sid_al07": {
     "uid": "sid_al07",
     "name": "M&W",
@@ -190,9 +294,16 @@
       "sid103",
       "sid104",
       "sid094"
-    ]
+    ],
+    "kind": "al"
   },
-  "sid_sg24": { "uid": "sid_sg24", "name": "V.I.P", "date": "2012-11-21", "songs": ["sid105", "sid106", "sid089"] },
+  "sid_sg24": {
+    "uid": "sid_sg24",
+    "name": "V.I.P",
+    "date": "2012-11-21",
+    "songs": ["sid105", "sid106", "sid089"],
+    "kind": "sg"
+  },
   "sid_ba01": {
     "uid": "sid_ba01",
     "name": "SID 10th Anniversary BEST",
@@ -216,34 +327,45 @@
       "sid055",
       "sid026",
       "sid105"
-    ]
+    ],
+    "kind": "ba"
   },
   "sid_sg25": {
     "uid": "sid_sg25",
     "name": "恋におちて",
     "date": "2013-04-10",
-    "songs": ["sid107", "sid108", "sid101"]
+    "songs": ["sid107", "sid108", "sid101"],
+    "kind": "sg"
   },
-  "sid_sg26": { "uid": "sid_sg26", "name": "サマラバ", "date": "2013-07-24", "songs": ["sid109", "sid110", "sid046"] },
+  "sid_sg26": {
+    "uid": "sid_sg26",
+    "name": "サマラバ",
+    "date": "2013-07-24",
+    "songs": ["sid109", "sid110", "sid046"],
+    "kind": "sg"
+  },
   "sid_ca02": {
     "uid": "sid_ca02",
     "name": "Side B complete collection ～e.B 2～",
     "date": "2013-08-21",
-    "songs": ["sid078", "sid097", "sid061", "sid074", "sid082", "sid106", "sid065", "sid111"]
+    "songs": ["sid078", "sid097", "sid061", "sid074", "sid082", "sid106", "sid065", "sid111"],
+    "kind": "ca"
   },
   "sid_ca03": {
     "uid": "sid_ca03",
     "name": "Side B complete collection ～e.B 3～",
     "date": "2013-08-21",
-    "songs": ["sid063", "sid093", "sid076", "sid080", "sid095", "sid091", "sid108", "sid112"]
+    "songs": ["sid063", "sid093", "sid076", "sid080", "sid095", "sid091", "sid108", "sid112"],
+    "kind": "ca"
   },
   "sid_sg27": {
     "uid": "sid_sg27",
     "name": "ANNIVERSARY",
     "date": "2013-11-06",
-    "songs": ["sid113", "sid114", "sid105"]
+    "songs": ["sid113", "sid114", "sid105"],
+    "kind": "sg"
   },
-  "sid_sg28": { "uid": "sid_sg28", "name": "hug", "date": "2014-02-12", "songs": ["sid115"] },
+  "sid_sg28": { "uid": "sid_sg28", "name": "hug", "date": "2014-02-12", "songs": ["sid115"], "kind": "sg" },
   "sid_al08": {
     "uid": "sid_al08",
     "name": "OUTSIDER",
@@ -260,11 +382,24 @@
       "sid121",
       "sid115",
       "sid113"
-    ]
+    ],
+    "kind": "al"
   },
-  "sid_sg29": { "uid": "sid_sg29", "name": "ENAMEL", "date": "2014-08-27", "songs": ["sid122", "sid123", "sid060"] },
-  "sid_sg30": { "uid": "sid_sg30", "name": "White tree", "date": "2014-12-10", "songs": ["sid124"] },
-  "sid_sg31": { "uid": "sid_sg31", "name": "漂流", "date": "2015-11-25", "songs": ["sid125", "sid126", "sid122"] },
+  "sid_sg29": {
+    "uid": "sid_sg29",
+    "name": "ENAMEL",
+    "date": "2014-08-27",
+    "songs": ["sid122", "sid123", "sid060"],
+    "kind": "sg"
+  },
+  "sid_sg30": { "uid": "sid_sg30", "name": "White tree", "date": "2014-12-10", "songs": ["sid124"], "kind": "sg" },
+  "sid_sg31": {
+    "uid": "sid_sg31",
+    "name": "漂流",
+    "date": "2015-11-25",
+    "songs": ["sid125", "sid126", "sid122"],
+    "kind": "sg"
+  },
   "sid_ba02": {
     "uid": "sid_ba02",
     "name": "SID ALL SINGLES BEST",
@@ -299,16 +434,30 @@
       "sid124",
       "sid125",
       "sid127"
-    ]
+    ],
+    "kind": "ba"
   },
-  "sid_sg32": { "uid": "sid_sg32", "name": "硝子の瞳", "date": "2017-01-18", "songs": ["sid128", "sid129"] },
-  "sid_sg33": { "uid": "sid_sg33", "name": "バタフライエフェクト", "date": "2017-05-10", "songs": ["sid130"] },
-  "sid_sg34": { "uid": "sid_sg34", "name": "螺旋のユメ", "date": "2017-08-02", "songs": ["sid131"] },
+  "sid_sg32": {
+    "uid": "sid_sg32",
+    "name": "硝子の瞳",
+    "date": "2017-01-18",
+    "songs": ["sid128", "sid129"],
+    "kind": "sg"
+  },
+  "sid_sg33": {
+    "uid": "sid_sg33",
+    "name": "バタフライエフェクト",
+    "date": "2017-05-10",
+    "songs": ["sid130"],
+    "kind": "sg"
+  },
+  "sid_sg34": { "uid": "sid_sg34", "name": "螺旋のユメ", "date": "2017-08-02", "songs": ["sid131"], "kind": "sg" },
   "sid_al09": {
     "uid": "sid_al09",
     "name": "NOMAD",
     "date": "2017-09-06",
-    "songs": ["sid132", "sid133", "sid128", "sid134", "sid135", "sid130", "sid136", "sid137", "sid131", "sid138"]
+    "songs": ["sid132", "sid133", "sid128", "sid134", "sid135", "sid130", "sid136", "sid137", "sid131", "sid138"],
+    "kind": "al"
   },
   "sid_ca04": {
     "uid": "sid_ca04",
@@ -326,19 +475,23 @@
       "sid128",
       "sid131",
       "sid139"
-    ]
+    ],
+    "kind": "ca"
   },
   "sid_al10": {
     "uid": "sid_al10",
     "name": "いちばん好きな場所",
     "date": "2018-08-22",
-    "songs": ["sid140", "sid141", "sid142", "sid143", "sid144"]
+    "songs": ["sid140", "sid141", "sid142", "sid143", "sid144"],
+    "kind": "al"
   },
   "sid_al11": {
     "uid": "sid_al11",
     "name": "承認欲求",
     "date": "2019-09-04",
-    "songs": ["sid145", "sid146", "sid147", "sid148", "sid149", "sid150", "sid151", "sid152", "sid153", "sid154"]
+    "songs": ["sid145", "sid146", "sid147", "sid148", "sid149", "sid150", "sid151", "sid152", "sid153", "sid154"],
+    "kind": "al"
   },
+  "sid_sg35": { "uid": "sid_sg35", "name": "DELETE", "data": "2020-03-04", "songs": ["sid155"], "kind": "sg" },
   "others": { "uid": "sid_others", "name": "その他", "songs": ["sid006"], "date": "" }
 }

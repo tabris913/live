@@ -6,6 +6,7 @@
 .pnp.js
 .install
 /utils/output*
+/utils/choice_log
 /images
 
 # testing

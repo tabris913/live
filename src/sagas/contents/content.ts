@@ -406,6 +406,7 @@ const saga = (actions: ContentActions, apis: ContentApis) => ({
         ...(req.target && req.target.artist
           ? { artist: yield call(apis.getArtist, { artistUid: req.artistUid }) }
           : {}),
+        works: yield call(apis.getWorks, { artistUid: req.artistUid }),
         songs: yield call(apis.getSongs, { artistUid: req.artistUid }),
       };
 

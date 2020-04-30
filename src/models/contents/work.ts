@@ -9,5 +9,6 @@ export interface IWorks {
 export default interface IWork extends IContent<WorkUid> {
   date: string;
   songs: SongUid[];
+  kind?: 'sg' | 'al' | 'ba' | 'ca' | 'o';
   songs_detail?: ISongs;
 }

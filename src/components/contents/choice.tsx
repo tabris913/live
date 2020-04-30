@@ -1,7 +1,11 @@
-import { Button, Col, Row, Spin } from 'antd';
+import { Button, Col, Row, Spin, Typography } from 'antd';
+import * as d3 from 'd3';
 import * as R from 'ramda';
 import * as React from 'react';
 import { ArtistUid, MainProps, SongUid } from '../../models/Main';
+
+// tslint:disable-next-line: no-var-requires
+const jsnx = require('jsnetworkx');
 
 const colStyle: React.CSSProperties = { margin: 10, fontSize: 'large' };
 const buttonStyle: React.CSSProperties = { width: 400, fontSize: 20 };
@@ -11,34 +15,35 @@ interface State {
   targetA: SongUid;
   targetB: SongUid;
   targetList: SongUid[];
-  result: {
-    [x: string]: { prefer: SongUid[]; same: SongUid[]; dislike: SongUid[] };
-  };
-  asked: Array<[SongUid, SongUid]>;
+  asked: string[];
   finished: boolean;
+  work?: string;
+  N: number;
+  answer: Array<{ depth: number; songs: SongUid[] }>;
+  G: any;
 }
 
 const initial: State = {
   targetA: '',
   targetB: '',
   targetList: [],
-  result: {},
   asked: [],
   finished: false,
+  N: 3,
+  answer: [],
+  G: new jsnx.DiGraph(),
 };
 
 const Choice = (props: MainProps<ArtistUid>) => {
   const [localState, setLocalState] = React.useState<State>(initial);
 
   const randomChoice = (list: SongUid[], avoidList?: SongUid[]) => {
-    let next;
+    const targetlist = list.filter(su => !(avoidList || []).includes(su));
 
-    do {
-      next = list[Math.floor(Math.random() * list.length)];
-    } while ((avoidList || []).includes(next));
-
-    return next;
+    return targetlist[Math.floor(Math.random() * targetlist.length)];
   };
+
+  const calcC = (list: any[]) => (list.length * (list.length - 1)) / 2;
 
   React.useState(() => {
     const list = props.content && props.content.songs ? Object.values(props.content.songs).map(song => song.uid) : [];
@@ -48,234 +53,245 @@ const Choice = (props: MainProps<ArtistUid>) => {
     setLocalState({ ...localState, targetA: A, targetB: B, targetList: list });
   });
 
-  const select = (value: string) => {
-    const check = () => {
-      let toRemove: SongUid[] = [];
-      Object.entries(result).forEach(([key, song]) => {
-        if (song.prefer.length >= 10) {
-          toRemove = song.same.concat(song.dislike).concat(key);
-        }
-        // else if (song.prefer.length + song.same.length >= 10) {
-        //   toRemove = song.dislike;
-        // }
+  React.useEffect(() => {
+    if (props.content && props.content.works && localState.work !== undefined && localState.work !== 'all') {
+      const list = props.content.works[localState.work].songs;
+      const A = randomChoice(list);
+      const B = randomChoice(list, [A]);
+
+      setLocalState({ ...localState, targetA: A, targetB: B, targetList: list });
+    }
+  }, [localState.work]);
+
+  React.useLayoutEffect(() => {
+    if (localState.work && !localState.finished) {
+      jsnx.draw(localState.G, {
+        element: '#nx',
+        withLabels: true,
+        d3: d3,
+        labels: (v: any) => props.content!.songs![v.node].name,
       });
-      nextList = nextList.filter(s => !toRemove.includes(s));
-      // result自体から消す
-      result = Object.entries(result).reduce(
-        (prev, [curK, curV]) =>
-          toRemove.includes(curK)
-            ? prev
-            : {
-                ...prev,
-                // 子要素からも消す
-                [curK]: {
-                  prefer: curV.prefer.filter(s => nextList.includes(s)),
-                  same: curV.same.filter(s => nextList.includes(s)),
-                  dislike: curV.dislike.filter(s => nextList.includes(s)),
-                },
-              },
-        {}
-      );
+    }
+  });
 
-      const innerCheckSame = (id: SongUid, checked: SongUid[]) => {
-        let newChecked = [...checked];
-        for (const id2 of result[id as string].same) {
-          if (!newChecked.includes(id2)) {
-            newChecked.push(id2);
-            newChecked = innerCheckSame(id2, newChecked);
-          }
-        }
-        return newChecked;
-      };
-      const innerCheckDislike = (id: SongUid, checked: SongUid[]) => {
-        let newChecked = [...checked];
-        for (const id2 of result[id as string].dislike.concat(result[id as string].same)) {
-          if (!newChecked.includes(id2)) {
-            newChecked.push(id2);
-            newChecked = innerCheckDislike(id2, newChecked);
-          }
-        }
-        return newChecked;
-      };
-      const innerCheckPrefer = (id: SongUid, checked: SongUid[]) => {
-        let newChecked = [...checked];
-        for (const id2 of result[id as string].prefer.concat(result[id as string].same)) {
-          if (!newChecked.includes(id2)) {
-            newChecked.push(id2);
-            newChecked = innerCheckPrefer(id2, newChecked);
-          }
-        }
-        return newChecked;
-      };
-      // 先をつなげる
-      for (const sid of Object.keys(result)) {
-        // 中
-        let checked: SongUid[] = [];
-        result[sid].same = innerCheckSame(sid, []).filter(s => s !== sid);
-        for (const id2 of result[sid].dislike) {
-          checked.push(...innerCheckDislike(id2, checked));
-        }
-        result[sid].dislike = R.uniq(checked);
-        checked = [];
-        for (const id2 of result[sid].prefer) {
-          checked.push(...innerCheckPrefer(id2, checked));
-        }
-        result[sid].prefer = R.uniq(checked);
-      }
-    };
-
+  const select = (value: number) => {
     const like = (better: string, worse: string) => {
-      console.log(better, worse);
+      if (!G.nodes().includes(better)) G.addNode(better, { songs: [better] });
+      if (!G.nodes().includes(worse)) G.addNode(worse, { songs: [worse] });
+      G.addEdge(better, worse, { weight: -1 });
+    };
 
-      if (Object.keys(result).includes(better)) {
-        result[better].dislike.push(worse);
-        if (Object.keys(result).includes(worse)) {
-          result[better].dislike.push(...result[worse].same.filter(s => s !== better));
-          result[better].dislike.push(...result[worse].dislike.filter(s => s !== better));
-        }
+    const likeBoth = (a: string, b: string) => {
+      if (G.nodes().includes(a)) {
+        if (G.nodes().includes(b)) {
+          G.node.get(a).songs.push(b);
+          G.addEdgesFrom(G.successors(b).map((e: string) => [a, e]), { weight: -1 });
+          G.addEdgesFrom(G.predecessors(b).map((e: string) => [e, a]), { weight: -1 });
+          G.removeNode(b);
+        } else G.node.get(a).songs.push(b);
+        nextTarget = nextTarget.filter(su => su !== b);
       } else {
-        result[better] = { prefer: [], same: [], dislike: [worse] };
-        if (Object.keys(result).includes(worse)) {
-          result[better].dislike.push(...result[worse].same.filter(s => s !== better));
-          result[better].dislike.push(...result[worse].dislike.filter(s => s !== better));
-        }
-      }
-      if (Object.keys(result).includes(worse)) {
-        result[worse].prefer.push(better);
-        if (Object.keys(result).includes(better)) {
-          result[worse].prefer.push(...result[better].same.filter(s => s !== worse));
-          result[worse].prefer.push(...result[better].dislike.filter(s => s !== worse));
-        }
-      } else {
-        result[worse] = { prefer: [better], same: [], dislike: [] };
-        if (Object.keys(result).includes(better)) {
-          result[worse].prefer.push(...result[better].same.filter(s => s !== worse));
-          result[worse].prefer.push(...result[better].dislike.filter(s => s !== worse));
+        if (G.nodes().includes(b)) {
+          G.node.get(b).songs.push(a);
+          nextTarget = nextTarget.filter(su => su !== a);
+        } else {
+          G.addNode(a, { songs: [a, b] });
+          nextTarget = nextTarget.filter(su => su !== b);
         }
       }
     };
 
-    const localA = localState.targetA as string;
-    const localB = localState.targetB as string;
+    const check = () => {
+      let toRemove: string[] = [];
+      G.nodes().forEach((node: string) => {
+        const pre: string[] = [];
+        const prefer: string[] = [];
+        for (const key of jsnx.predecessor(G.reverse(), node).keys()) {
+          if (key !== node) pre.push(key);
+        }
+        pre.forEach(p => prefer.push(...G.node.get(p).songs));
+        if (prefer.length >= localState.N) toRemove.push(...G.node.get(node).songs);
+      });
+      toRemove = R.uniq(toRemove);
+      G.removeNodesFrom(toRemove);
+      nextTarget = nextTarget.filter(su => !toRemove.includes(su as string));
+
+      const connected: string[] = [];
+      G.nodes().forEach((s: string) => {
+        G.nodes().forEach((t: string) => {
+          if (s !== t && jsnx.hasPath(G, { source: s, target: t })) connected.push([s, t].sort().join());
+        });
+      });
+
+      nextAsked = R.uniq([...connected]);
+    };
+
+    const answer = () => {
+      const ans: State['answer'] = [];
+
+      const s: string[] = [];
+      const t: string[] = [];
+
+      G.nodes().forEach((node: string) => {
+        if (G.successors(node).length === 0) t.push(node);
+        if (G.predecessors(node).length === 0) s.push(node);
+      });
+      if (s.length !== 1) throw Error();
+      if (t.length !== 1) throw Error();
+
+      let count = 1;
+      // const p = jsnx.shortestPath(G);
+      jsnx.shortestPath(G, { source: s[0], target: t[0], weight: 'weight' }).forEach((node: string) => {
+        ans.push({ depth: count, songs: G.node.get(node).songs });
+        count = count + G.node.get(node).songs.length;
+      });
+
+      return ans;
+    };
+
+    const targetA = localState.targetA as string;
+    const targetB = localState.targetB as string;
+
     let nextA = localState.targetA;
     let nextB = localState.targetB;
-    let nextList = localState.targetList;
-    let nextFinished = false;
-    let result: State['result'] = { ...localState.result };
+    let nextTarget = [...localState.targetList];
+    let nextAsked = [...localState.asked];
+    const isDefined = false; // localState.targetList.length <= N;
+    const G = localState.G;
 
-    if (value === 'A') {
-      like(localA, localB);
-      check();
-      if (nextList.length > 0) {
-        if (!nextList.includes(nextB)) nextB = randomChoice(nextList);
-        if (nextList.filter(s => s !== localA && s !== nextB).length > 0) {
-          nextA = randomChoice(nextList, [nextB, localA]);
+    switch (value) {
+      case 1:
+        like(targetA, targetB);
+        check();
+        if (!isDefined && nextTarget.length > 0) {
+          nextA = randomChoice(nextTarget, [nextA, nextB]);
+          if (!nextTarget.includes(targetB)) nextB = randomChoice(nextTarget, [nextA]);
         }
-      }
-    } else if (value === 'B') {
-      like(localB, localA);
-      check();
-      if (nextList.length > 0) {
-        if (!nextList.includes(nextA)) nextA = randomChoice(nextList);
-        if (nextList.filter(s => s !== nextA && s !== localB).length > 0) {
-          nextB = randomChoice(nextList, [nextA, localB]);
+        break;
+      case 2:
+        like(targetB, targetA);
+        check();
+        if (!isDefined && nextTarget.length > 0) {
+          nextB = randomChoice(nextTarget, [nextA, nextB]);
+          if (!nextTarget.includes(targetA)) nextA = randomChoice(nextTarget, [nextB]);
         }
-      }
-    } else if (value === 'C') {
-      if (Object.keys(result).includes(localA)) {
-        result[localA].same.push(localB);
-        if (Object.keys(result).includes(localB)) {
-          result[localA].same.push(...result[localB].same.filter(s => s !== localA));
+        break;
+      case 3:
+        likeBoth(targetA, targetB);
+        check();
+        if (!isDefined && nextTarget.length > 1) {
+          nextA = randomChoice(nextTarget, [targetA, targetB]);
+          nextB = randomChoice(nextTarget, [nextA, targetB]);
         }
-      } else {
-        result[localA] = { prefer: [], same: [localB], dislike: [] };
-        if (Object.keys(result).includes(localB)) {
-          result[localA].same.push(...result[localB].same.filter(s => s !== localA));
+        break;
+      case 4:
+        if (G.nodes().includes(targetA)) G.removeNode(targetA);
+        nextTarget = nextTarget.filter(su => su !== targetA);
+        check();
+        if (!isDefined && nextTarget.length > 0) {
+          nextA = randomChoice(nextTarget, [targetB]);
         }
-      }
-      if (Object.keys(result).includes(localB)) {
-        result[localB].same.push(localA);
-        if (Object.keys(result).includes(localA)) {
-          result[localB].same.push(...result[localA].same.filter(s => s !== localB));
+        break;
+      case 5:
+        if (G.nodes().includes(targetB)) G.removeNode(targetB);
+        nextTarget = nextTarget.filter(su => su !== targetB);
+        check();
+        if (!isDefined && nextTarget.length > 0) {
+          nextB = randomChoice(nextTarget, [targetA]);
         }
-      } else {
-        result[localB] = { prefer: [], same: [localA], dislike: [] };
-        if (Object.keys(result).includes(localA)) {
-          result[localB].same.push(...result[localA].same.filter(s => s !== localB));
+        break;
+      default:
+        if (G.nodes().includes(targetA)) G.removeNode(targetA);
+        if (G.nodes().includes(targetB)) G.removeNode(targetB);
+        nextTarget = nextTarget.filter(su => su !== targetB && su !== targetA);
+        check();
+        if (!isDefined && nextTarget.length > 1) {
+          nextA = randomChoice(nextTarget);
+          nextB = randomChoice(nextTarget, [nextA]);
         }
-      }
-      check();
-      if (nextList.length > 0) {
-        if (!nextList.includes(nextA)) nextA = randomChoice(nextList);
-        if (!nextList.includes(nextB)) nextB = randomChoice(nextList);
-        if (nextList.filter(s => s !== nextA && s !== localB).length > 0) {
-          nextB = randomChoice(nextList, [nextA, localB]);
-        }
-      }
-    } else if (value === 'D') {
-      nextList = nextList.filter(id => id !== localA);
-      if (nextList.filter(s => s !== nextB).length > 0) nextA = randomChoice(nextList, [nextB]);
-    } else if (value === 'E') {
-      nextList = nextList.filter(id => id !== localB);
-      if (nextList.filter(s => s !== nextA).length > 0) nextB = randomChoice(nextList, [nextA]);
-    } else {
-      nextList = nextList.filter(id => id !== localB && id !== localA);
-      if (nextList.length > 0) {
-        nextA = randomChoice(nextList);
-        if (nextList.filter(s => s !== nextA).length > 0) nextB = randomChoice(nextList, [nextA]);
-      }
-    }
-    while (nextList && (localState.asked.includes([nextA, nextB]) || localState.asked.includes([nextB, nextA]))) {
-      nextB = randomChoice(nextList, [nextB]);
+        break;
     }
 
-    if (nextList.filter(s => s !== localA && s !== localB).length < 1) nextFinished = true;
+    if (calcC(nextTarget) <= nextAsked.length) {
+      setLocalState({
+        ...localState,
+        G: G,
+        targetA: nextA,
+        targetB: nextB,
+        targetList: [],
+        asked: [],
+        finished: true,
+        answer: nextTarget.length === 1 ? [] : answer(),
+      });
+      return;
+    }
+
+    while (
+      nextAsked.includes([nextA, nextB].join()) ||
+      nextAsked.includes([nextB, nextA].join()) ||
+      ([nextA, nextB] as [SongUid, SongUid]).sort() === ([targetA, targetB] as [SongUid, SongUid]).sort()
+    ) {
+      nextA = randomChoice(nextTarget);
+      nextB = randomChoice(nextTarget, [nextA]);
+    }
 
     setLocalState({
+      ...localState,
+      G: G,
       targetA: nextA,
       targetB: nextB,
-      result: result,
-      targetList: nextList,
-      asked: R.uniq(
-        ([[localState.targetA, localState.targetB]] as Array<[SongUid, SongUid]>)
-          .concat(localState.asked)
-          .filter(([valueA, valueB]) => nextList.includes(valueA) && nextList.includes(valueB))
-      ),
-      finished: nextFinished,
+      targetList: nextTarget,
+      asked: nextAsked,
     });
   };
 
-  return props.content && props.content.songs && localState.targetA && localState.targetB ? (
+  return props.content && props.content.songs && props.content.works && localState.targetA && localState.targetB ? (
     <Row style={{ textAlign: 'center', overflowY: 'auto' }}>
-      {console.log(localState)}
-      {!localState.finished ? (
+      {!localState.work ? (
+        <>
+          <Col>
+            <Button onClick={() => setLocalState({ ...localState, work: 'all', N: 10 })} type="danger">
+              すべて (10)
+            </Button>
+          </Col>
+          {Object.values(props.content.works)
+            .filter(w => w.kind && ['al', 'ba', 'ca'].includes(w.kind))
+            .map((w, idx) => (
+              <Col key={idx} style={{ margin: 5 }}>
+                <Button onClick={() => setLocalState({ ...localState, work: w.uid as string })} type="primary">
+                  {w.name} (3)
+                </Button>
+              </Col>
+            ))}
+        </>
+      ) : !localState.finished ? (
         <>
           <Col style={colStyle}>好きな方を選んで下さい</Col>
           <Col style={colStyle}>A: 「{props.content.songs[localState.targetA as string].name}」</Col>
           <Col style={colStyle}>B: 「{props.content.songs[localState.targetB as string].name}」</Col>
           <Col style={colStyle}>
-            <Button type="primary" style={{ ...buttonStyle2, marginRight: 5 }} onClick={() => select('A')}>
+            <Button type="primary" style={{ ...buttonStyle2, marginRight: 5 }} onClick={() => select(1)}>
               Aが好き
             </Button>
-            <Button type="primary" style={{ ...buttonStyle2, marginLeft: 5 }} onClick={() => select('B')}>
+            <Button type="primary" style={{ ...buttonStyle2, marginLeft: 5 }} onClick={() => select(2)}>
               Bが好き
             </Button>
           </Col>
           <Col style={colStyle}>
-            <Button type="primary" style={buttonStyle} onClick={() => select('C')}>
+            <Button type="primary" style={buttonStyle} onClick={() => select(3)}>
               決められない
             </Button>
           </Col>
           <Col style={colStyle}>
-            <Button type="primary" style={{ ...buttonStyle2, marginRight: 5 }} onClick={() => select('D')}>
+            <Button type="primary" style={{ ...buttonStyle2, marginRight: 5 }} onClick={() => select(4)}>
               Aを除外する
             </Button>
-            <Button type="primary" style={{ ...buttonStyle2, marginLeft: 5 }} onClick={() => select('E')}>
+            <Button type="primary" style={{ ...buttonStyle2, marginLeft: 5 }} onClick={() => select(5)}>
               Bを除外する
             </Button>
           </Col>
           <Col style={colStyle}>
-            <Button type="primary" style={buttonStyle} onClick={() => select('F')}>
+            <Button type="primary" style={buttonStyle} onClick={() => select(6)}>
               両方除外する
             </Button>
           </Col>
@@ -284,9 +300,28 @@ const Choice = (props: MainProps<ArtistUid>) => {
             最大であと{' '}
             {(localState.targetList.length * (localState.targetList.length - 1)) / 2 - localState.asked.length} 回
           </Col>
+          <Row justify="center" type="flex">
+            <Col id="nx" span={9} />
+          </Row>
         </>
       ) : (
-        <>finished</>
+        <>
+          <Col>
+            <Typography.Title level={2}>
+              Your best songs {localState.work === 'all' ? 'of all' : `in ${props.content.works[localState.work].name}`}
+            </Typography.Title>
+          </Col>
+          {localState.answer
+            .sort((a, b) => (a.depth < b.depth ? -1 : 1))
+            .map(e => (
+              <Col key={e.depth}>
+                <Typography.Title level={3}>
+                  {e.depth}: {e.songs.map(s => props.content!.songs![s as string].name).join(', ')}
+                </Typography.Title>
+              </Col>
+            ))}
+          {localState.answer.length === 0 && <Typography.Title level={3}>測定不能です</Typography.Title>}
+        </>
       )}
     </Row>
   ) : (

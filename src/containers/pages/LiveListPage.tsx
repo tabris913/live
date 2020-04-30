@@ -5,12 +5,12 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as Redux from 'redux';
 import { liveActions } from '../../actions/content';
 import LiveList from '../../components/contents/lives';
+import PageName, { toPublicUrl } from '../../constants/PageName';
 import { IContentState } from '../../models/ContentState';
 import { IMatchParams, QueryType, Uid } from '../../models/Main';
 import ILivesRequest from '../../models/request/LivesRequest';
 import { IStoreState } from '../../reducers';
 import Wireframe from '../wireframe/Wireframe';
-import PageName, { toPublicUrl } from '../../constants/PageName';
 
 interface IOwnProps extends RouteComponentProps<IMatchParams> {}
 
