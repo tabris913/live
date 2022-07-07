@@ -10,7 +10,7 @@
     "formik": "^1.5.7",
     "history": "^4.9.0",
     "jsnetworkx": "^0.3.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.25",
     "querystring": "^0.2.0",
     "ramda": "^0.26.1",
